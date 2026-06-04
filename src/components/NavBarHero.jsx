@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import LogoImage from '../assets/kqube-logo.png'
+import { TbMenu3 } from "react-icons/tb";
 
 
 const NAV_LINKS = ["Home", "About Us", "Services", "Contact Us"];
@@ -163,7 +164,7 @@ export default function NavbarHero() {
         .logo-icon-kq {
           transition: transform 0.4s ease;
         }
-        .logo-icon-kq:hover { transform: rotate(15deg) scale(1.08); }
+       
         .stat-item { transition: transform 0.2s; }
         .stat-item:hover { transform: translateY(-3px); }
         .illus-card {
@@ -179,10 +180,10 @@ export default function NavbarHero() {
       <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-400 nav-anim ${
         scrolled ? "bg-white/95 backdrop-blur-md shadow-md border-b border-[#E8F0F8]" : "bg-white border-b border-[#E8F0F8]"
       }`}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 h-[86px] flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 h-21.5 flex items-center justify-between">
 
           <div className="logo-icon-kq">
-            <img src={LogoImage} className="w-47.5" />
+            <img src={LogoImage} className="w-50" />
           </div>
 
           <nav className="hidden md:flex items-center gap-1">
@@ -196,20 +197,14 @@ export default function NavbarHero() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <a href="#"
-              className="btn-primary-kq hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white shadow shadow-[#1B3A5C]/20">
-              Get Started
-              <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a>
+             <TbMenu3 size={40} />
 
             <button onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-[5px] rounded-lg hover:bg-[#E8F0F8] transition-colors duration-200"
+              className="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.25 rounded-lg hover:bg-[#E8F0F8] transition-colors duration-200"
               aria-label="Toggle menu">
-              <span className={`block w-5 h-0.5 bg-[#1B3A5C] transition-all duration-300 origin-center ${menuOpen ? "rotate-45 translate-y-[6px]" : ""}`}/>
+              <span className={`block w-5 h-0.5 bg-[#1B3A5C] transition-all duration-300 origin-center ${menuOpen ? "rotate-45 translate-y-1.5" : ""}`}/>
               <span className={`block h-0.5 bg-[#1B3A5C] transition-all duration-300 ${menuOpen ? "w-0 opacity-0" : "w-5"}`}/>
-              <span className={`block w-5 h-0.5 bg-[#1B3A5C] transition-all duration-300 origin-center ${menuOpen ? "-rotate-45 -translate-y-[6px]" : ""}`}/>
+              <span className={`block w-5 h-0.5 bg-[#1B3A5C] transition-all duration-300 origin-center ${menuOpen ? "-rotate-45 -translate-y-1.5" : ""}`}/>
             </button>
           </div>
         </div>
@@ -233,31 +228,31 @@ export default function NavbarHero() {
       </header>
 
       {/* ── HERO ── */}
-      <main ref={heroRef} className="min-h-screen flex items-center pt-[68px]">
+      <main ref={heroRef} className="min-h-screen flex items-center pt-17">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16 w-full">
-          <div className="grid lg:grid-cols-2 gap-14 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
 
             {/* LEFT */}
             <div>
               {/* Badge */}
               <div style={fadeUp(0)} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E8F0F8] border border-[#B8D0E8] mb-8">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#4A90D9]" style={{ animation: "badge-glow 2s ease-in-out infinite" }}/>
-                <span className="text-xs text-[#1B3A5C] font-semibold tracking-wide">Form. Function. First Page.</span>
+                <span className="text-xs text-[#1B3A5C] font-semibold tracking-wide">Built Beautiful. Ranked High. Hosted Securely.</span>
               </div>
 
               {/* Heading */}
               <div style={fadeUp(0.1)}>
-                <h1 className="text-6xl font-extrabold leading-[1.04] tracking-tight text-[#1B3A5C] mb-5">
-                 Your 
-                  <span className="text-[#4A90D9] ml-1"> All-in-One </span>{" "}
-                  <br />Digital Launchpad.
+                <h1 className="text-6xl font-bold leading-[1.04] tracking-tight text-[#1B3A5C] mb-5">
+                Dominate 
+                  <span className="text-[#4A90D9] ml-1">the Web. </span>{" "}
+                 We Handle the Tech.  
                 </h1>
               </div>
 
               {/* Subheading */}
               <div style={fadeUp(0.2)}>
                 <p className="text-2xl font-medium text-[#7B99B8] mb-7 leading-snug">
-                  Web Development, Hosting, and SEO—Engineered for Growth
+                  Web development, hosting, and SEO that actually delivers
                 </p>
               </div>
 
@@ -266,7 +261,7 @@ export default function NavbarHero() {
                 <div  style={fadeUp(0.28 +  0.1)} className="flex items-start gap-3">
                     
                     <p className="text-[15px] text-[#4A6B8A] leading-relaxed">
-                      We don't just build beautiful websites; we handle everything under the hood. From secure domain hosting and seamless full-stack web development to performance-boosting bug fixes and targeted SEO, we ensure your business stays fast, functional, and first in search results.
+                      Get secure domain and hosting services, modern web revamps, expert bug fixes, and targeted SEO optimization all under one roof, backed by high-performance web development.
                     </p>
                   </div>
               </div>
