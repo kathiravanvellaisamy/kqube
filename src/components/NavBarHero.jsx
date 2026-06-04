@@ -233,7 +233,7 @@ export default function NavbarHero() {
               {/* Badge */}
               <div style={fadeUp(0)} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E8F0F8] border border-[#B8D0E8] mb-8">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#4A90D9]" style={{ animation: "badge-glow 2s ease-in-out infinite" }}/>
-                <span className="text-xs text-[#1B3A5C] font-semibold tracking-wide">Built Beautiful. Ranked High. Hosted Securely.</span>
+                <span className="text-xs text-[#1B3A5C] font-semibold tracking-wide">✨ Built beautiful, ranked high, and hosted securely</span>
               </div>
 
               {/* Heading */}
@@ -263,20 +263,20 @@ export default function NavbarHero() {
               </div>
 
               {/* Buttons */}
-              <div style={fadeUp(0.55)} className="flex flex-row flex-wrap gap-4 mb-12">
-                <a href="#" className="btn-primary-kq inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm text-white shadow-lg shadow-[#1B3A5C]/20">
-                  Contact Us
-                  <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">
-                    <path d="M3 8h10M9 4l4 4-4 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </a>
-                <a href="#" className="btn-secondary-kq inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm text-[#1B3A5C] border border-[#B8D0E8]">
-                  View Services
-                  <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">
-                    <path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </a>
-              </div>
+             <div style={fadeUp(0.55)} className="flex flex-row items-center gap-2 sm:gap-4 mb-12">
+              <a href="#" className="btn-primary-kq inline-flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-7 py-3 sm:py-3.5 rounded-full font-semibold text-xs sm:text-sm text-white shadow-lg shadow-[#1B3A5C]/20 flex-1 sm:flex-initial text-center whitespace-nowrap">
+                Contact Us
+                <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+              <a href="#" className="btn-secondary-kq inline-flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-7 py-3 sm:py-3.5 rounded-full font-semibold text-xs sm:text-sm text-[#1B3A5C] border border-[#B8D0E8] flex-1 sm:flex-initial text-center whitespace-nowrap">
+                View Services
+                <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0">
+                  <path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+            </div>
 
               {/* Stats */}
               
