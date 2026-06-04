@@ -223,7 +223,11 @@ export default function AboutUs() {
       <section className="py-28 px-6 section-alt">
         <div ref={servicesRef} className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <p className={`fade-up ${servicesIn ? "visible" : ""} text-blue-500 text-sm tracking-widest uppercase font-semibold mb-4`}>What We Do</p>
+          <div className={`fade-up ${heroIn ? "visible" : ""} inline-flex items-center gap-2 mb-8`}>
+            <span className="px-4 py-1.5 rounded-full text-xs tracking-widest uppercase border border-blue-200 bg-blue-50 text-blue-600 font-semibold">
+              ✦ What we do
+            </span>
+          </div>
             <h2 className={`syne fade-up stagger-1 ${servicesIn ? "visible" : ""} text-4xl md:text-5xl font-bold text-gray-900`}>
               Everything You Need,<br />Under One Roof
             </h2>
