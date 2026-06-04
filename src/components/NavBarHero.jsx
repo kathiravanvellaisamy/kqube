@@ -238,16 +238,16 @@ export default function NavbarHero() {
 
               {/* Heading */}
               <div style={fadeUp(0.1)}>
-                <h1 className="text-4xl md:text-6xl font-bold leading-[1.04] tracking-tight text-[#1B3A5C] mb-5">
+                <h1 className="text-4xl md:text-6xl font-bold leading-[1.04] tracking-tight text-[#1B3A5C] mb-2 md:mb-5">
                 Dominate 
-                  <span className="text-[#4A90D9] ml-1">the Web. </span>{" "}
+                  <span className="text-[#4A90D9] ml-1"> the Web. </span>{" "}
                  We Handle the Tech.  
                 </h1>
               </div>
 
               {/* Subheading */}
               <div style={fadeUp(0.2)}>
-                <p className="text-2xl font-medium text-[#7B99B8] mb-7 leading-snug">
+                <p className="text-2xl font-medium text-[#7B99B8] mb-3 md:mb-7 leading-snug">
                   Web development, hosting, and SEO that actually delivers
                 </p>
               </div>
@@ -263,7 +263,7 @@ export default function NavbarHero() {
               </div>
 
               {/* Buttons */}
-              <div style={fadeUp(0.55)} className="flex flex-wrap gap-4 mb-12">
+              <div style={fadeUp(0.55)} className="flex flex-row flex-wrap gap-4 mb-12">
                 <a href="#" className="btn-primary-kq inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm text-white shadow-lg shadow-[#1B3A5C]/20">
                   Contact Us
                   <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">
