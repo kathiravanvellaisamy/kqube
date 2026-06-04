@@ -233,7 +233,9 @@ export default function NavbarHero() {
               {/* Badge */}
               <div style={fadeUp(0)} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E8F0F8] border border-[#B8D0E8] mb-8">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#4A90D9]" style={{ animation: "badge-glow 2s ease-in-out infinite" }}/>
-                <span className="text-xs text-[#1B3A5C] font-semibold tracking-wide">✨ Built beautiful, ranked high, and hosted securely</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#4A90D9]" style={{ animation: "badge-glow 2s ease-in-out infinite" }}/>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#4A90D9]" style={{ animation: "badge-glow 2s ease-in-out infinite" }}/>
+                <span className="text-xs text-[#1B3A5C] font-semibold tracking-wide"> Built beautiful and hosted securely</span>
               </div>
 
               {/* Heading */}
