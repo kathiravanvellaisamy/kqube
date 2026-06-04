@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import LogoImage from '../assets/kqube-logo.png'
-import { TbMenu3 } from "react-icons/tb";
+import { TbMenu, TbMenu3 } from "react-icons/tb";
 
 
 const NAV_LINKS = ["Home", "About Us", "Services", "Contact Us"];
@@ -183,7 +183,7 @@ export default function NavbarHero() {
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-21.5 flex items-center justify-between">
 
           <div className="logo-icon-kq">
-            <img src={LogoImage} className="w-50" />
+            <img src={LogoImage} className="w-60 md:w-50 -ml-6 md:ml-0" />
           </div>
 
           <nav className="hidden md:flex items-center gap-1">
@@ -199,13 +199,9 @@ export default function NavbarHero() {
           <div className="flex items-center gap-3">
              <TbMenu3 className="hidden md:block cursor-pointer" size={40} />
 
-            <button onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.25 rounded-lg hover:bg-[#E8F0F8] transition-colors duration-200"
-              aria-label="Toggle menu">
-              <span className={`block w-5 h-0.5 bg-[#1B3A5C] transition-all duration-300 origin-center ${menuOpen ? "rotate-45 translate-y-1.5" : ""}`}/>
-              <span className={`block h-0.5 bg-[#1B3A5C] transition-all duration-300 ${menuOpen ? "w-0 opacity-0" : "w-5"}`}/>
-              <span className={`block w-5 h-0.5 bg-[#1B3A5C] transition-all duration-300 origin-center ${menuOpen ? "-rotate-45 -translate-y-1.5" : ""}`}/>
-            </button>
+             
+
+            <TbMenu3 size={29}  onClick={() => setMenuOpen(!menuOpen)} className="cursor-pointer md:hidden block" />
           </div>
         </div>
 
