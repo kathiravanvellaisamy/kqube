@@ -197,7 +197,7 @@ export default function NavbarHero() {
           </nav>
 
           <div className="flex items-center gap-3">
-             <TbMenu3 size={40} />
+             <TbMenu3 className="hidden md:block cursor-pointer" size={40} />
 
             <button onClick={() => setMenuOpen(!menuOpen)}
               className="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.25 rounded-lg hover:bg-[#E8F0F8] transition-colors duration-200"
@@ -242,7 +242,7 @@ export default function NavbarHero() {
 
               {/* Heading */}
               <div style={fadeUp(0.1)}>
-                <h1 className="text-6xl font-bold leading-[1.04] tracking-tight text-[#1B3A5C] mb-5">
+                <h1 className="text-4xl md:text-6xl font-bold leading-[1.04] tracking-tight text-[#1B3A5C] mb-5">
                 Dominate 
                   <span className="text-[#4A90D9] ml-1">the Web. </span>{" "}
                  We Handle the Tech.  
@@ -283,18 +283,7 @@ export default function NavbarHero() {
               </div>
 
               {/* Stats */}
-              <div style={fadeUp(0.65)} className="flex flex-wrap gap-8">
-                {[
-                  { val: "10K+", label: "Active Users" },
-                  { val: "99.9%", label: "Uptime SLA" },
-                  { val: "150+", label: "Integrations" },
-                ].map(({ val, label }, i) => (
-                  <div key={label} className="stat-item" style={{ transitionDelay: `${i * 0.08}s` }}>
-                    <p className="text-2xl font-bold text-[#1B3A5C]">{val}</p>
-                    <p className="text-xs text-[#7B99B8] font-medium mt-0.5">{label}</p>
-                  </div>
-                ))}
-              </div>
+              
             </div>
 
             {/* RIGHT — Illustration */}
