@@ -1,5 +1,6 @@
 
 import AboutUs from './components/AboutUs'
+import ContactUs from './components/ContactUs'
 import NavbarHero from './components/NavBarHero'
 
 const App = () => {
@@ -7,6 +8,7 @@ const App = () => {
     <>
       <NavbarHero />
       <AboutUs />
+      <ContactUs />
     </>
   )
 }
