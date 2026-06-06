@@ -137,7 +137,7 @@ export default function AboutUs() {
       `}</style>
 
       {/* ── HERO ── */}
-      <section className="relative pt-32 pb-12 px-6 dot-bg overflow-hidden">
+      <section id="about" className="relative pt-32 pb-12 px-6 dot-bg overflow-hidden">
         {/* Blue accent blob */}
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-10" style={{ background: "radial-gradient(circle, #3B82F6, transparent)", transform: "translate(30%, -30%)" }} />
         <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full opacity-8" style={{ background: "radial-gradient(circle, #06B6D4, transparent)", transform: "translate(-30%, 30%)" }} />
@@ -220,7 +220,7 @@ export default function AboutUs() {
       </section>
 
       {/* ── SERVICES ── */}
-      <section className="py-28 px-6 section-alt">
+      <section id="services" className="py-28 px-6 section-alt">
         <div ref={servicesRef} className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
           <div className={`fade-up ${heroIn ? "visible" : ""} inline-flex items-center gap-2 mb-8`}>
@@ -228,7 +228,7 @@ export default function AboutUs() {
               ✦ What we do
             </span>
           </div>
-            <h2 className={`syne fade-up stagger-1 ${servicesIn ? "visible" : ""} text-4xl md:text-5xl font-bold text-gray-900`}>
+            <h2 className={`syne fade-up stagger-1 ${servicesIn ? "visible" : ""} leading-15 text-4xl md:text-5xl font-bold text-gray-900`}>
               Everything You Need,<br />Under One Roof
             </h2>
           </div>

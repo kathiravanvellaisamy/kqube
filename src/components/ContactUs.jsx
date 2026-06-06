@@ -1,5 +1,9 @@
 import { useState } from "react";
 
+import { GoClock } from "react-icons/go";
+import { IoLocationOutline } from "react-icons/io5";
+import { IoMail } from "react-icons/io5";
+
 export default function ContactUs() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [focused, setFocused] = useState("");
@@ -113,7 +117,7 @@ export default function ContactUs() {
         }
       `}</style>
 
-      <section className="py-24 px-6 relative overflow-hidden">
+      <section id="contact" className="py-24 px-6 relative overflow-hidden">
         {/* subtle bg decor */}
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(59,130,246,0.06), transparent)", transform: "translate(30%,-30%)" }} />
         <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(6,182,212,0.05), transparent)", transform: "translate(-30%,30%)" }} />
@@ -239,7 +243,7 @@ export default function ContactUs() {
               {/* Email card */}
               <div className="info-card p-6 flex items-start gap-4">
                 <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 text-xl" style={{ background: "linear-gradient(135deg, #3B82F6, #06B6D4)" }}>
-                  ✉️
+                  <IoMail size={26} className="text-white" />
                 </div>
                 <div>
                   <p className="text-xs font-semibold text-blue-500 uppercase tracking-widest mb-1">Email Us</p>
@@ -253,7 +257,7 @@ export default function ContactUs() {
               {/* Location card */}
               <div className="info-card p-6 flex items-start gap-4">
                 <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 text-xl" style={{ background: "linear-gradient(135deg, #3B82F6, #06B6D4)" }}>
-                  📍
+                  <IoLocationOutline className="text-white" size={26} />
                 </div>
                 <div>
                   <p className="text-xs font-semibold text-blue-500 uppercase tracking-widest mb-1">Our Office</p>
@@ -265,7 +269,7 @@ export default function ContactUs() {
               {/* Support hours */}
               <div className="info-card p-6 flex items-start gap-4">
                 <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 text-xl" style={{ background: "linear-gradient(135deg, #3B82F6, #06B6D4)" }}>
-                  🕐
+                  <GoClock size={26} className="text-white" />
                 </div>
                 <div>
                   <p className="text-xs font-semibold text-blue-500 uppercase tracking-widest mb-1">Support Hours</p>
@@ -275,17 +279,7 @@ export default function ContactUs() {
               </div>
 
               {/* Map placeholder */}
-              <div className="map-placeholder dot-bg h-44 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-3xl mb-2">🗺️</div>
-                  <p className="text-blue-400 text-sm font-medium">Chennai, Tamil Nadu</p>
-                  <p className="text-blue-300 text-xs">India</p>
-                </div>
-                {/* Decorative pin */}
-                <div className="absolute">
-                  <div className="w-4 h-4 rounded-full bg-blue-500 border-2 border-white shadow-lg animate-pulse" />
-                </div>
-              </div>
+              
             </div>
 
           </div>

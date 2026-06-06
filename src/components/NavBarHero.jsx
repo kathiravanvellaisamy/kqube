@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import LogoImage from '../assets/kqube-logo.png'
 import { TbMenu, TbMenu3 } from "react-icons/tb";
+import { MdMailOutline } from "react-icons/md";
 
 
-const NAV_LINKS = ["Home", "About Us", "Services", "Contact Us"];
+ 
 
  
 
@@ -187,17 +188,30 @@ export default function NavbarHero() {
           </div>
 
           <nav className="hidden md:flex items-center gap-1">
-            {NAV_LINKS.map((link, i) => (
-              <a key={link} href="#"
+            <a   href="#home"
                 className="nav-link-kq px-4 py-2 text-sm uppercase text-[#4A6B8A] font-medium"
-                style={{ animationDelay: `${i * 0.07}s` }}>
-                {link}
+                >
+               Home
               </a>
-            ))}
+               <a   href="#about"
+                className="nav-link-kq px-4 py-2 text-sm uppercase text-[#4A6B8A] font-medium"
+                >
+               About Us
+              </a>
+               <a   href="#services"
+                className="nav-link-kq px-4 py-2 text-sm uppercase text-[#4A6B8A] font-medium"
+                >
+               Services
+              </a>
+               <a   href="#contact"
+                className="nav-link-kq px-4 py-2 text-sm uppercase text-[#4A6B8A] font-medium"
+                >
+               Contact Us
+              </a>
           </nav>
 
           <div className="flex items-center gap-3">
-             <TbMenu3 className="hidden md:block cursor-pointer" size={40} />
+             <MdMailOutline className="hidden md:block cursor-pointer" size={37} />
 
              
 
@@ -210,12 +224,22 @@ export default function NavbarHero() {
           menuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
         } bg-white border-b border-[#E8F0F8]`}>
           <nav className="flex flex-col px-6 py-4 gap-1">
-            {NAV_LINKS.map((link) => (
-              <a key={link} href="#" onClick={() => setMenuOpen(false)}
+            <a  href="#" onClick={() => setMenuOpen(false)}
                 className="py-2.5 px-3 rounded-lg text-sm text-[#4A6B8A] hover:text-[#1B3A5C] hover:bg-[#E8F0F8] font-medium transition-all duration-150">
-                {link}
+                Home
               </a>
-            ))}
+               <a  href="#about" onClick={() => setMenuOpen(false)}
+                className="py-2.5 px-3 rounded-lg text-sm text-[#4A6B8A] hover:text-[#1B3A5C] hover:bg-[#E8F0F8] font-medium transition-all duration-150">
+                About Us
+              </a>
+               <a  href="#services" onClick={() => setMenuOpen(false)}
+                className="py-2.5 px-3 rounded-lg text-sm text-[#4A6B8A] hover:text-[#1B3A5C] hover:bg-[#E8F0F8] font-medium transition-all duration-150">
+                Services
+              </a>
+               <a  href="#contact" onClick={() => setMenuOpen(false)}
+                className="py-2.5 px-3 rounded-lg text-sm text-[#4A6B8A] hover:text-[#1B3A5C] hover:bg-[#E8F0F8] font-medium transition-all duration-150">
+                Contact Us
+              </a>
             <a href="#" className="mt-3 py-2.5 px-3 rounded-full text-sm font-semibold text-center text-white bg-[#1B3A5C] hover:bg-[#4A90D9] transition-colors">
               Get Started
             </a>
@@ -224,7 +248,7 @@ export default function NavbarHero() {
       </header>
 
       {/* ── HERO ── */}
-      <main ref={heroRef} className="min-h-screen flex items-center pt-17">
+      <main ref={heroRef} id="home" className="min-h-screen flex items-center pt-17">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16 w-full">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
 
