@@ -2,12 +2,12 @@
 import AboutUs from './components/AboutUs'
 import ContactUs from './components/ContactUs'
 import Footer from './components/Footer'
-import NavbarHero from './components/NavBarHero'
+import NavBarHero from './components/NavBarHero'
 
 const App = () => {
   return (
     <>
-      <NavbarHero />
+      <NavBarHero />
       <AboutUs />
       <ContactUs />
       <Footer />

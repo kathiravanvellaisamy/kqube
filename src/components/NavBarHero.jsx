@@ -90,7 +90,7 @@ function useInView(threshold = 0.15) {
   return [ref, inView];
 }
 
-export default function NavbarHero() {
+export default function NavBarHero() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [heroRef, heroInView] = useInView(0.1);
