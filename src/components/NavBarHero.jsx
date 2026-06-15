@@ -178,7 +178,7 @@ export default function NavbarHero() {
       `}</style>
 
       {/* ── NAVBAR ── */}
-      <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-400 nav-anim ${
+      <header className={`fixed top-0 inset-x-0  z-50 transition-all duration-400 nav-anim ${
         scrolled ? "bg-white/95 backdrop-blur-md shadow-md border-b border-[#E8F0F8]" : "bg-white border-b border-[#E8F0F8]"
       }`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-21.5 flex items-center justify-between">
