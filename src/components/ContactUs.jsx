@@ -247,8 +247,8 @@ export default function ContactUs() {
                 </div>
                 <div>
                   <p className="text-xs font-semibold text-blue-500 uppercase tracking-widest mb-1">Email Us</p>
-                  <a href="mailto:info@kqube.net" className="text-gray-900 font-semibold hover:text-blue-600 transition-colors text-base">
-                    info@kqube.net
+                  <a href="mailto:info@kqubetech.com" className="text-gray-900 font-semibold hover:text-blue-600 transition-colors text-base">
+                    info@kqubetech.com
                   </a>
                   <p className="text-gray-400 text-xs mt-1">We reply within 24 hours</p>
                 </div>
