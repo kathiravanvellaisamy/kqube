@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alpha Property Maintenance | Trusted Maintenance Across the GTA</title>
+<meta name="description" content="Since 1998, Alpha Property Maintenance delivers reliable exterior, interior, and parking lot maintenance across the Greater Toronto Area.">
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+
+</head>
+<body class="antialiased">
+
+<!-- NAV -->
+<header class="sticky top-0 z-50 bg-cream border-b border-line">
+  <div class="max-w-6xl mx-auto px-6 md:px-8 h-20 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2 focus-ring rounded">
+      <span class="font-display text-xl tracking-tight">Alpha</span>
+      <span class="font-mono text-[11px] uppercase tracking-widest text-slate border border-line rounded px-1.5 py-0.5">Property Maint.</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
+      <a href="#services" class="nav-link focus-ring rounded">Services</a>
+      <a href="#work" class="nav-link focus-ring rounded">Our Work</a>
+      <a href="#about" class="nav-link focus-ring rounded">About</a>
+      <a href="#contact" class="nav-link focus-ring rounded">Contact</a>
+    </nav>
+    <a href="#contact" class="hidden md:inline-flex items-center gap-2 bg-charcoal text-cream font-semibold text-sm px-5 py-2.5 rounded-full hover:bg-amber transition-colors focus-ring">
+      Get a Quote
+    </a>
+    <button id="menuBtn" class="md:hidden focus-ring rounded p-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden border-t border-line bg-cream">
+    <nav class="flex flex-col px-6 py-4 gap-4 font-medium">
+      <a href="#services" class="focus-ring rounded">Services</a>
+      <a href="#work" class="focus-ring rounded">Our Work</a>
+      <a href="#about" class="focus-ring rounded">About</a>
+      <a href="#contact" class="focus-ring rounded">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO: styled as a work order ticket -->
+  <section class="relative overflow-hidden bg-charcoal">
+    <div class="max-w-6xl mx-auto px-6 md:px-8 pt-16 pb-0 md:pt-24">
+      <div class="grid md:grid-cols-[1.2fr_1fr] gap-0 border border-white/15 rounded-2xl overflow-hidden">
+
+        <!-- Left: the "ticket" copy -->
+        <div class="relative bg-charcoal text-cream p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/15">
+          <div class="flex items-center justify-between font-mono text-[11px] uppercase tracking-widest text-amber mb-8">
+            <span class="ticket-num">Work Order No. 0962-GTA</span>
+            <span class="hidden sm:inline text-white/40">Status: Ongoing Since 1998</span>
+          </div>
+
+          <h1 class="font-display text-4xl sm:text-5xl md:text-6xl leading-[1.05] mb-6 fade-up" style="animation-delay:.05s">
+            BUILDINGS<br>
+            DON'T STAY<br>
+            CLEAN<span class="text-amber">.</span>
+          </h1>
+          <p class="text-white/70 text-lg max-w-md mb-8 fade-up" style="animation-delay:.15s">
+            We make sure yours does. Exterior, interior, and parking lot maintenance for properties across the Greater Toronto Area — every day, every season.
+          </p>
+
+          <div class="flex flex-wrap gap-3 fade-up" style="animation-delay:.25s">
+            <a href="#contact" class="bg-amber text-charcoal font-semibold px-6 py-3 rounded-full hover:bg-cream transition-colors focus-ring">
+              Request a Quote
+            </a>
+            <a href="#services" class="border border-white/30 text-cream font-semibold px-6 py-3 rounded-full hover:border-amber hover:text-amber transition-colors focus-ring">
+              See Our Services
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: visual transformation panel -->
+        <div class="relative bg-[#15130F] min-h-[280px] md:min-h-[420px] flex items-end">
+          <img src="./images/hero.jpg"
+               alt="Maintenance technician inspecting a building exterior"
+               class="absolute inset-0 w-full h-full object-cover opacity-90">
+          <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent"></div>
+
+          <!-- stamp -->
+          <div class="stamp absolute top-6 right-6 border-2 border-amber text-amber font-display text-xs sm:text-sm px-3 py-1.5 rounded-sm tracking-widest bg-charcoal/70">
+            APPROVED
+          </div>
+
+          <div class="relative z-10 p-6 md:p-8 font-mono text-cream text-xs sm:text-sm tracking-wide">
+            <p class="text-amber mb-1">DISPATCHED →</p>
+            <p>Greater Toronto Area</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- stat strip, styled like a ticket stub -->
+    <div class="max-w-6xl mx-auto px-6 md:px-8 pt-8 mb-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 border border-white/15 rounded-2xl overflow-hidden text-cream">
+        <div class="p-6 border-r border-b md:border-b-0 border-white/15">
+          <p class="font-display text-3xl text-amber">25+</p>
+          <p class="font-mono text-[11px] uppercase tracking-widest text-white/50 mt-1">Years in the GTA</p>
+        </div>
+        <div class="p-6 border-b md:border-b-0 md:border-r border-white/15">
+          <p class="font-display text-3xl text-amber">300+</p>
+          <p class="font-mono text-[11px] uppercase tracking-widest text-white/50 mt-1">Properties Serviced</p>
+        </div>
+        <div class="p-6 border-r border-white/15">
+          <p class="font-display text-3xl text-amber">24/7</p>
+          <p class="font-mono text-[11px] uppercase tracking-widest text-white/50 mt-1">Emergency Response</p>
+        </div>
+        <div class="p-6">
+          <p class="font-display text-3xl text-amber">100%</p>
+          <p class="font-mono text-[11px] uppercase tracking-widest text-white/50 mt-1">Insured & Bonded</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="py-24 md:py-32">
+    <div class="max-w-6xl mx-auto px-6 md:px-8">
+      <div class="flex items-end justify-between flex-wrap gap-4 mb-14">
+        <div>
+          <p class="font-mono text-xs uppercase tracking-widest text-rust mb-3">// Service Schedule</p>
+          <h2 class="font-display text-3xl md:text-5xl leading-tight">What We Take Care Of</h2>
+        </div>
+        <p class="text-slate max-w-sm">Three crews, one job order. We cover the outside, the inside, and everywhere your cars park — so you only need one number to call.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-px bg-line border border-line rounded-2xl overflow-hidden">
+
+        <!-- Exterior -->
+        <div class="bg-cream p-8 flex flex-col">
+          <div class="aspect-[4/3] rounded-lg overflow-hidden mb-6">
+            <img src="https://images.unsplash.com/photo-1673300982703-be76f17b5c92?auto=format&fit=crop&w=500&h=380&q=80" alt="Building exterior power washing" class="w-full h-full object-cover">
+          </div>
+          <p class="font-mono text-[11px] uppercase tracking-widest text-amber mb-2">01 — Exterior</p>
+          <h3 class="font-display text-xl mb-4">Outside, Handled</h3>
+          <ul class="text-slate text-sm space-y-2 flex-1">
+            <li class="flex gap-2"><span class="text-amber">›</span>Power washing &amp; facade cleaning</li>
+            <li class="flex gap-2"><span class="text-amber">›</span>Window cleaning</li>
+            <li class="flex gap-2"><span class="text-amber">›</span>Construction cleanup</li>
+            <li class="flex gap-2"><span class="text-amber">›</span>Litter &amp; debris pickup</li>
+            <li class="flex gap-2"><span class="text-amber">›</span>Graffiti &amp; sign cleaning</li>
+            <li class="flex gap-2"><span class="text-amber">›</span>Metal cleaning &amp; polishing</li>
+          </ul>
+        </div>
+
+        <!-- Interior -->
+        <div class="bg-cream p-8 flex flex-col">
+          <div class="aspect-[4/3] rounded-lg overflow-hidden mb-6">
+            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=500&h=380&q=80" alt="Clean interior building lobby" class="w-full h-full object-cover">
+          </div>
+          <p class="font-mono text-[11px] uppercase tracking-widest text-amber mb-2">02 — Interior</p>
+          <h3 class="font-display text-xl mb-4">Inside, Spotless</h3>
+          <ul class="text-slate text-sm space-y-2 flex-1">
+            <li class="flex gap-2"><span class="text-amber">›</span>Janitorial &amp; daily upkeep</li>
+            <li class="flex gap-2"><span class="text-amber">›</span>Complete carpet care</li>
+            <li class="flex gap-2"><span class="text-amber">›</span>Floor waxing &amp; polishing</li>
+            <li class="flex gap-2"><span class="text-amber">›</span>Tile &amp; grout cleaning</li>
+            <li class="flex gap-2"><span class="text-amber">›</span>High dusting</li>
+            <li class="flex gap-2"><span class="text-amber">›</span>Heavy disinfecting</li>
+          </ul>
+        </div>
+
+        <!-- Parking Lot -->
+        <div class="bg-cream p-8 flex flex-col">
+          <div class="aspect-[4/3] rounded-lg overflow-hidden mb-6">
+            <img src="https://images.unsplash.com/photo-1616363088386-31c4a8414858?auto=format&fit=crop&w=500&h=380&q=80" alt="Clean parking lot" class="w-full h-full object-cover">
+          </div>
+          <p class="font-mono text-[11px] uppercase tracking-widest text-amber mb-2">03 — Parking Lot</p>
+          <h3 class="font-display text-xl mb-4">Lots, Maintained</h3>
+          <ul class="text-slate text-sm space-y-2 flex-1">
+            <li class="flex gap-2"><span class="text-amber">›</span>Power sweep &amp; wash</li>
+            <li class="flex gap-2"><span class="text-amber">›</span>Line painting &amp; striping</li>
+            <li class="flex gap-2"><span class="text-amber">›</span>Pothole &amp; surface repair</li>
+            <li class="flex gap-2"><span class="text-amber">›</span>Snow &amp; ice management</li>
+            <li class="flex gap-2"><span class="text-amber">›</span>Signage cleaning</li>
+            <li class="flex gap-2"><span class="text-amber">›</span>Catch basin clearing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK / PROCESS -->
+  <section id="work" class="bg-charcoal text-cream py-24 md:py-32">
+    <div class="max-w-6xl mx-auto px-6 md:px-8">
+      <p class="font-mono text-xs uppercase tracking-widest text-amber mb-3">// How a Work Order Moves</p>
+      <h2 class="font-display text-3xl md:text-5xl leading-tight mb-14 max-w-2xl">From Call to Closed Ticket</h2>
+
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="border-t-2 border-amber pt-6">
+          <p class="font-mono text-amber text-sm mb-3">STEP 1</p>
+          <h3 class="font-display text-lg mb-2">You Call or Submit</h3>
+          <p class="text-white/60 text-sm">Tell us what the property needs — one job, or a standing schedule.</p>
+        </div>
+        <div class="border-t-2 border-amber pt-6">
+          <p class="font-mono text-amber text-sm mb-3">STEP 2</p>
+          <h3 class="font-display text-lg mb-2">We Walk the Site</h3>
+          <p class="text-white/60 text-sm">A site lead assesses the property and scopes the work order with you.</p>
+        </div>
+        <div class="border-t-2 border-amber pt-6">
+          <p class="font-mono text-amber text-sm mb-3">STEP 3</p>
+          <h3 class="font-display text-lg mb-2">Crew Gets Dispatched</h3>
+          <p class="text-white/60 text-sm">Trained, insured crews arrive on schedule with the right equipment.</p>
+        </div>
+        <div class="border-t-2 border-amber pt-6">
+          <p class="font-mono text-amber text-sm mb-3">STEP 4</p>
+          <h3 class="font-display text-lg mb-2">Ticket Closed</h3>
+          <p class="text-white/60 text-sm">You sign off, we follow up — and the next service date is already booked.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-24 md:py-32">
+    <div class="max-w-6xl mx-auto px-6 md:px-8 grid md:grid-cols-2 gap-12 items-center">
+      <div class="rounded-2xl overflow-hidden border border-line">
+        <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=700&h=560&q=80" alt="Alpha maintenance crew at work" class="w-full h-full object-cover">
+      </div>
+      <div>
+        <p class="font-mono text-xs uppercase tracking-widest text-rust mb-3">// About Alpha</p>
+        <h2 class="font-display text-3xl md:text-4xl leading-tight mb-6">A Local Crew, A Real Reputation</h2>
+        <p class="text-slate mb-4 leading-relaxed">
+          Alpha Property Maintenance has serviced buildings across the Greater Toronto Area since 1998. We started with one truck and a handful of condo boards — today we run dedicated exterior, interior, and parking lot crews, all trained in-house and fully insured.
+        </p>
+        <p class="text-slate mb-8 leading-relaxed">
+          Property managers stay with us because the work order closes the same way every time: on schedule, on scope, and without surprises on the invoice.
+        </p>
+        <div class="flex gap-8">
+          <div>
+            <p class="font-display text-2xl text-rust">1998</p>
+            <p class="font-mono text-[11px] uppercase tracking-widest text-slate mt-1">Founded</p>
+          </div>
+          <div>
+            <p class="font-display text-2xl text-rust">GTA-Wide</p>
+            <p class="font-mono text-[11px] uppercase tracking-widest text-slate mt-1">Coverage</p>
+          </div>
+          <div>
+            <p class="font-display text-2xl text-rust">In-House</p>
+            <p class="font-mono text-[11px] uppercase tracking-widest text-slate mt-1">Trained Crews</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-24 md:py-32 bg-[#F1EBDD]">
+    <div class="max-w-6xl mx-auto px-6 md:px-8">
+      <div class="grid md:grid-cols-2 border border-line rounded-2xl overflow-hidden bg-cream">
+
+        <!-- Info -->
+        <div class="p-8 md:p-12 bg-charcoal text-cream">
+          <p class="font-mono text-xs uppercase tracking-widest text-amber mb-3">// Open a Work Order</p>
+          <h2 class="font-display text-3xl md:text-4xl leading-tight mb-6">Let's Get Your<br>Property Sorted</h2>
+          <p class="text-white/60 mb-10 max-w-sm">Send us a few details and a site lead will follow up within one business day.</p>
+
+          <div class="space-y-6 font-mono text-sm">
+            <div>
+              <p class="text-amber uppercase tracking-widest text-[11px] mb-1">Address</p>
+              <p class="text-white/80">2480 Danforth Ave<br>Toronto, ON M4C 1K9<br>Canada</p>
+            </div>
+            <div>
+              <p class="text-amber uppercase tracking-widest text-[11px] mb-1">Phone</p>
+              <p class="text-white/80">(416) 555-0142</p>
+            </div>
+            <div>
+              <p class="text-amber uppercase tracking-widest text-[11px] mb-1">Email</p>
+              <p class="text-white/80">hello@Alphapm.ca</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="p-8 md:p-12">
+          <form class="space-y-5" onsubmit="event.preventDefault(); document.getElementById('formStatus').classList.remove('hidden');">
+            <div>
+              <label for="name" class="block text-sm font-semibold mb-1.5">Name <span class="text-rust">*</span></label>
+              <input id="name" name="name" type="text" required class="w-full border border-line rounded-lg px-4 py-3 bg-cream focus:outline-none focus:ring-2 focus:ring-amber focus-ring">
+            </div>
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label for="phone" class="block text-sm font-semibold mb-1.5">Phone <span class="text-rust">*</span></label>
+                <input id="phone" name="phone" type="tel" required class="w-full border border-line rounded-lg px-4 py-3 bg-cream focus:outline-none focus:ring-2 focus:ring-amber focus-ring">
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-semibold mb-1.5">Email <span class="text-rust">*</span></label>
+                <input id="email" name="email" type="email" required class="w-full border border-line rounded-lg px-4 py-3 bg-cream focus:outline-none focus:ring-2 focus:ring-amber focus-ring">
+              </div>
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-semibold mb-1.5">What does the property need? <span class="text-rust">*</span></label>
+              <textarea id="message" name="message" rows="4" required class="w-full border border-line rounded-lg px-4 py-3 bg-cream focus:outline-none focus:ring-2 focus:ring-amber focus-ring resize-none"></textarea>
+            </div>
+            <button type="submit" class="w-full bg-amber text-charcoal font-semibold py-3.5 rounded-lg hover:bg-rust hover:text-cream transition-colors focus-ring">
+              Submit Request
+            </button>
+            <p id="formStatus" class="hidden text-sm text-rust font-medium">Thanks — your request has been logged. We'll follow up within one business day.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="bg-charcoal text-white/50 py-10">
+  <div class="max-w-6xl mx-auto px-6 md:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+    <p class="font-display text-cream text-base">Alpha <span class="text-amber">·</span> Property Maintenance</p>
+    <p>&copy; 2026 Alpha Property Maintenance. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => {
+    const isHidden = mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+</script>
+
+</body>
+</html>
