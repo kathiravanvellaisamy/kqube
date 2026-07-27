@@ -240,7 +240,7 @@ export default function NavBarHero() {
           </div>
 
           <nav className="hidden md:flex items-center gap-1">
-            {["Home","About Us","Services","Contact Us"].map((item) => (
+            {["Home","About","Services","Contact"].map((item) => (
               <a key={item}
                 href={`#${item.toLowerCase().replace(" ","")}`}
                 className="nav-link-kq px-4 py-2 text-sm uppercase text-[#4A6B8A] font-medium">
@@ -273,7 +273,7 @@ export default function NavBarHero() {
           menuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
         } bg-white border-b border-[#E8F0F8]`}>
           <nav className="flex flex-col px-6 py-4 gap-1">
-            {["Home","About Us","Services","Contact Us"].map((item) => (
+            {["Home","About","Services","Contact"].map((item) => (
               <a key={item} href={`#${item.toLowerCase().replace(" ","")}`}
                 onClick={() => setMenuOpen(false)}
                 className="py-2.5 px-3 rounded-lg text-sm text-[#4A6B8A] hover:text-[#1B3A5C] hover:bg-[#E8F0F8] font-medium transition-all duration-150">
