@@ -59,6 +59,12 @@
     details[open]>summary .chev{transform:rotate(180deg)}
     @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
     :focus-visible{outline:3px solid #00a0e8;outline-offset:2px;border-radius:6px}
+    @media (max-width: 767px) {
+    .mobile-only {
+        width:60px !important;
+        height:60px !important;
+    }
+}
   </style>
  
   <!-- ===== Structured Data ===== -->
@@ -171,7 +177,8 @@
  
         <!-- NABH emblem: centred between logo and menu button on mobile; sits right before the email/phone on desktop -->
         <div class="flex flex-1 items-center justify-center md:ml-auto md:flex-none">
-          <img src="https://kqubetech.com/projects/neuro-one/images/preview.webp" alt="NABH Accredited — Patient Safety &amp; Quality of Care"  style="width: 100px; height:100px" class="h-[92px]  sm:h-[52px]" />
+          <img src="https://kqubetech.com/projects/neuro-one/images/preview.webp" alt="NABH Accredited — Patient Safety &amp; Quality of Care"  
+          style="width: 100px; height:100px" class="h-[92px]  sm:h-[52px] mobile-only" />
         </div>
  
         <div class="flex items-center gap-3">
