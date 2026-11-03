@@ -66,6 +66,62 @@
     }
 }
   </style>
+  <style>
+  /* ===== COPY FROM HERE (PRELOADER CSS) ===== */
+  #preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    background: #ffffff;
+    transition: opacity .6s ease, visibility .6s ease;
+  }
+  #preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+  #preloader img {
+    width: 260px;
+    max-width: 70vw;
+    animation: logo-pulse 1.8s ease-in-out infinite;
+  }
+  /* thin progress bar under the logo */
+  .loader-bar {
+    width: 180px;
+    height: 3px;
+    border-radius: 3px;
+    background: #d8eefb;
+    overflow: hidden;
+  }
+  .loader-bar::before {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 40%;
+    border-radius: 3px;
+    background: #1da1f2;           /* matches the logo blue */
+    animation: loader-slide 1.2s ease-in-out infinite;
+  }
+  @keyframes logo-pulse {
+    0%, 100% { transform: scale(1);    opacity: .85; }
+    50%      { transform: scale(1.06); opacity: 1;   }
+  }
+  @keyframes loader-slide {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(350%);  }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #preloader img, .loader-bar::before { animation: none; }
+  }
+  /* ===== END PRELOADER CSS ===== */
+ 
+  body { margin: 0; font-family: sans-serif; }
+  .demo { padding: 60px; text-align: center; }
+</style>
  
   <!-- ===== Structured Data ===== -->
   <script type="application/ld+json">
@@ -114,6 +170,13 @@
 </head>
  
 <body class="bg-white font-sans text-slate-700 antialiased">
+
+  <! -- preloader -->
+
+  <div id="preloader">
+  <img src="https://kqubetech.com/projects/neuro-one/images/logo.png" alt="Neuro One – Leaders in Neuro Care">
+  <div class="loader-bar"></div>
+</div>
  
   <!-- SVG icon sprite -->
   <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
@@ -706,6 +769,16 @@
     $('#year').textContent = new Date().getFullYear();
   })();
   </script>
+  <script>
+  window.addEventListener("load", function () {
+    var pre = document.getElementById("preloader");
+    // small delay so the animation is visible even on fast connections
+    setTimeout(function () {
+      pre.classList.add("hidden");
+      setTimeout(function () { pre.remove(); }, 700);
+    }, 800);
+  });
+</script>
 </body>
 </html>
 
