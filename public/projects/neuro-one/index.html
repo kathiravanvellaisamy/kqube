@@ -40,7 +40,7 @@
           fontFamily: { sans: ['Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'] },
           colors: {
             navy: { 50:'#eef7fc',100:'#d9edf8',200:'#b3dbf0',300:'#7fc0e2',400:'#4a9fcc',500:'#2a7fae',600:'#1b668f',700:'#134f70',800:'#0d3d58',900:'#082d44',950:'#051f30' },
-            brand: { 50:'#e6f6fe',100:'#c2e9fc',200:'#8fd6f8',300:'#52bff3',400:'#1eaaee',500:'#00a0e8',600:'#0079b0',700:'#006390',800:'#004f73',900:'#003e5a' }
+            brand: { 50:'#e6f6fe',100:'#c2e9fc',200:'#8fd6f8',300:'#fbc910',400:'#1eaaee',500:'#fbc80b',600:'#0079b0',700:'#006390',800:'#004f73',900:'#003e5a' }
           },
           boxShadow: { soft: '0 10px 40px -12px rgba(11,36,71,.18)', card: '0 4px 24px -6px rgba(11,36,71,.12)' }
         }
@@ -99,7 +99,9 @@
       },
       { "@type": "Physician", "name": "Dr. Ramakrishna Easwaran", "medicalSpecialty": "Neurosurgery", "worksFor": {"@id": "https://www.neuroone.in/#hospital"} },
       { "@type": "Physician", "name": "Dr. K. Aruna Ramani", "medicalSpecialty": "Neurology", "worksFor": {"@id": "https://www.neuroone.in/#hospital"} },
-      { "@type": "Physician", "name": "Dr. S. Vijay Kumar", "medicalSpecialty": "Neurosurgery", "worksFor": {"@id": "https://www.neuroone.in/#hospital"} }
+      { "@type": "Physician", "name": "Dr. S. Vijay Kumar", "medicalSpecialty": "Neurosurgery", "worksFor": {"@id": "https://www.neuroone.in/#hospital"} },
+      { "@type": "Physician", "name": "Dr. S. Rakul Prasath", "medicalSpecialty": "Anesthesiology", "worksFor": {"@id": "https://www.neuroone.in/#hospital"} },
+      { "@type": "Physician", "name": "Dr. M. Sadyojata", "medicalSpecialty": "Neurosurgery", "worksFor": {"@id": "https://www.neuroone.in/#hospital"} }
     ]
   }
   </script>
@@ -150,15 +152,19 @@
        HEADER (shared across all pages — copy this block + footer to each page)
        Row 1: logo, accreditation, contact, CTA.  Row 2: full dropdown navigation.
        ===================================================================== -->
-  <header id="site-header" class="fixed inset-x-0 top-0 z-50">
-    <div id="header-main" class="border-b border-slate-100 bg-white/95 backdrop-blur-xl transition-shadow duration-300">
+  <header id="site-header" class=" inset-x-0 top-0 z-50">
+    <div id="header-main" class="border-b border-slate-100 bg-white backdrop-blur-xl transition-shadow duration-300">
       <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2.5 sm:px-6">
-        <a href="index.html" class="flex items-center" aria-label="Neuro One Hospital — home">
-          <img src="https://kqubetech.com/projects/neuro-one/images/logo.png" alt="Neuro One — Leaders in Neuro Care" width="195" height="54" class="h-12 w-auto sm:h-[52px]" />
+        <a href="index.html" class="flex shrink-0 items-center" aria-label="Neuro One Hospital — home">
+          <img src="https://kqubetech.com/projects/neuro-one/images/logo.png" alt="Neuro One — Leaders in Neuro Care" width="195" height="54" class="h-10 w-auto sm:h-[52px]" />
         </a>
 
+        <!-- NABH emblem: centred between logo and menu button on mobile; sits right before the email/phone on desktop -->
+        <div class="flex flex-1 items-center justify-center md:ml-auto md:flex-none">
+          <img src="images/preview.webp" alt="NABH Accredited — Patient Safety &amp; Quality of Care"  style="width: 100px; height:100px" class="h-[92px]  sm:h-[52px]" />
+        </div>
+
         <div class="flex items-center gap-3">
-          <span class="hidden items-center gap-2 rounded-full bg-brand-50 px-3 py-1.5 text-xs font-bold text-brand-700 lg:flex"><svg class="h-4 w-4"><use href="#i-shield"/></svg> NABH Accredited</span>
           <a href="mailto:feedback@neuroone.in" class="hidden items-center gap-2 text-sm font-semibold text-navy-900 hover:text-brand-700 2xl:flex"><svg class="h-4 w-4 text-brand-600"><use href="#i-mail"/></svg> feedback@neuroone.in</a>
           <a href="tel:+914312221222" class="hidden items-center gap-2 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm font-bold text-red-600 transition hover:bg-red-100 md:flex" aria-label="Call emergency number 0431 222 1222">
             <span class="relative flex h-2.5 w-2.5"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75"></span><span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500"></span></span>
@@ -176,78 +182,78 @@
     <!-- Desktop navigation bar -->
     <nav class="hidden bg-navy-900 shadow-lg xl:block" aria-label="Primary">
       <ul class="mx-auto flex max-w-7xl items-center justify-center px-4">
-        <li><a href="index.html" aria-current="page" class="block px-3 py-3.5 text-[13px] font-bold text-brand-300">Home</a></li>
+        <li><a href="index.html" aria-current="page" class="block px-3 py-3.5 text-[14px] font-bold text-brand-300">Home</a></li>
 
         <li class="group relative">
-          <a href="about.html" class="flex items-center gap-1 px-3 py-3.5 text-[13px] font-bold text-white/90 transition hover:text-brand-300">About Us <svg class="h-3.5 w-3.5 transition group-hover:rotate-180"><use href="#i-chev"/></svg></a>
+          <a href="about.html" class="flex items-center gap-1 px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">About Us <svg class="h-3.5 w-3.5 transition group-hover:rotate-180"><use href="#i-chev"/></svg></a>
           <ul class="invisible absolute left-0 top-full z-50 min-w-[250px] translate-y-2 rounded-b-xl bg-white py-2 opacity-0 shadow-soft transition duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="about.html">About the Hospital</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="md-message.html">Managing Director</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="meet-the-team.html">Meet the Team</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="philosophy-of-care.html">Philosophy of Care</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="about.html">About the Hospital</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="md-message.html">Managing Director</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="meet-the-team.html">Meet the Team</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="philosophy-of-care.html">Philosophy of Care</a></li>
           </ul>
         </li>
 
         <li class="group relative">
-          <a href="services.html" class="flex items-center gap-1 px-3 py-3.5 text-[13px] font-bold text-white/90 transition hover:text-brand-300">Services <svg class="h-3.5 w-3.5 transition group-hover:rotate-180"><use href="#i-chev"/></svg></a>
+          <a href="services.html" class="flex items-center gap-1 px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Services <svg class="h-3.5 w-3.5 transition group-hover:rotate-180"><use href="#i-chev"/></svg></a>
           <ul class="invisible absolute left-0 top-full z-50 min-w-[300px] translate-y-2 rounded-b-xl bg-white py-2 opacity-0 shadow-soft transition duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="services.html">Our Services</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="neurology.html">Neurology</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="neurosurgery.html">Neurosurgery</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="neuro-critical-care.html">Neuro Anaesthesia &amp; Neuro Critical Care</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="neuro-radiology.html">Neuro Radiology</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="neuro-rehabilitation.html">Neuro Rehabilitation</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="pain-management.html">Pain Management</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="neuropsychiatry.html">Neuropsychiatry</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="services.html">Our Services</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="neurology.html">Neurology</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="neurosurgery.html">Neurosurgery</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="neuro-critical-care.html">Neuro Anaesthesia &amp; Neuro Critical Care</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="neuro-radiology.html">Neuro Radiology</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="neuro-rehabilitation.html">Neuro Rehabilitation</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="pain-management.html">Pain Management</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="neuropsychiatry.html">Neuropsychiatry</a></li>
           </ul>
         </li>
 
         <li class="group relative">
-          <a href="facilities.html" class="flex items-center gap-1 px-3 py-3.5 text-[13px] font-bold text-white/90 transition hover:text-brand-300">Facilities <svg class="h-3.5 w-3.5 transition group-hover:rotate-180"><use href="#i-chev"/></svg></a>
+          <a href="facilities.html" class="flex items-center gap-1 px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Facilities <svg class="h-3.5 w-3.5 transition group-hover:rotate-180"><use href="#i-chev"/></svg></a>
           <ul class="invisible absolute left-0 top-full z-50 min-w-[250px] translate-y-2 rounded-b-xl bg-white py-2 opacity-0 shadow-soft transition duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="facilities.html">Our Facilities</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="why-neuroone.html">Why Neuro One</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="advanced-technologies.html">Advanced Technologies</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="quality-safety.html">Quality and Safety</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="emergency.html">Emergency Service</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="facilities.html">Our Facilities</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="why-neuroone.html">Why Neuro One</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="advanced-technologies.html">Advanced Technologies</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="quality-safety.html">Quality and Safety</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="emergency.html">Emergency Service</a></li>
           </ul>
         </li>
 
         <li class="group relative">
-          <a href="patient-resources.html" class="flex items-center gap-1 px-3 py-3.5 text-[13px] font-bold text-white/90 transition hover:text-brand-300">Patient Resource <svg class="h-3.5 w-3.5 transition group-hover:rotate-180"><use href="#i-chev"/></svg></a>
+          <a href="patient-resources.html" class="flex items-center gap-1 px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Patient Resource <svg class="h-3.5 w-3.5 transition group-hover:rotate-180"><use href="#i-chev"/></svg></a>
           <ul class="invisible absolute left-0 top-full z-50 min-w-[250px] translate-y-2 rounded-b-xl bg-white py-2 opacity-0 shadow-soft transition duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="patient-resources.html">Patient Resource</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="patient-education.html">Patient Education Resource</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="patient-resources.html">Patient Resource</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="patient-education.html">Patient Education Resource</a></li>
           </ul>
         </li>
 
-        <li><a href="insurance.html" class="block px-3 py-3.5 text-[13px] font-bold text-white/90 transition hover:text-brand-300">Insurance</a></li>
-        <li><a href="awards.html" class="block px-3 py-3.5 text-[13px] font-bold text-white/90 transition hover:text-brand-300">Awards &amp; Recognitions</a></li>
+        <li><a href="insurance.html" class="block px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Insurance</a></li>
+        <li><a href="awards.html" class="block px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Awards &amp; Recognitions</a></li>
 
         <li class="group relative">
-          <a href="news-events.html" class="flex items-center gap-1 px-3 py-3.5 text-[13px] font-bold text-white/90 transition hover:text-brand-300">News &amp; Events <svg class="h-3.5 w-3.5 transition group-hover:rotate-180"><use href="#i-chev"/></svg></a>
+          <a href="news-events.html" class="flex items-center gap-1 px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">News &amp; Events <svg class="h-3.5 w-3.5 transition group-hover:rotate-180"><use href="#i-chev"/></svg></a>
           <ul class="invisible absolute left-0 top-full z-50 min-w-[230px] translate-y-2 rounded-b-xl bg-white py-2 opacity-0 shadow-soft transition duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="success-stories.html">Success Story</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="event-photos.html">Event Photos</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="testimonials.html">Testimonial</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="articles-in-press.html">Articles in Press</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="success-stories.html">Success Story</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="event-photos.html">Event Photos</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="testimonials.html">Testimonial</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="articles-in-press.html">Articles in Press</a></li>
           </ul>
         </li>
 
         <li class="group relative">
-          <a href="newsletters.html" class="flex items-center gap-1 px-3 py-3.5 text-[13px] font-bold text-white/90 transition hover:text-brand-300">Newsletter <svg class="h-3.5 w-3.5 transition group-hover:rotate-180"><use href="#i-chev"/></svg></a>
+          <a href="newsletters.html" class="flex items-center gap-1 px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Newsletter <svg class="h-3.5 w-3.5 transition group-hover:rotate-180"><use href="#i-chev"/></svg></a>
           <ul class="invisible absolute right-0 top-full z-50 min-w-[280px] translate-y-2 rounded-b-xl bg-white py-2 opacity-0 shadow-soft transition duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="img/NEURON_NEWSLETTER_ISSUE_1_OCT_2023.pdf">Newsletter 1 — Oct 2023</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="img/NEURON-ISU-02-2024.pdf">Newsletter 2 — Jan 2024</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="img/NEURON-MAR-2025-ISSUE-03-PDF.pdf">Newsletter 3 — Mar 2025</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="img/NEURON-ISSUE-04-JUNE-2025.pdf">Newsletter 4 — Jun 2025</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="img/NEURON-OCT-2025-ISSUE-05.pdf">Newsletter 5 — Oct 2025</a></li>
-            <li><a class="block px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="img/NEURON-ISSUE-06.pdf">Newsletter 6 — May 2026</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="img/NEURON_NEWSLETTER_ISSUE_1_OCT_2023.pdf">Newsletter 1 — Oct 2023</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="img/NEURON-ISU-02-2024.pdf">Newsletter 2 — Jan 2024</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="img/NEURON-MAR-2025-ISSUE-03-PDF.pdf">Newsletter 3 — Mar 2025</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="img/NEURON-ISSUE-04-JUNE-2025.pdf">Newsletter 4 — Jun 2025</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="img/NEURON-OCT-2025-ISSUE-05.pdf">Newsletter 5 — Oct 2025</a></li>
+            <li><a class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700" href="img/NEURON-ISSUE-06.pdf">Newsletter 6 — May 2026</a></li>
           </ul>
         </li>
 
-        <li><a href="careers.html" class="block px-3 py-3.5 text-[13px] font-bold text-white/90 transition hover:text-brand-300">Careers</a></li>
-        <li><a href="contact.html" class="block px-3 py-3.5 text-[13px] font-bold text-white/90 transition hover:text-brand-300">Contact Us</a></li>
+        <li><a href="careers.html" class="block px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Careers</a></li>
+        <li><a href="contact.html" class="block px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Contact Us</a></li>
       </ul>
     </nav>
 
@@ -257,25 +263,25 @@
         <li><a href="index.html" class="block py-3.5 font-bold text-brand-700">Home</a></li>
         <li>
           <details><summary class="flex cursor-pointer items-center justify-between py-3.5 font-bold text-navy-900">About Us <svg class="chev h-5 w-5 transition"><use href="#i-chev"/></svg></summary>
-            <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-sm font-semibold">
+            <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-[14px] font-semibold">
               <li><a class="block py-2" href="about.html">About the Hospital</a></li><li><a class="block py-2" href="md-message.html">Managing Director</a></li><li><a class="block py-2" href="meet-the-team.html">Meet the Team</a></li><li><a class="block py-2" href="philosophy-of-care.html">Philosophy of Care</a></li>
             </ul></details>
         </li>
         <li>
           <details><summary class="flex cursor-pointer items-center justify-between py-3.5 font-bold text-navy-900">Services <svg class="chev h-5 w-5 transition"><use href="#i-chev"/></svg></summary>
-            <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-sm font-semibold">
+            <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-[14px] font-semibold">
               <li><a class="block py-2" href="services.html">Our Services</a></li><li><a class="block py-2" href="neurology.html">Neurology</a></li><li><a class="block py-2" href="neurosurgery.html">Neurosurgery</a></li><li><a class="block py-2" href="neuro-critical-care.html">Neuro Anaesthesia &amp; Neuro Critical Care</a></li><li><a class="block py-2" href="neuro-radiology.html">Neuro Radiology</a></li><li><a class="block py-2" href="neuro-rehabilitation.html">Neuro Rehabilitation</a></li><li><a class="block py-2" href="pain-management.html">Pain Management</a></li><li><a class="block py-2" href="neuropsychiatry.html">Neuropsychiatry</a></li>
             </ul></details>
         </li>
         <li>
           <details><summary class="flex cursor-pointer items-center justify-between py-3.5 font-bold text-navy-900">Facilities <svg class="chev h-5 w-5 transition"><use href="#i-chev"/></svg></summary>
-            <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-sm font-semibold">
+            <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-[14px] font-semibold">
               <li><a class="block py-2" href="facilities.html">Our Facilities</a></li><li><a class="block py-2" href="why-neuroone.html">Why Neuro One</a></li><li><a class="block py-2" href="advanced-technologies.html">Advanced Technologies</a></li><li><a class="block py-2" href="quality-safety.html">Quality and Safety</a></li><li><a class="block py-2" href="emergency.html">Emergency Service</a></li>
             </ul></details>
         </li>
         <li>
           <details><summary class="flex cursor-pointer items-center justify-between py-3.5 font-bold text-navy-900">Patient Resource <svg class="chev h-5 w-5 transition"><use href="#i-chev"/></svg></summary>
-            <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-sm font-semibold">
+            <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-[14px] font-semibold">
               <li><a class="block py-2" href="patient-resources.html">Patient Resource</a></li><li><a class="block py-2" href="patient-education.html">Patient Education Resource</a></li>
             </ul></details>
         </li>
@@ -283,13 +289,13 @@
         <li><a href="awards.html" class="block py-3.5 font-bold text-navy-900">Awards &amp; Recognitions</a></li>
         <li>
           <details><summary class="flex cursor-pointer items-center justify-between py-3.5 font-bold text-navy-900">News &amp; Events <svg class="chev h-5 w-5 transition"><use href="#i-chev"/></svg></summary>
-            <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-sm font-semibold">
+            <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-[14px] font-semibold">
               <li><a class="block py-2" href="success-stories.html">Success Story</a></li><li><a class="block py-2" href="event-photos.html">Event Photos</a></li><li><a class="block py-2" href="testimonials.html">Testimonial</a></li><li><a class="block py-2" href="articles-in-press.html">Articles in Press</a></li>
             </ul></details>
         </li>
         <li>
           <details><summary class="flex cursor-pointer items-center justify-between py-3.5 font-bold text-navy-900">Newsletter <svg class="chev h-5 w-5 transition"><use href="#i-chev"/></svg></summary>
-            <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-sm font-semibold">
+            <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-[14px] font-semibold">
               <li><a class="block py-2" href="img/NEURON_NEWSLETTER_ISSUE_1_OCT_2023.pdf">Newsletter 1 — Oct 2023</a></li><li><a class="block py-2" href="img/NEURON-ISU-02-2024.pdf">Newsletter 2 — Jan 2024</a></li><li><a class="block py-2" href="img/NEURON-MAR-2025-ISSUE-03-PDF.pdf">Newsletter 3 — Mar 2025</a></li><li><a class="block py-2" href="img/NEURON-ISSUE-04-JUNE-2025.pdf">Newsletter 4 — Jun 2025</a></li><li><a class="block py-2" href="img/NEURON-OCT-2025-ISSUE-05.pdf">Newsletter 5 — Oct 2025</a></li><li><a class="block py-2" href="img/NEURON-ISSUE-06.pdf">Newsletter 6 — May 2026</a></li>
             </ul></details>
         </li>
@@ -349,8 +355,8 @@
     <section class="relative z-10 pb-12 pt-10 sm:pt-14" aria-label="Hospital highlights">
       <div class="mx-auto max-w-7xl px-6">
         <ul class="grid gap-4 rounded-3xl border border-slate-100 bg-white p-4 shadow-soft sm:grid-cols-2 lg:grid-cols-4 lg:p-6">
-          <li class="reveal flex items-center gap-4 rounded-2xl p-4 transition hover:bg-brand-50/60"><span class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-600"><svg class="h-7 w-7"><use href="#i-shield"/></svg></span><div><p class="text-2xl font-extrabold text-navy-900">NABH</p><p class="text-sm text-slate-500">Accredited Hospital</p></div></li>
-          <li class="reveal flex items-center gap-4 rounded-2xl p-4 transition hover:bg-brand-50/60"><span class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-600"><svg class="h-7 w-7"><use href="#i-award"/></svg></span><div><p class="text-2xl font-extrabold text-navy-900"><span data-counter="25" data-suffix="+">0</span></p><p class="text-sm text-slate-500">Years Experience</p></div></li>
+          <li class="reveal flex items-center gap-4 rounded-2xl p-4 transition hover:bg-brand-50/60"><span class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-600"><svg class="h-7 w-7"><use href="#i-shield"/></svg></span><div><p class="text-2xl font-extrabold text-navy-900">NABH</p><p class="text-[14px] text-slate-500">Accredited Hospital</p></div></li>
+          <li class="reveal flex items-center gap-4 rounded-2xl p-4 transition hover:bg-brand-50/60"><span class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-600"><svg class="h-7 w-7"><use href="#i-award"/></svg></span><div><p class="text-2xl font-extrabold text-navy-900"><span data-counter="25" data-suffix="+">0</span></p><p class="text-[sm] text-slate-500">Years Experience</p></div></li>
           <li class="reveal flex items-center gap-4 rounded-2xl p-4 transition hover:bg-brand-50/60"><span class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-600"><svg class="h-7 w-7"><use href="#i-heart"/></svg></span><div><p class="text-2xl font-extrabold text-navy-900"><span data-counter="50000" data-suffix="+">0</span></p><p class="text-sm text-slate-500">Patients Treated</p></div></li>
           <li class="reveal flex items-center gap-4 rounded-2xl p-4 transition hover:bg-brand-50/60"><span class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-600"><svg class="h-7 w-7"><use href="#i-users"/></svg></span><div><p class="text-2xl font-extrabold text-navy-900"><span data-counter="100" data-suffix="+">0</span></p><p class="text-sm text-slate-500">Specialists &amp; Clinicians</p></div></li>
         </ul>
@@ -442,29 +448,92 @@
       </div>
     </section>
 
-    <!-- ================= NEWS & EVENTS ================= -->
-    <section id="news" class="py-20" aria-labelledby="news-title">
+    <!-- ================= OUR DOCTORS ================= -->
+    <section id="doctors" class="py-20" aria-labelledby="doctors-title">
       <div class="mx-auto max-w-7xl px-6">
-        <div class="reveal flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p class="text-sm font-bold uppercase tracking-widest text-brand-600">News &amp; Events</p>
-            <h2 id="news-title" class="mt-3 text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">Latest from Neuro One</h2>
+
+        <!-- Intro banner -->
+        <div class="reveal hero-bg relative overflow-hidden rounded-3xl text-white shadow-soft">
+          <div class="neural absolute inset-0 opacity-40" aria-hidden="true"></div>
+          <div class="relative grid items-center gap-8 p-8 sm:p-12 lg:grid-cols-12">
+            <div class="lg:col-span-8">
+              <p class="text-sm font-bold uppercase tracking-widest text-brand-300">Our Doctors</p>
+              <h2 id="doctors-title" class="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">Meet the specialists behind your care</h2>
+              <p class="mt-5 max-w-2xl text-lg leading-relaxed text-navy-100">Our physicians are experienced and capable of treating a wide range of conditions — even the most complex ones. What makes our practice unique is the depth of knowledge and expertise we put to work for you, the patient.</p>
+            </div>
+            <div class="lg:col-span-4 lg:text-right">
+              <p class="text-4xl font-extrabold leading-tight text-white sm:text-5xl">A team <span class="text-brand-300">is</span></p>
+              <p class="mt-1 text-sm font-semibold italic tracking-wide text-brand-200">many hands &amp; one mind.</p>
+            </div>
           </div>
-          <a href="news-events.html" class="inline-flex items-center gap-2 font-bold text-brand-700">View all <svg class="h-5 w-5"><use href="#i-arrow"/></svg></a>
         </div>
-        <div class="mt-10 grid gap-8 md:grid-cols-3">
-          <article class="reveal group overflow-hidden rounded-3xl bg-white shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft">
-            <div class="h-48 bg-gradient-to-br from-navy-800 to-brand-700"><img loading="lazy" decoding="async" width="600" height="400" alt="Mini-marathon for road safety awareness" src="img/news-pho/MARTHON.jpg" onerror="this.remove()" class="h-full w-full object-cover transition duration-500 group-hover:scale-105"></div>
-            <div class="p-6"><span class="text-xs font-bold uppercase tracking-wider text-brand-600">Community</span><h3 class="mt-2 font-bold leading-snug text-navy-900"><a href="https://www.facebook.com/NeuroOneHospital/photos/a.1062184403868367/3899784956774950/" target="_blank" rel="noopener noreferrer" class="hover:text-brand-700">Mini-Marathon for Road Safety Awareness Month 2021</a></h3><p class="mt-2 text-sm">Neuro One joined Trichy City Police to promote road safety.</p></div>
-          </article>
-          <article class="reveal group overflow-hidden rounded-3xl bg-white shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft">
-            <div class="h-48 bg-gradient-to-br from-brand-700 to-navy-800"><img loading="lazy" decoding="async" width="600" height="400" alt="COVID and stroke awareness article" src="img/news-pho/COVID&amp;STROKEArticle.jpg" onerror="this.remove()" class="h-full w-full object-cover transition duration-500 group-hover:scale-105"></div>
-            <div class="p-6"><span class="text-xs font-bold uppercase tracking-wider text-brand-600">Awareness</span><h3 class="mt-2 font-bold leading-snug text-navy-900"><a href="https://www.facebook.com/NeuroOneHospital/photos/a.1062184403868367/3522363887850394/?type=3&amp;theater" target="_blank" rel="noopener noreferrer" class="hover:text-brand-700">COVID-19 Infection and Stroke</a></h3><p class="mt-2 text-sm">An awareness article by Neurologist Dr. K. Aruna Ramani.</p></div>
-          </article>
-          <article class="reveal group overflow-hidden rounded-3xl bg-white shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft">
-            <div class="h-48 bg-gradient-to-br from-navy-700 to-navy-900"><img loading="lazy" decoding="async" width="600" height="400" alt="World Physiotherapy Day celebration" src="img/news-pho/WorldPhysiotherapyDay.jpg" onerror="this.remove()" class="h-full w-full object-cover transition duration-500 group-hover:scale-105"></div>
-            <div class="p-6"><span class="text-xs font-bold uppercase tracking-wider text-brand-600">Event</span><h3 class="mt-2 font-bold leading-snug text-navy-900"><a href="https://www.facebook.com/NeuroOneHospital/photos/pcb.3522453014508148/3522472024506247/?type=3&amp;theater" target="_blank" rel="noopener noreferrer" class="hover:text-brand-700">World Physiotherapy Day Celebration</a></h3><p class="mt-2 text-sm">A press meet on the role of physiotherapy in recovery and COVID care.</p></div>
-          </article>
+
+        <!-- Doctor cards -->
+        <ul class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+
+          <li class="reveal">
+            <article class="group h-full overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft">
+              <div class="relative aspect-[4/4.4] overflow-hidden bg-gradient-to-br from-navy-800 to-brand-700">
+                <span class="absolute inset-0 grid place-items-center text-6xl font-extrabold text-white/25" aria-hidden="true">VK</span>
+                <img loading="lazy" decoding="async" width="480" height="528" src="img/doctors/vijay-kumar.jpg" alt="Dr. Vijay Kumar S, Keyhole Brain and Spine Surgeon" onerror="this.remove()" class="relative h-full w-full object-cover object-top grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0">
+                <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/60 to-transparent" aria-hidden="true"></div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-extrabold text-navy-900">Dr. Vijay Kumar S</h3>
+                <p class="mt-1 text-sm font-semibold text-brand-700">Keyhole Brain &amp; Spine Surgeon</p>
+                <a href="meet-the-team.html#vijay-kumar" class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-navy-900 transition hover:text-brand-700" aria-label="Read more about Dr. Vijay Kumar S">Read More <svg class="h-4 w-4 transition group-hover:translate-x-1"><use href="#i-arrow"/></svg></a>
+              </div>
+            </article>
+          </li>
+
+          <li class="reveal">
+            <article class="group h-full overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft">
+              <div class="relative aspect-[4/4.4] overflow-hidden bg-gradient-to-br from-navy-800 to-brand-700">
+                <span class="absolute inset-0 grid place-items-center text-6xl font-extrabold text-white/25" aria-hidden="true">AR</span>
+                <img loading="lazy" decoding="async" width="480" height="528" src="img/doctors/aruna-ramani.jpg" alt="Dr. Aruna Ramani, Consultant Neurologist" onerror="this.remove()" class="relative h-full w-full object-cover object-top grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0">
+                <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/60 to-transparent" aria-hidden="true"></div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-extrabold text-navy-900">Dr. Aruna Ramani</h3>
+                <p class="mt-1 text-sm font-semibold text-brand-700">Consultant – Neurology</p>
+                <a href="meet-the-team.html#aruna-ramani" class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-navy-900 transition hover:text-brand-700" aria-label="Read more about Dr. Aruna Ramani">Read More <svg class="h-4 w-4 transition group-hover:translate-x-1"><use href="#i-arrow"/></svg></a>
+              </div>
+            </article>
+          </li>
+
+          <li class="reveal">
+            <article class="group h-full overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft">
+              <div class="relative aspect-[4/4.4] overflow-hidden bg-gradient-to-br from-navy-800 to-brand-700">
+                <span class="absolute inset-0 grid place-items-center text-6xl font-extrabold text-white/25" aria-hidden="true">RP</span>
+                <img loading="lazy" decoding="async" width="480" height="528" src="img/doctors/rakul-prasath.jpg" alt="Dr. S. Rakul Prasath, Consultant Neuroanaesthesia" onerror="this.remove()" class="relative h-full w-full object-cover object-top grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0">
+                <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/60 to-transparent" aria-hidden="true"></div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-extrabold text-navy-900">Dr. S. Rakul Prasath</h3>
+                <p class="mt-1 text-sm font-semibold text-brand-700">Consultant – Neuroanaesthesia</p>
+                <a href="meet-the-team.html#rakul-prasath" class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-navy-900 transition hover:text-brand-700" aria-label="Read more about Dr. S. Rakul Prasath">Read More <svg class="h-4 w-4 transition group-hover:translate-x-1"><use href="#i-arrow"/></svg></a>
+              </div>
+            </article>
+          </li>
+
+          <li class="reveal">
+            <article class="group h-full overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft">
+              <div class="relative aspect-[4/4.4] overflow-hidden bg-gradient-to-br from-navy-800 to-brand-700">
+                <span class="absolute inset-0 grid place-items-center text-6xl font-extrabold text-white/25" aria-hidden="true">MS</span>
+                <img loading="lazy" decoding="async" width="480" height="528" src="img/doctors/sadyojata.jpg" alt="Dr. M. Sadyojata, Neurosurgeon" onerror="this.remove()" class="relative h-full w-full object-cover object-top grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0">
+                <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/60 to-transparent" aria-hidden="true"></div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-extrabold text-navy-900">Dr. M. Sadyojata</h3>
+                <p class="mt-1 text-sm font-semibold text-brand-700">Neurosurgery</p>
+                <a href="meet-the-team.html#sadyojata" class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-navy-900 transition hover:text-brand-700" aria-label="Read more about Dr. M. Sadyojata">Read More <svg class="h-4 w-4 transition group-hover:translate-x-1"><use href="#i-arrow"/></svg></a>
+              </div>
+            </article>
+          </li>
+        </ul>
+
+        <div class="reveal mt-10 text-center">
+          <a href="meet-the-team.html" class="inline-flex items-center gap-2 rounded-xl bg-navy-900 px-7 py-3.5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-brand-600">View Full Team <svg class="h-4 w-4"><use href="#i-arrow"/></svg></a>
         </div>
       </div>
     </section>
@@ -540,7 +609,7 @@
   </footer>
 
   <!-- ================= FLOATING UI ================= -->
-  <a href="https://wa.me/919843561116?text=Hello%20Neuro%20One%2C%20I%20would%20like%20to%20know%20more." target="_blank" rel="noopener noreferrer" class="fixed bottom-5 left-5 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-lg transition hover:scale-110" aria-label="Chat with Neuro One on WhatsApp"><svg class="h-7 w-7"><use href="#i-whatsapp"/></svg></a>
+  <a href="https://wa.me/919843561116?text=Hello%20Neuro%20One%2C%20I%20would%20like%20to%20know%20more." target="_blank" rel="noopener noreferrer" class="fixed bottom-5 right-5 z-40 grid h-12 w-12 place-items-center rounded-full bg-[#25D366] text-white shadow-lg transition hover:scale-110 sm:right-auto sm:left-5" aria-label="Chat with Neuro One on WhatsApp"><svg class="h-6 w-6"><use href="#i-whatsapp"/></svg></a>
   <a href="book-appointment.html" id="float-book" class="fixed bottom-5 right-5 z-40 transition-opacity duration-300 hidden items-center gap-2 rounded-full bg-brand-500 px-5 py-3.5 text-sm font-extrabold text-navy-950 shadow-lg shadow-brand-500/30 transition hover:-translate-y-1 hover:bg-brand-400 sm:flex" aria-label="Book an appointment"><svg class="h-5 w-5"><use href="#i-calendar"/></svg> Book Appointment</a>
   <button id="to-top" class="pointer-events-none fixed bottom-24 right-5 z-40 grid h-12 w-12 translate-y-4 place-items-center rounded-full bg-navy-900 text-white opacity-0 shadow-lg transition hover:bg-brand-600" aria-label="Back to top"><svg class="h-5 w-5"><use href="#i-up"/></svg></button>
 
@@ -609,8 +678,9 @@
     }, { threshold: .6 });
     $$('[data-counter]').forEach(el => counterIO.observe(el));
 
-    /* Newsletter */
-    $('#newsletter-form').addEventListener('submit', e => {
+    /* Newsletter (only if the form exists on this page) */
+    const nlForm = $('#newsletter-form');
+    if (nlForm) nlForm.addEventListener('submit', e => {
       e.preventDefault();
       const input = $('#nl-email'), msg = $('#nl-status');
       const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
