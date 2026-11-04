@@ -47,7 +47,15 @@ svg.i{width:1em;height:1em;flex:none}
 
 /* top bar */
 .top{background:var(--ink);color:#cfe3ef;font-size:13px}
-.top .wrap{display:flex;justify-content:center;align-items:center;gap:14px;padding-top:8px;padding-bottom:8px;flex-wrap:wrap}
+.top .wrap{display:grid;grid-template-columns:1fr auto;align-items:center;gap:14px;padding-top:8px;padding-bottom:8px}
+.top .mail{display:inline-flex;align-items:center;gap:8px;justify-self:start}
+.top .mail svg{width:16px;height:16px;color:#8fd6f8}
+.top .em{grid-column:2;justify-self:end}
+@media(max-width:700px){
+  .top .mail{display:none}
+  .top .wrap{grid-template-columns:1fr}
+  .top .em{grid-column:1;justify-self:center}
+}
 .top a:hover{color:#fff}
 .top .em{display:inline-flex;align-items:center;gap:8px;color:#fff;font-weight:600}
 .dot{position:relative;width:9px;height:9px;border-radius:50%;background:#ff5a4d;display:inline-block}
@@ -350,7 +358,6 @@ footer address svg{color:var(--blue);margin-top:5px;width:18px;height:18px}
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
 {"@type":["Hospital","MedicalOrganization"],"@id":"https://www.neuroone.in/#hospital","name":"Neuro One Hospital","alternateName":"Trivikrama Medical Services Pvt Ltd","url":"https://www.neuroone.in/","telephone":"+91-431-2221222","email":"feedback@neuroone.in","description":"NABH-accredited neuroscience centre offering neurology, neurosurgery, spine surgery, stroke care, neuro rehabilitation and 24x7 emergency care.","address":{"@type":"PostalAddress","streetAddress":"SF No. 55/1, Karur Bypass Road","addressLocality":"Tiruchirappalli","addressRegion":"Tamil Nadu","postalCode":"620002","addressCountry":"IN"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"},"medicalSpecialty":["Neurology","Neurosurgery"],"sameAs":["https://www.facebook.com/NeuroOneHospital/","https://www.instagram.com/neuroone_hospital/","https://www.youtube.com/channel/UC4yqwx9D_jOyUB9pcVpqBhw"]},
-{"@type":"Physician","name":"Dr. Ramakrishna Easwaran","medicalSpecialty":"Neurosurgery","worksFor":{"@id":"https://www.neuroone.in/#hospital"}},
 {"@type":"Physician","name":"Dr. K. Aruna Ramani","medicalSpecialty":"Neurology","worksFor":{"@id":"https://www.neuroone.in/#hospital"}},
 {"@type":"Physician","name":"Dr. S. Vijay Kumar","medicalSpecialty":"Neurosurgery","worksFor":{"@id":"https://www.neuroone.in/#hospital"}},
 {"@type":"Physician","name":"Dr. S. Rakul Prasath","medicalSpecialty":"Anesthesiology","worksFor":{"@id":"https://www.neuroone.in/#hospital"}},
@@ -397,6 +404,7 @@ footer address svg{color:var(--blue);margin-top:5px;width:18px;height:18px}
 
 <div class="top">
   <div class="wrap">
+    <a class="mail" href="mailto:feedback@neuroone.in"><svg aria-hidden="true"><use href="#mail"/></svg> feedback@neuroone.in</a>
     <a class="em" href="tel:+914312221222"><span class="dot"></span> 24x7 Emergency: 0431 222 1222</a>
   </div>
 </div>
@@ -581,7 +589,6 @@ footer address svg{color:var(--blue);margin-top:5px;width:18px;height:18px}
       <p class="lead">Experienced neurologists and neurosurgeons who see you through the whole journey, even the most complex conditions.</p>
     </div>
     <div class="dgrid">
-      <article class="doc reveal"><div class="av" aria-hidden="true">RE<img src="img/doctors/ramakrishna-easwaran.jpg" alt="" loading="lazy" onerror="this.remove()"></div><h3>Dr. Ramakrishna Easwaran</h3><p>Neurosurgery</p><a href="meet-the-team.html#ramakrishna-easwaran">Read more <svg class="i"><use href="#arrow"/></svg></a></article>
       <article class="doc reveal"><div class="av" aria-hidden="true">VK<img src="img/doctors/vijay-kumar.jpg" alt="" loading="lazy" onerror="this.remove()"></div><h3>Dr. Vijay Kumar S</h3><p>Keyhole Brain &amp; Spine Surgeon</p><a href="meet-the-team.html#vijay-kumar">Read more <svg class="i"><use href="#arrow"/></svg></a></article>
       <article class="doc reveal"><div class="av" aria-hidden="true">AR<img src="img/doctors/aruna-ramani.jpg" alt="" loading="lazy" onerror="this.remove()"></div><h3>Dr. K. Aruna Ramani</h3><p>Consultant – Neurology</p><a href="meet-the-team.html#aruna-ramani">Read more <svg class="i"><use href="#arrow"/></svg></a></article>
       <article class="doc reveal"><div class="av" aria-hidden="true">RP<img src="img/doctors/rakul-prasath.jpg" alt="" loading="lazy" onerror="this.remove()"></div><h3>Dr. S. Rakul Prasath</h3><p>Consultant – Neuroanaesthesia</p><a href="meet-the-team.html#rakul-prasath">Read more <svg class="i"><use href="#arrow"/></svg></a></article>
@@ -636,7 +643,7 @@ footer address svg{color:var(--blue);margin-top:5px;width:18px;height:18px}
             <select id="f-dept" name="dept"><option>Neurology</option><option>Neurosurgery &amp; spine surgery</option><option>Neuro anaesthesia &amp; critical care</option><option>Neuro radiology</option><option>Neuro rehabilitation</option><option>Pain management</option><option>Neuropsychiatry</option></select></div>
           <div><label for="f-date">Preferred date</label><input id="f-date" name="date" type="date"></div>
           <div class="full"><label for="f-msg">Your concern (optional)</label><textarea id="f-msg" name="msg"></textarea></div>
-          <div class="full"><button class="btn orange" type="submit" style="width:100%"><svg class="i"><use href="#wa"/></svg> Send </button></div>
+          <div class="full"><button class="btn orange" type="submit" style="width:100%"><svg class="i"><use href="#wa"/></svg> Send request on WhatsApp</button></div>
         </div>
         <p class="note">For emergencies please call 0431 222 1222 instead of using this form.</p>
       </form>
