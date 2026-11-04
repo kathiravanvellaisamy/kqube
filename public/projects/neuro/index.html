@@ -298,8 +298,13 @@ footer address svg{color:var(--blue);margin-top:5px;width:18px;height:18px}
 .fab svg{width:24px;height:24px}
 .wa{bottom:18px;background:#25D366}
 .wa::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25D366;animation:ripple 2.4s ease-out infinite}
-.up{bottom:78px;background:var(--ink);opacity:0;pointer-events:none;transform:translateY(10px)}
+.up{bottom:78px;background:var(--orange);opacity:0;pointer-events:none;transform:translateY(14px);border:0;cursor:pointer}
 .up.show{opacity:1;pointer-events:auto;transform:none}
+.up .pr{position:absolute;inset:-4px;width:56px;height:56px;transform:rotate(-90deg);pointer-events:none}
+.up .pr circle{fill:none;stroke-width:3}
+.up .pr .bg{stroke:rgba(255,255,255,.0)}
+.up .pr .fg{stroke:var(--blue);stroke-linecap:round;stroke-dasharray:157;stroke-dashoffset:157}
+.up .arr{width:22px;height:22px;position:relative}
 
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -359,7 +364,7 @@ footer address svg{color:var(--blue);margin-top:5px;width:18px;height:18px}
 
 <div class="top">
   <div class="wrap">
-    <span><a href="tel:+914312221222">+91 431 2221222</a> &nbsp;|&nbsp; <a href="tel:+919843561116">+91 98435 61116</a> &nbsp;|&nbsp; <a href="mailto:feedback@neuroone.in">feedback@neuroone.in</a></span>
+    <span>    <a href="mailto:feedback@neuroone.in">feedback@neuroone.in</a></span>
     <a class="em" href="tel:+914312221222"><span class="dot"></span> 24x7 Emergency: 0431 222 1222</a>
   </div>
 </div>
@@ -660,13 +665,14 @@ footer address svg{color:var(--blue);margin-top:5px;width:18px;height:18px}
 </footer>
 
 <a class="fab wa" href="https://wa.me/919843561116?text=Hello%20Neuro%20One%2C%20I%20would%20like%20to%20know%20more." target="_blank" rel="noopener noreferrer" aria-label="Chat with Neuro One on WhatsApp"><svg><use href="#wa"/></svg></a>
-<button class="fab up" id="up" aria-label="Back to top" type="button"><svg><use href="#up"/></svg></button>
+<button class="fab up" id="toTop" aria-label="Back to top" type="button"><svg class="pr" viewBox="0 0 56 56" aria-hidden="true"><circle class="bg" cx="28" cy="28" r="25"/><circle class="fg" id="upfg" cx="28" cy="28" r="25"/></svg><svg class="arr"><use href="#up"/></svg></button>
 
 <script>
 (()=>{
   const $=(s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
-  const hdr=$('#hdr'), up=$('#up');
-  const onScroll=()=>{const y=scrollY;hdr.classList.toggle('scrolled',y>10);up.classList.toggle('show',y>600)};
+  const hdr=$('#hdr'), up=$('#toTop');
+  const fg=$('#upfg');
+  const onScroll=()=>{const y=scrollY,max=document.documentElement.scrollHeight-innerHeight;hdr.classList.toggle('scrolled',y>10);up.classList.toggle('show',y>300);if(fg&&max>0)fg.style.strokeDashoffset=157*(1-Math.min(y/max,1))};
   addEventListener('scroll',onScroll,{passive:true});onScroll();
   up.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
 
