@@ -214,8 +214,9 @@ h2.t{font-size:clamp(1.7rem,3.6vw,2.5rem);line-height:1.2;font-weight:800;letter
 .svc.all .more{color:#fff}
 
 /* about */
-.two{display:grid;gap:44px;align-items:center}
-@media(min-width:900px){.two{grid-template-columns:1fr 1fr}}
+.two{display:grid;gap:44px;align-items:center;grid-template-columns:minmax(0,1fr)}
+.two>*{min-width:0}
+@media(min-width:900px){.two{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
 .ticks li{display:flex;gap:12px;padding:9px 0;font-size:15px}
 .ticks .ck{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue-l);color:var(--blue-d);display:grid;place-items:center;margin-top:2px}
 .ticks .ck svg{width:14px;height:14px}
@@ -228,11 +229,17 @@ h2.t{font-size:clamp(1.7rem,3.6vw,2.5rem);line-height:1.2;font-weight:800;letter
 .panel{position:relative;background:linear-gradient(145deg,#0f3a52,#0B6E9E);color:#fff;border-radius:28px;padding:34px;overflow:hidden;box-shadow:var(--shadow)}
 .panel::after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;border:2px dashed rgba(255,255,255,.2);animation:spin 40s linear infinite}
 .panel h3{font-size:1.25rem;margin-bottom:18px;position:relative}
-.mini{display:grid;grid-template-columns:1fr 1fr;gap:14px;position:relative}
+.mini{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;position:relative}
 .mini div{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:18px}
 .mini .ic2{font-size:24px;color:#8fd6f8}
-.mini b{display:block;margin-top:8px;font-size:1.05rem}
-.mini span{font-size:13px;color:#c4def0;line-height:1.4;display:block}
+.mini b{display:block;margin-top:8px;font-size:1.05rem;line-height:1.3;overflow-wrap:anywhere}
+.mini span{font-size:13px;color:#c4def0;line-height:1.4;display:block;margin-top:4px;overflow-wrap:anywhere}
+@media(max-width:560px){
+  .panel{padding:24px 18px;border-radius:22px}
+  .panel h3{font-size:1.15rem;margin-bottom:14px}
+  .mini{grid-template-columns:1fr;gap:12px}
+  .mini div{padding:16px}
+}
 .mission{margin-top:16px;position:relative;font-size:14px;color:#d9ecf7;border-top:1px solid rgba(255,255,255,.18);padding-top:16px}
 .mission b{color:#fff}
 
@@ -574,39 +581,11 @@ footer address svg{color:var(--blue);margin-top:5px;width:18px;height:18px}
       <p class="lead">Experienced neurologists and neurosurgeons who see you through the whole journey, even the most complex conditions.</p>
     </div>
     <div class="dgrid">
-    
-      <article class="doc reveal">
-        <div class="av" aria-hidden="true">VK<img src="img/doctors/vijay-kumar.jpg" alt="" loading="lazy"
-            onerror="this.remove()"></div>
-        <h3>Dr. Vijay Kumar S</h3>
-        <p>Keyhole Brain &amp; Spine Surgeon</p><a href="meet-the-team.html#vijay-kumar">Read more <svg class="i">
-            <use href="#arrow" />
-          </svg></a>
-      </article>
-      <article class="doc reveal">
-        <div class="av" aria-hidden="true">AR<img src="img/doctors/aruna-ramani.jpg" alt="" loading="lazy"
-            onerror="this.remove()"></div>
-        <h3>Dr. K. Aruna Ramani</h3>
-        <p>Consultant – Neurology</p><a href="meet-the-team.html#aruna-ramani">Read more <svg class="i">
-            <use href="#arrow" />
-          </svg></a>
-      </article>
-      <article class="doc reveal">
-        <div class="av" aria-hidden="true">RP<img src="img/doctors/rakul-prasath.jpg" alt="" loading="lazy"
-            onerror="this.remove()"></div>
-        <h3>Dr. S. Rakul Prasath</h3>
-        <p>Consultant – Neuroanaesthesia</p><a href="meet-the-team.html#rakul-prasath">Read more <svg class="i">
-            <use href="#arrow" />
-          </svg></a>
-      </article>
-      <article class="doc reveal">
-        <div class="av" aria-hidden="true">MS<img src="img/doctors/sadyojata.jpg" alt="" loading="lazy"
-            onerror="this.remove()"></div>
-        <h3>Dr. M. Sadyojata</h3>
-        <p>Neurosurgery</p><a href="meet-the-team.html#sadyojata">Read more <svg class="i">
-            <use href="#arrow" />
-          </svg></a>
-      </article>
+      <article class="doc reveal"><div class="av" aria-hidden="true">RE<img src="img/doctors/ramakrishna-easwaran.jpg" alt="" loading="lazy" onerror="this.remove()"></div><h3>Dr. Ramakrishna Easwaran</h3><p>Neurosurgery</p><a href="meet-the-team.html#ramakrishna-easwaran">Read more <svg class="i"><use href="#arrow"/></svg></a></article>
+      <article class="doc reveal"><div class="av" aria-hidden="true">VK<img src="img/doctors/vijay-kumar.jpg" alt="" loading="lazy" onerror="this.remove()"></div><h3>Dr. Vijay Kumar S</h3><p>Keyhole Brain &amp; Spine Surgeon</p><a href="meet-the-team.html#vijay-kumar">Read more <svg class="i"><use href="#arrow"/></svg></a></article>
+      <article class="doc reveal"><div class="av" aria-hidden="true">AR<img src="img/doctors/aruna-ramani.jpg" alt="" loading="lazy" onerror="this.remove()"></div><h3>Dr. K. Aruna Ramani</h3><p>Consultant – Neurology</p><a href="meet-the-team.html#aruna-ramani">Read more <svg class="i"><use href="#arrow"/></svg></a></article>
+      <article class="doc reveal"><div class="av" aria-hidden="true">RP<img src="img/doctors/rakul-prasath.jpg" alt="" loading="lazy" onerror="this.remove()"></div><h3>Dr. S. Rakul Prasath</h3><p>Consultant – Neuroanaesthesia</p><a href="meet-the-team.html#rakul-prasath">Read more <svg class="i"><use href="#arrow"/></svg></a></article>
+      <article class="doc reveal"><div class="av" aria-hidden="true">MS<img src="img/doctors/sadyojata.jpg" alt="" loading="lazy" onerror="this.remove()"></div><h3>Dr. M. Sadyojata</h3><p>Neurosurgery</p><a href="meet-the-team.html#sadyojata">Read more <svg class="i"><use href="#arrow"/></svg></a></article>
     </div>
   </div>
 </section>
