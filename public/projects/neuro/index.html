@@ -47,7 +47,7 @@ svg.i{width:1em;height:1em;flex:none}
 
 /* top bar */
 .top{background:var(--ink);color:#cfe3ef;font-size:13px}
-.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-top:8px;padding-bottom:8px;flex-wrap:wrap}
+.top .wrap{display:flex;justify-content:center;align-items:center;gap:14px;padding-top:8px;padding-bottom:8px;flex-wrap:wrap}
 .top a:hover{color:#fff}
 .top .em{display:inline-flex;align-items:center;gap:8px;color:#fff;font-weight:600}
 .dot{position:relative;width:9px;height:9px;border-radius:50%;background:#ff5a4d;display:inline-block}
@@ -117,6 +117,11 @@ li.open>.subt svg{transform:rotate(180deg)}
 @keyframes rise{to{opacity:1;transform:none}}
 .hero-div{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:60px;display:block;z-index:2}
 
+/* mobile: hide the NABH / Open 24x7 / Cashless tick row */
+@media(max-width:700px){
+  .ticks-row{display:none}
+}
+
 /* orbit visual */
 .vis{position:relative;z-index:1;width:min(100%,440px);margin:0 auto;aspect-ratio:1}
 .core{position:absolute;inset:19%;border-radius:50%;background:#fff;box-shadow:0 30px 60px -20px rgba(20,165,227,.45),inset 0 0 0 1px var(--line);display:grid;place-items:center;animation:bob 6s ease-in-out infinite}
@@ -145,14 +150,29 @@ li.open>.subt svg{transform:rotate(180deg)}
 @keyframes live{70%{box-shadow:0 0 0 10px rgba(31,191,117,0)}100%{box-shadow:0 0 0 0 rgba(31,191,117,0)}}
 @media(min-width:960px){.hero-grid{grid-template-columns:1.08fr .92fr}.vis{margin:0 0 0 auto}}
 
-/* stats */
+/* stats (responsive badge bar below hero) */
 .stats{position:relative;z-index:3;margin-top:-62px}
 .stats ul{background:#fff;border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(2,1fr);overflow:hidden}
-.stats li{padding:24px 20px;display:flex;align-items:center;gap:14px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats li{padding:24px 20px;display:flex;align-items:center;gap:14px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-width:0}
 .stats .ico{width:48px;height:48px;border-radius:14px;background:var(--blue-l);color:var(--blue);display:grid;place-items:center;font-size:24px;flex:none}
 .stats b{display:block;font-size:1.55rem;line-height:1.1;font-weight:800}
-.stats span.t{font-size:13px;color:var(--muted)}
-@media(min-width:900px){.stats ul{grid-template-columns:repeat(4,1fr)}.stats li{border-bottom:0}.stats li:last-child{border-right:0}}
+.stats span.t{font-size:13px;color:var(--muted);line-height:1.3;display:block}
+.stats li:nth-child(2n){border-right:0}
+.stats li:nth-last-child(-n+2){border-bottom:0}
+@media(max-width:600px){
+  .stats{margin-top:-48px}
+  .stats ul{border-radius:20px}
+  .stats li{flex-direction:column;text-align:center;gap:8px;padding:18px 10px}
+  .stats .ico{width:40px;height:40px;font-size:20px;border-radius:12px}
+  .stats b{font-size:1.25rem}
+  .stats span.t{font-size:12px}
+  .hero{padding-bottom:150px}
+}
+@media(min-width:900px){
+  .stats ul{grid-template-columns:repeat(4,1fr)}
+  .stats li{border-bottom:0;border-right:1px solid var(--line)}
+  .stats li:last-child{border-right:0}
+}
 
 /* sections */
 .sec{padding:84px 0}
@@ -199,6 +219,12 @@ h2.t{font-size:clamp(1.7rem,3.6vw,2.5rem);line-height:1.2;font-weight:800;letter
 .ticks li{display:flex;gap:12px;padding:9px 0;font-size:15px}
 .ticks .ck{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue-l);color:var(--blue-d);display:grid;place-items:center;margin-top:2px}
 .ticks .ck svg{width:14px;height:14px}
+/* Why Neuro One buttons: equal width + responsive */
+#about .cta{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:460px}
+#about .cta .btn{width:100%;padding:13px 16px;white-space:nowrap}
+@media(max-width:420px){
+  #about .cta{grid-template-columns:1fr;max-width:none}
+}
 .panel{position:relative;background:linear-gradient(145deg,#0f3a52,#0B6E9E);color:#fff;border-radius:28px;padding:34px;overflow:hidden;box-shadow:var(--shadow)}
 .panel::after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;border:2px dashed rgba(255,255,255,.2);animation:spin 40s linear infinite}
 .panel h3{font-size:1.25rem;margin-bottom:18px;position:relative}
@@ -364,7 +390,6 @@ footer address svg{color:var(--blue);margin-top:5px;width:18px;height:18px}
 
 <div class="top">
   <div class="wrap">
-    <span>    <a href="mailto:feedback@neuroone.in">feedback@neuroone.in</a></span>
     <a class="em" href="tel:+914312221222"><span class="dot"></span> 24x7 Emergency: 0431 222 1222</a>
   </div>
 </div>
@@ -549,11 +574,39 @@ footer address svg{color:var(--blue);margin-top:5px;width:18px;height:18px}
       <p class="lead">Experienced neurologists and neurosurgeons who see you through the whole journey, even the most complex conditions.</p>
     </div>
     <div class="dgrid">
-      <article class="doc reveal"><div class="av" aria-hidden="true">RE<img src="img/doctors/ramakrishna-easwaran.jpg" alt="" loading="lazy" onerror="this.remove()"></div><h3>Dr. Ramakrishna Easwaran</h3><p>Neurosurgery</p><a href="meet-the-team.html#ramakrishna-easwaran">Read more <svg class="i"><use href="#arrow"/></svg></a></article>
-      <article class="doc reveal"><div class="av" aria-hidden="true">VK<img src="img/doctors/vijay-kumar.jpg" alt="" loading="lazy" onerror="this.remove()"></div><h3>Dr. Vijay Kumar S</h3><p>Keyhole Brain &amp; Spine Surgeon</p><a href="meet-the-team.html#vijay-kumar">Read more <svg class="i"><use href="#arrow"/></svg></a></article>
-      <article class="doc reveal"><div class="av" aria-hidden="true">AR<img src="img/doctors/aruna-ramani.jpg" alt="" loading="lazy" onerror="this.remove()"></div><h3>Dr. K. Aruna Ramani</h3><p>Consultant – Neurology</p><a href="meet-the-team.html#aruna-ramani">Read more <svg class="i"><use href="#arrow"/></svg></a></article>
-      <article class="doc reveal"><div class="av" aria-hidden="true">RP<img src="img/doctors/rakul-prasath.jpg" alt="" loading="lazy" onerror="this.remove()"></div><h3>Dr. S. Rakul Prasath</h3><p>Consultant – Neuroanaesthesia</p><a href="meet-the-team.html#rakul-prasath">Read more <svg class="i"><use href="#arrow"/></svg></a></article>
-      <article class="doc reveal"><div class="av" aria-hidden="true">MS<img src="img/doctors/sadyojata.jpg" alt="" loading="lazy" onerror="this.remove()"></div><h3>Dr. M. Sadyojata</h3><p>Neurosurgery</p><a href="meet-the-team.html#sadyojata">Read more <svg class="i"><use href="#arrow"/></svg></a></article>
+    
+      <article class="doc reveal">
+        <div class="av" aria-hidden="true">VK<img src="img/doctors/vijay-kumar.jpg" alt="" loading="lazy"
+            onerror="this.remove()"></div>
+        <h3>Dr. Vijay Kumar S</h3>
+        <p>Keyhole Brain &amp; Spine Surgeon</p><a href="meet-the-team.html#vijay-kumar">Read more <svg class="i">
+            <use href="#arrow" />
+          </svg></a>
+      </article>
+      <article class="doc reveal">
+        <div class="av" aria-hidden="true">AR<img src="img/doctors/aruna-ramani.jpg" alt="" loading="lazy"
+            onerror="this.remove()"></div>
+        <h3>Dr. K. Aruna Ramani</h3>
+        <p>Consultant – Neurology</p><a href="meet-the-team.html#aruna-ramani">Read more <svg class="i">
+            <use href="#arrow" />
+          </svg></a>
+      </article>
+      <article class="doc reveal">
+        <div class="av" aria-hidden="true">RP<img src="img/doctors/rakul-prasath.jpg" alt="" loading="lazy"
+            onerror="this.remove()"></div>
+        <h3>Dr. S. Rakul Prasath</h3>
+        <p>Consultant – Neuroanaesthesia</p><a href="meet-the-team.html#rakul-prasath">Read more <svg class="i">
+            <use href="#arrow" />
+          </svg></a>
+      </article>
+      <article class="doc reveal">
+        <div class="av" aria-hidden="true">MS<img src="img/doctors/sadyojata.jpg" alt="" loading="lazy"
+            onerror="this.remove()"></div>
+        <h3>Dr. M. Sadyojata</h3>
+        <p>Neurosurgery</p><a href="meet-the-team.html#sadyojata">Read more <svg class="i">
+            <use href="#arrow" />
+          </svg></a>
+      </article>
     </div>
   </div>
 </section>
