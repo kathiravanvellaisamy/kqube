@@ -72,6 +72,38 @@
         linear-gradient(135deg, #051f30 0%, #082d44 55%, #0d3d58 100%)
     }
 
+
+    /* ---- hero neuro animation ---- */
+    .nv-ring{position:absolute;border-radius:9999px;border:1px dashed rgba(143,214,248,.35)}
+    .nv-ring-1{inset:-3%;animation:nv-spin 40s linear infinite}
+    .nv-ring-2{inset:3%;border-style:solid;border-color:rgba(255,255,255,.08);animation:nv-spin 60s linear infinite reverse}
+    .nv-ring::after{content:"";position:absolute;top:-4px;left:50%;width:8px;height:8px;border-radius:9999px;background:#52bff3;box-shadow:0 0 12px 2px #52bff3}
+    .nv-glow{position:absolute;inset:8%;border-radius:9999px;background:radial-gradient(circle,rgba(82,191,243,.35),transparent 65%);animation:nv-breathe 5s ease-in-out infinite}
+    .nslide{position:absolute;inset:0;opacity:0;transform:scale(.92) translateY(10px);transition:opacity .9s ease,transform .9s ease;pointer-events:none}
+    .nslide.active{opacity:1;transform:none}
+    .nv-draw{stroke-dasharray:1;stroke-dashoffset:1}
+    .nslide.active .nv-draw{animation:nv-draw 2.4s ease forwards;animation-delay:var(--d,0s)}
+    .nv-pulse-node{animation:nv-node 2.6s ease-in-out infinite;animation-delay:var(--d,0s);transform-box:fill-box;transform-origin:center}
+    .nv-soma{animation:nv-node 2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+    .nv-vert{fill:rgba(143,214,248,.1);stroke:rgba(190,230,250,.6);animation:nv-vert 3.2s ease-in-out infinite;animation-delay:calc(var(--i)*.25s)}
+    .nv-scan{animation:nv-scan 4s ease-in-out infinite}
+    .nv-float{animation:nv-float 6s ease-in-out infinite}
+    .nv-dot{height:8px;width:8px;border-radius:9999px;background:rgba(255,255,255,.35);transition:all .3s}
+    .nv-dot.on{width:26px;background:#eb6424}
+    .nv-dot-bg{position:absolute;border-radius:9999px;background:rgba(143,214,248,.6);box-shadow:0 0 10px rgba(82,191,243,.8);animation:nv-rise linear infinite}
+    @keyframes nv-spin{to{transform:rotate(360deg)}}
+    @keyframes nv-breathe{0%,100%{transform:scale(.95);opacity:.7}50%{transform:scale(1.06);opacity:1}}
+    @keyframes nv-draw{to{stroke-dashoffset:0}}
+    @keyframes nv-node{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.7);opacity:1}}
+    @keyframes nv-vert{0%,100%{fill:rgba(143,214,248,.08);stroke:rgba(190,230,250,.55)}50%{fill:rgba(82,191,243,.4);stroke:#fff}}
+    @keyframes nv-scan{0%,100%{transform:translateY(80px)}50%{transform:translateY(330px)}}
+    @keyframes nv-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    @keyframes nv-rise{0%{transform:translateY(0);opacity:0}15%{opacity:.8}100%{transform:translateY(-140px);opacity:0}}
+    @media (prefers-reduced-motion:reduce){
+      .nv-ring,.nv-glow,.nv-pulse-node,.nv-soma,.nv-vert,.nv-scan,.nv-float,.nv-dot-bg{animation:none!important}
+      .nv-draw{stroke-dashoffset:0!important;animation:none!important}
+      .nslide{transition:none}
+    }
     .neural {
       background-image: radial-gradient(rgba(255, 255, 255, .12) 1px, transparent 1px);
       background-size: 26px 26px
@@ -115,7 +147,7 @@
     }
   </style>
   <style>
-    /* ===== COPY FROM HERE (PRELOADER CSS) ===== */
+    /* ===== PRELOADER CSS ===== */
     #preloader {
       position: fixed;
       inset: 0;
@@ -140,7 +172,6 @@
       animation: logo-pulse 1.8s ease-in-out infinite;
     }
 
-    /* thin progress bar under the logo */
     .loader-bar {
       width: 180px;
       height: 3px;
@@ -156,7 +187,6 @@
       width: 40%;
       border-radius: 3px;
       background: #1da1f2;
-      /* matches the logo blue */
       animation: loader-slide 1.2s ease-in-out infinite;
     }
 
@@ -253,1288 +283,1284 @@
 
 <body class="bg-white font-sans text-slate-700 antialiased">
 
-  <! -- preloader -->
+  <!-- preloader -->
+  <div id="preloader">
+    <img src="https://kqubetech.com/projects/neuro-one/images/logo.png" alt="Neuro One – Leaders in Neuro Care">
+    <div class="loader-bar"></div>
+  </div>
 
-    <div id="preloader">
-      <img src="https://kqubetech.com/projects/neuro-one/images/logo.png" alt="Neuro One – Leaders in Neuro Care">
-      <div class="loader-bar"></div>
+  <!-- SVG icon sprite -->
+  <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
+    <defs>
+      <symbol id="i-phone" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.21l-2.26 1.13a11.04 11.04 0 005.52 5.52l1.13-2.26a1 1 0 011.21-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z" />
+      </symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+      </symbol>
+      <symbol id="i-close" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
+      </symbol>
+      <symbol id="i-chev" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+          d="M6 9l6 6 6-6" />
+      </symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+          d="M9 12l2 2 4-4m5.62-4.02A11.95 11.95 0 0112 2.94a11.95 11.95 0 01-8.62 3.04A12 12 0 003 9c0 5.59 3.82 10.29 9 11.62 5.18-1.33 9-6.03 9-11.62 0-1.05-.14-2.07-.38-3.02z" />
+      </symbol>
+      <symbol id="i-award" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+          d="M12 15a6 6 0 100-12 6 6 0 000 12zM8.5 13.5L7 22l5-3 5 3-1.5-8.5" />
+      </symbol>
+      <symbol id="i-users" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+          d="M17 20h5v-2a3 3 0 00-5.36-1.86M17 20H7m10 0v-2c0-.66-.13-1.28-.36-1.86M7 20H2v-2a3 3 0 015.36-1.86M7 20v-2c0-.66.13-1.28.36-1.86m0 0a5 5 0 019.28 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+      </symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+          d="M8 7V3m8 4V3M5 11h14M5 5h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z" />
+      </symbol>
+      <symbol id="i-card" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+          d="M3 10h18M7 15h2m4 0h4M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z" />
+      </symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+          d="M8 10h8M8 14h5m-9 6l2.6-3H19a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v14z" />
+      </symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+          d="M3 8l9 6 9-6M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z" />
+      </symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+          d="M17.66 16.66L13.41 20.9a2 2 0 01-2.82 0l-4.25-4.24a8 8 0 1111.32 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      </symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          d="M5 12h14m-6-6l6 6-6 6" />
+      </symbol>
+      <symbol id="i-up" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          d="M6 15l6-6 6 6" />
+      </symbol>
+      <symbol id="i-star" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+      </symbol>
+      <symbol id="i-bolt" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+          d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </symbol>
+      <symbol id="i-pulse" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+          d="M3 12h4l3-8 4 16 3-8h4" />
+      </symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+          d="M4.32 6.32a4.5 4.5 0 016.36 0L12 7.64l1.32-1.32a4.5 4.5 0 116.36 6.36L12 20.36l-7.68-7.68a4.5 4.5 0 010-6.36z" />
+      </symbol>
+      <symbol id="i-cube" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+          d="M21 7.5l-9-5-9 5v9l9 5 9-5v-9zM3 7.5l9 5m0 0l9-5m-9 5v9" />
+      </symbol>
+      <symbol id="i-scan" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+          d="M4 8V6a2 2 0 012-2h2m8 0h2a2 2 0 012 2v2m0 8v2a2 2 0 01-2 2h-2M8 20H6a2 2 0 01-2-2v-2M8 12h8" />
+      </symbol>
+      <symbol id="i-target" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="12" cy="12" r="9" />
+          <circle cx="12" cy="12" r="5" />
+          <circle cx="12" cy="12" r="1" />
+        </g>
+      </symbol>
+      <symbol id="i-layers" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+          d="M12 3L3 8l9 5 9-5-9-5zM3 13l9 5 9-5M3 17.5l9 5 9-5" />
+      </symbol>
+      <symbol id="i-smile" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+          d="M14.83 14.83a4 4 0 01-5.66 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9 9h.01M15 9h.01" />
+      </symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+          d="M4 4v5h5M20 20v-5h-5M5.64 15A8 8 0 0018.36 9M18.36 9A8 8 0 005.64 15" />
+      </symbol>
+      <symbol id="i-bed" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+          d="M3 18V7m0 7h18v4M21 14v-2a3 3 0 00-3-3h-7v5M7 11h.01" />
+      </symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+          d="M12 21a9 9 0 100-18 9 9 0 000 18zM3.6 9h16.8M3.6 15h16.8M12 3a14 14 0 010 18M12 3a14 14 0 000 18" />
+      </symbol>
+      <symbol id="i-whatsapp" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M20.52 3.48A11.86 11.86 0 0012.05 0C5.5 0 .17 5.33.17 11.88c0 2.09.55 4.13 1.59 5.93L0 24l6.35-1.66a11.87 11.87 0 005.7 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.15-3.42-8.43zM12.06 21.8h-.01a9.9 9.9 0 01-5.04-1.38l-.36-.21-3.77.99 1-3.67-.24-.38a9.9 9.9 0 01-1.52-5.27c0-5.47 4.45-9.92 9.93-9.92 2.65 0 5.14 1.03 7.01 2.91a9.85 9.85 0 012.9 7.02c0 5.47-4.45 9.91-9.9 9.91zm5.44-7.43c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35z" />
+      </symbol>
+      <symbol id="i-fb" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.87.24-1.46 1.5-1.46h1.6V4.46A21 21 0 0014.28 4.4c-2.3 0-3.88 1.4-3.88 3.98v2.12H7.8v3h2.6V21h3.1z" />
+      </symbol>
+      <symbol id="i-ig" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="3" y="3" width="18" height="18" rx="5" />
+          <circle cx="12" cy="12" r="4" />
+          <circle cx="17.5" cy="6.5" r=".6" fill="currentColor" />
+        </g>
+      </symbol>
+      <symbol id="i-yt" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M21.6 7.2a2.5 2.5 0 00-1.76-1.77C18.27 5 12 5 12 5s-6.27 0-7.84.43A2.5 2.5 0 002.4 7.2C2 8.78 2 12 2 12s0 3.22.4 4.8a2.5 2.5 0 001.76 1.77C5.73 19 12 19 12 19s6.27 0 7.84-.43a2.5 2.5 0 001.76-1.77C22 15.22 22 12 22 12s0-3.22-.4-4.8zM10 15V9l5.2 3L10 15z" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <a href="#main"
+    class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:shadow-soft">Skip
+    to main content</a>
+
+  <!-- =====================================================================
+       HEADER
+       ===================================================================== -->
+  <header id="site-header" class=" inset-x-0 top-0 z-50">
+
+    <!-- Mobile-only top bar with blinking red emergency dot -->
+    <a href="tel:+914312221222"
+      class="flex items-center justify-center gap-2.5 border-b border-red-100 bg-red-50 px-4 py-2 text-sm font-bold text-red-600 md:hidden"
+      aria-label="Call emergency number 0431 222 1222">
+      <span class="relative flex h-2.5 w-2.5">
+        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75"></span>
+        <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500"></span>
+      </span>
+      Emergency: 0431 222 1222
+    </a>
+
+    <div id="header-main" class="border-b border-slate-100 bg-white backdrop-blur-xl transition-shadow duration-300">
+      <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2.5 sm:px-6">
+        <a href="index.html" class="flex shrink-0 items-center" aria-label="Neuro One Hospital — home">
+          <img src="https://kqubetech.com/projects/neuro-one/images/logo.png" alt="Neuro One — Leaders in Neuro Care"
+            width="195" height="54" class="h-10 w-auto sm:h-[52px]" />
+        </a>
+
+        <div class="flex flex-1 items-center justify-center md:ml-auto md:flex-none">
+          <img src="https://kqubetech.com/projects/neuro-one/images/preview.webp"
+            alt="NABH Accredited — Patient Safety &amp; Quality of Care" style="width: 100px; height:100px"
+            class="h-[92px]  sm:h-[52px] mobile-only" />
+        </div>
+
+        <div class="flex items-center gap-3">
+          <a href="mailto:feedback@neuroone.in"
+            class="hidden items-center gap-2 text-sm font-semibold text-navy-900 hover:text-brand-700 2xl:flex"><svg
+              class="h-4 w-4 text-brand-600">
+              <use href="#i-mail" />
+            </svg> feedback@neuroone.in</a>
+          <a href="tel:+914312221222"
+            class="hidden items-center gap-2 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm font-bold text-red-600 transition hover:bg-red-100 md:flex"
+            aria-label="Call emergency number 0431 222 1222">
+            <span class="relative flex h-2.5 w-2.5"><span
+                class="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75"></span><span
+                class="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500"></span></span>
+            <span class="hidden sm:inline">Emergency</span> 0431 222 1222
+          </a>
+          <a href="book-appointment.html"
+            class="hidden rounded-xl bg-navy-900 px-5 py-2.5 text-sm font-bold text-white shadow-card transition hover:-translate-y-0.5 hover:bg-navy-800 sm:inline-block">Book
+            Appointment</a>
+          <button id="menu-btn"
+            class="grid h-11 w-11 place-items-center rounded-xl border border-slate-200 bg-white text-navy-900 xl:hidden"
+            aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+            <svg class="h-6 w-6" id="menu-open-icon">
+              <use href="#i-menu" />
+            </svg>
+            <svg class="hidden h-6 w-6" id="menu-close-icon">
+              <use href="#i-close" />
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
 
-    <!-- SVG icon sprite -->
-    <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
-      <defs>
-        <symbol id="i-phone" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.21l-2.26 1.13a11.04 11.04 0 005.52 5.52l1.13-2.26a1 1 0 011.21-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z" />
-        </symbol>
-        <symbol id="i-menu" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
-        </symbol>
-        <symbol id="i-close" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
-        </symbol>
-        <symbol id="i-chev" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
-            d="M6 9l6 6 6-6" />
-        </symbol>
-        <symbol id="i-shield" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-            d="M9 12l2 2 4-4m5.62-4.02A11.95 11.95 0 0112 2.94a11.95 11.95 0 01-8.62 3.04A12 12 0 003 9c0 5.59 3.82 10.29 9 11.62 5.18-1.33 9-6.03 9-11.62 0-1.05-.14-2.07-.38-3.02z" />
-        </symbol>
-        <symbol id="i-award" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-            d="M12 15a6 6 0 100-12 6 6 0 000 12zM8.5 13.5L7 22l5-3 5 3-1.5-8.5" />
-        </symbol>
-        <symbol id="i-users" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-            d="M17 20h5v-2a3 3 0 00-5.36-1.86M17 20H7m10 0v-2c0-.66-.13-1.28-.36-1.86M7 20H2v-2a3 3 0 015.36-1.86M7 20v-2c0-.66.13-1.28.36-1.86m0 0a5 5 0 019.28 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-        </symbol>
-        <symbol id="i-clock" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </symbol>
-        <symbol id="i-calendar" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-            d="M8 7V3m8 4V3M5 11h14M5 5h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z" />
-        </symbol>
-        <symbol id="i-card" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-            d="M3 10h18M7 15h2m4 0h4M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z" />
-        </symbol>
-        <symbol id="i-chat" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-            d="M8 10h8M8 14h5m-9 6l2.6-3H19a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v14z" />
-        </symbol>
-        <symbol id="i-mail" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-            d="M3 8l9 6 9-6M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z" />
-        </symbol>
-        <symbol id="i-pin" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-            d="M17.66 16.66L13.41 20.9a2 2 0 01-2.82 0l-4.25-4.24a8 8 0 1111.32 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-        </symbol>
-        <symbol id="i-arrow" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            d="M5 12h14m-6-6l6 6-6 6" />
-        </symbol>
-        <symbol id="i-up" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            d="M6 15l6-6 6 6" />
-        </symbol>
-        <symbol id="i-star" viewBox="0 0 24 24">
-          <path fill="currentColor"
-            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-        </symbol>
-        <symbol id="i-bolt" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-            d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </symbol>
-        <symbol id="i-pulse" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-            d="M3 12h4l3-8 4 16 3-8h4" />
-        </symbol>
-        <symbol id="i-heart" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-            d="M4.32 6.32a4.5 4.5 0 016.36 0L12 7.64l1.32-1.32a4.5 4.5 0 116.36 6.36L12 20.36l-7.68-7.68a4.5 4.5 0 010-6.36z" />
-        </symbol>
-        <symbol id="i-cube" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-            d="M21 7.5l-9-5-9 5v9l9 5 9-5v-9zM3 7.5l9 5m0 0l9-5m-9 5v9" />
-        </symbol>
-        <symbol id="i-scan" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-            d="M4 8V6a2 2 0 012-2h2m8 0h2a2 2 0 012 2v2m0 8v2a2 2 0 01-2 2h-2M8 20H6a2 2 0 01-2-2v-2M8 12h8" />
-        </symbol>
-        <symbol id="i-target" viewBox="0 0 24 24">
-          <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-            <circle cx="12" cy="12" r="9" />
-            <circle cx="12" cy="12" r="5" />
-            <circle cx="12" cy="12" r="1" />
-          </g>
-        </symbol>
-        <symbol id="i-layers" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-            d="M12 3L3 8l9 5 9-5-9-5zM3 13l9 5 9-5M3 17.5l9 5 9-5" />
-        </symbol>
-        <symbol id="i-smile" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-            d="M14.83 14.83a4 4 0 01-5.66 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9 9h.01M15 9h.01" />
-        </symbol>
-        <symbol id="i-refresh" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-            d="M4 4v5h5M20 20v-5h-5M5.64 15A8 8 0 0018.36 9M18.36 9A8 8 0 005.64 15" />
-        </symbol>
-        <symbol id="i-bed" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-            d="M3 18V7m0 7h18v4M21 14v-2a3 3 0 00-3-3h-7v5M7 11h.01" />
-        </symbol>
-        <symbol id="i-globe" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-            d="M12 21a9 9 0 100-18 9 9 0 000 18zM3.6 9h16.8M3.6 15h16.8M12 3a14 14 0 010 18M12 3a14 14 0 000 18" />
-        </symbol>
-        <symbol id="i-whatsapp" viewBox="0 0 24 24">
-          <path fill="currentColor"
-            d="M20.52 3.48A11.86 11.86 0 0012.05 0C5.5 0 .17 5.33.17 11.88c0 2.09.55 4.13 1.59 5.93L0 24l6.35-1.66a11.87 11.87 0 005.7 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.15-3.42-8.43zM12.06 21.8h-.01a9.9 9.9 0 01-5.04-1.38l-.36-.21-3.77.99 1-3.67-.24-.38a9.9 9.9 0 01-1.52-5.27c0-5.47 4.45-9.92 9.93-9.92 2.65 0 5.14 1.03 7.01 2.91a9.85 9.85 0 012.9 7.02c0 5.47-4.45 9.91-9.9 9.91zm5.44-7.43c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35z" />
-        </symbol>
-        <symbol id="i-fb" viewBox="0 0 24 24">
-          <path fill="currentColor"
-            d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.87.24-1.46 1.5-1.46h1.6V4.46A21 21 0 0014.28 4.4c-2.3 0-3.88 1.4-3.88 3.98v2.12H7.8v3h2.6V21h3.1z" />
-        </symbol>
-        <symbol id="i-ig" viewBox="0 0 24 24">
-          <g fill="none" stroke="currentColor" stroke-width="1.8">
-            <rect x="3" y="3" width="18" height="18" rx="5" />
-            <circle cx="12" cy="12" r="4" />
-            <circle cx="17.5" cy="6.5" r=".6" fill="currentColor" />
-          </g>
-        </symbol>
-        <symbol id="i-yt" viewBox="0 0 24 24">
-          <path fill="currentColor"
-            d="M21.6 7.2a2.5 2.5 0 00-1.76-1.77C18.27 5 12 5 12 5s-6.27 0-7.84.43A2.5 2.5 0 002.4 7.2C2 8.78 2 12 2 12s0 3.22.4 4.8a2.5 2.5 0 001.76 1.77C5.73 19 12 19 12 19s6.27 0 7.84-.43a2.5 2.5 0 001.76-1.77C22 15.22 22 12 22 12s0-3.22-.4-4.8zM10 15V9l5.2 3L10 15z" />
-        </symbol>
-      </defs>
-    </svg>
+    <!-- Desktop navigation bar -->
+    <nav class="hidden bg-navy-900 shadow-lg xl:block" aria-label="Primary">
+      <ul class="mx-auto flex max-w-7xl items-center justify-center px-4">
+        <li><a href="index.html" aria-current="page"
+            class="block px-3 py-3.5 text-[14px] font-bold text-brand-300">Home</a></li>
 
-    <a href="#main"
-      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:shadow-soft">Skip
-      to main content</a>
+        <li class="group relative">
+          <a href="about.html"
+            class="flex items-center gap-1 px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">About
+            <svg class="h-3.5 w-3.5 transition group-hover:rotate-180">
+              <use href="#i-chev" />
+            </svg></a>
+          <ul
+            class="invisible absolute left-0 top-full z-50 min-w-[250px] translate-y-2 rounded-b-xl bg-white py-2 opacity-0 shadow-soft transition duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="about.html">About the Hospital</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="md-message.html">Managing Director</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="meet-the-team.html">Meet the Team</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="philosophy-of-care.html">Philosophy of Care</a></li>
+          </ul>
+        </li>
 
-    <!-- =====================================================================
-       HEADER (shared across all pages — copy this block + footer to each page)
-       Mobile top bar: emergency number.  Row 1: logo, accreditation, contact, CTA.  Row 2: full dropdown navigation.
-       ===================================================================== -->
-    <header id="site-header" class=" inset-x-0 top-0 z-50">
+        <li class="group relative">
+          <a href="services.html"
+            class="flex items-center gap-1 px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Services
+            <svg class="h-3.5 w-3.5 transition group-hover:rotate-180">
+              <use href="#i-chev" />
+            </svg></a>
+          <ul
+            class="invisible absolute left-0 top-full z-50 min-w-[300px] translate-y-2 rounded-b-xl bg-white py-2 opacity-0 shadow-soft transition duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="services.html">Our Services</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="neurology.html">Neurology</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="neurosurgery.html">Neurosurgery</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="neuro-critical-care.html">Neuro Anaesthesia &amp; Neuro Critical Care</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="neuro-radiology.html">Neuro Radiology</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="neuro-rehabilitation.html">Neuro Rehabilitation</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="pain-management.html">Pain Management</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="neuropsychiatry.html">Neuropsychiatry</a></li>
+          </ul>
+        </li>
 
-      <!-- Mobile-only top bar with blinking red emergency dot -->
-      <a href="tel:+914312221222"
-        class="flex items-center justify-center gap-2.5 border-b border-red-100 bg-red-50 px-4 py-2 text-sm font-bold text-red-600 md:hidden"
-        aria-label="Call emergency number 0431 222 1222">
-        <span class="relative flex h-2.5 w-2.5">
-          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75"></span>
-          <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500"></span>
-        </span>
-        Emergency: 0431 222 1222
-      </a>
+        <li class="group relative">
+          <a href="facilities.html"
+            class="flex items-center gap-1 px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Facilities
+            <svg class="h-3.5 w-3.5 transition group-hover:rotate-180">
+              <use href="#i-chev" />
+            </svg></a>
+          <ul
+            class="invisible absolute left-0 top-full z-50 min-w-[250px] translate-y-2 rounded-b-xl bg-white py-2 opacity-0 shadow-soft transition duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="facilities.html">Our Facilities</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="why-neuroone.html">Why Neuro One</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="advanced-technologies.html">Advanced Technologies</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="quality-safety.html">Quality and Safety</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="emergency.html">Emergency Service</a></li>
+          </ul>
+        </li>
 
-      <div id="header-main" class="border-b border-slate-100 bg-white backdrop-blur-xl transition-shadow duration-300">
-        <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2.5 sm:px-6">
-          <a href="index.html" class="flex shrink-0 items-center" aria-label="Neuro One Hospital — home">
-            <img src="https://kqubetech.com/projects/neuro-one/images/logo.png" alt="Neuro One — Leaders in Neuro Care"
-              width="195" height="54" class="h-10 w-auto sm:h-[52px]" />
-          </a>
+        <li class="group relative" style="display: none;">
+          <a href="patient-resources.html"
+            class="flex items-center gap-1 px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Patient
+            Resource <svg class="h-3.5 w-3.5 transition group-hover:rotate-180">
+              <use href="#i-chev" />
+            </svg></a>
+          <ul
+            class="invisible absolute left-0 top-full z-50 min-w-[250px] translate-y-2 rounded-b-xl bg-white py-2 opacity-0 shadow-soft transition duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="patient-resources.html">Patient Resource</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="patient-education.html">Patient Education Resource</a></li>
+          </ul>
+        </li>
 
-          <!-- NABH emblem: centred between logo and menu button on mobile; sits right before the email/phone on desktop -->
-          <div class="flex flex-1 items-center justify-center md:ml-auto md:flex-none">
-            <img src="https://kqubetech.com/projects/neuro-one/images/preview.webp"
-              alt="NABH Accredited — Patient Safety &amp; Quality of Care" style="width: 100px; height:100px"
-              class="h-[92px]  sm:h-[52px] mobile-only" />
-          </div>
+        <li><a href="insurance.html"
+            class="block px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Insurance</a>
+        </li>
+        <li><a href="awards.html"
+            class="block px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Awards &amp;
+            Recognitions</a></li>
 
-          <div class="flex items-center gap-3">
-            <a href="mailto:feedback@neuroone.in"
-              class="hidden items-center gap-2 text-sm font-semibold text-navy-900 hover:text-brand-700 2xl:flex"><svg
-                class="h-4 w-4 text-brand-600">
-                <use href="#i-mail" />
-              </svg> feedback@neuroone.in</a>
-            <a href="tel:+914312221222"
-              class="hidden items-center gap-2 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm font-bold text-red-600 transition hover:bg-red-100 md:flex"
-              aria-label="Call emergency number 0431 222 1222">
-              <span class="relative flex h-2.5 w-2.5"><span
-                  class="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75"></span><span
-                  class="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500"></span></span>
-              <span class="hidden sm:inline">Emergency</span> 0431 222 1222
-            </a>
+        <li class="group relative">
+          <a href="news-events.html"
+            class="flex items-center gap-1 px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">News
+            &amp; Events <svg class="h-3.5 w-3.5 transition group-hover:rotate-180">
+              <use href="#i-chev" />
+            </svg></a>
+          <ul
+            class="invisible absolute left-0 top-full z-50 min-w-[230px] translate-y-2 rounded-b-xl bg-white py-2 opacity-0 shadow-soft transition duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="success-stories.html">Success Story</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="event-photos.html">Event Photos</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="testimonials.html">Testimonial</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="articles-in-press.html">Articles in Press</a></li>
+          </ul>
+        </li>
+
+        <li class="group relative">
+          <a href="newsletters.html"
+            class="flex items-center gap-1 px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Newsletter
+            <svg class="h-3.5 w-3.5 transition group-hover:rotate-180">
+              <use href="#i-chev" />
+            </svg></a>
+          <ul
+            class="invisible absolute right-0 top-full z-50 min-w-[280px] translate-y-2 rounded-b-xl bg-white py-2 opacity-0 shadow-soft transition duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="img/NEURON_NEWSLETTER_ISSUE_1_OCT_2023.pdf">Newsletter 1 — Oct 2023</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="img/NEURON-ISU-02-2024.pdf">Newsletter 2 — Jan 2024</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="img/NEURON-MAR-2025-ISSUE-03-PDF.pdf">Newsletter 3 — Mar 2025</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="img/NEURON-ISSUE-04-JUNE-2025.pdf">Newsletter 4 — Jun 2025</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="img/NEURON-OCT-2025-ISSUE-05.pdf">Newsletter 5 — Oct 2025</a></li>
+            <li><a
+                class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
+                href="img/NEURON-ISSUE-06.pdf">Newsletter 6 — May 2026</a></li>
+          </ul>
+        </li>
+
+        <li><a href="careers.html"
+            class="block px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Careers</a>
+        </li>
+        <li><a href="contact.html"
+            class="block px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Contact
+          </a></li>
+      </ul>
+    </nav>
+
+    <!-- Mobile navigation -->
+    <nav id="mobile-menu"
+      class="hidden max-h-[calc(100vh-70px)] overflow-y-auto border-t border-slate-100 bg-white shadow-soft xl:hidden"
+      aria-label="Mobile">
+      <ul class="mx-auto max-w-7xl divide-y divide-slate-100 px-4 py-2 sm:px-6">
+        <li><a href="index.html" class="block py-3.5 font-bold text-brand-700">Home</a></li>
+        <li>
+          <details>
+            <summary class="flex cursor-pointer items-center justify-between py-3.5 font-bold text-navy-900">About Us
+              <svg class="chev h-5 w-5 transition">
+                <use href="#i-chev" />
+              </svg></summary>
+            <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-[14px] font-semibold">
+              <li><a class="block py-2" href="about.html">About the Hospital</a></li>
+              <li><a class="block py-2" href="md-message.html">Managing Director</a></li>
+              <li><a class="block py-2" href="meet-the-team.html">Meet the Team</a></li>
+              <li><a class="block py-2" href="philosophy-of-care.html">Philosophy of Care</a></li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details>
+            <summary class="flex cursor-pointer items-center justify-between py-3.5 font-bold text-navy-900">Services
+              <svg class="chev h-5 w-5 transition">
+                <use href="#i-chev" />
+              </svg></summary>
+            <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-[14px] font-semibold">
+              <li><a class="block py-2" href="services.html">Our Services</a></li>
+              <li><a class="block py-2" href="neurology.html">Neurology</a></li>
+              <li><a class="block py-2" href="neurosurgery.html">Neurosurgery</a></li>
+              <li><a class="block py-2" href="neuro-critical-care.html">Neuro Anaesthesia &amp; Neuro Critical
+                  Care</a></li>
+              <li><a class="block py-2" href="neuro-radiology.html">Neuro Radiology</a></li>
+              <li><a class="block py-2" href="neuro-rehabilitation.html">Neuro Rehabilitation</a></li>
+              <li><a class="block py-2" href="pain-management.html">Pain Management</a></li>
+              <li><a class="block py-2" href="neuropsychiatry.html">Neuropsychiatry</a></li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details>
+            <summary class="flex cursor-pointer items-center justify-between py-3.5 font-bold text-navy-900">
+              Facilities <svg class="chev h-5 w-5 transition">
+                <use href="#i-chev" />
+              </svg></summary>
+            <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-[14px] font-semibold">
+              <li><a class="block py-2" href="facilities.html">Our Facilities</a></li>
+              <li><a class="block py-2" href="why-neuroone.html">Why Neuro One</a></li>
+              <li><a class="block py-2" href="advanced-technologies.html">Advanced Technologies</a></li>
+              <li><a class="block py-2" href="quality-safety.html">Quality and Safety</a></li>
+              <li><a class="block py-2" href="emergency.html">Emergency Service</a></li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details>
+            <summary class="flex cursor-pointer items-center justify-between py-3.5 font-bold text-navy-900">Patient
+              Resource <svg class="chev h-5 w-5 transition">
+                <use href="#i-chev" />
+              </svg></summary>
+            <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-[14px] font-semibold">
+              <li><a class="block py-2" href="patient-resources.html">Patient Resource</a></li>
+              <li><a class="block py-2" href="patient-education.html">Patient Education Resource</a></li>
+            </ul>
+          </details>
+        </li>
+        <li><a href="insurance.html" class="block py-3.5 font-bold text-navy-900">Insurance</a></li>
+        <li><a href="awards.html" class="block py-3.5 font-bold text-navy-900">Awards &amp; Recognitions</a></li>
+        <li>
+          <details>
+            <summary class="flex cursor-pointer items-center justify-between py-3.5 font-bold text-navy-900">News
+              &amp; Events <svg class="chev h-5 w-5 transition">
+                <use href="#i-chev" />
+              </svg></summary>
+            <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-[14px] font-semibold">
+              <li><a class="block py-2" href="success-stories.html">Success Story</a></li>
+              <li><a class="block py-2" href="event-photos.html">Event Photos</a></li>
+              <li><a class="block py-2" href="testimonials.html">Testimonial</a></li>
+              <li><a class="block py-2" href="articles-in-press.html">Articles in Press</a></li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details>
+            <summary class="flex cursor-pointer items-center justify-between py-3.5 font-bold text-navy-900">
+              Newsletter <svg class="chev h-5 w-5 transition">
+                <use href="#i-chev" />
+              </svg></summary>
+            <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-[14px] font-semibold">
+              <li><a class="block py-2" href="img/NEURON_NEWSLETTER_ISSUE_1_OCT_2023.pdf">Newsletter 1 — Oct 2023</a>
+              </li>
+              <li><a class="block py-2" href="img/NEURON-ISU-02-2024.pdf">Newsletter 2 — Jan 2024</a></li>
+              <li><a class="block py-2" href="img/NEURON-MAR-2025-ISSUE-03-PDF.pdf">Newsletter 3 — Mar 2025</a></li>
+              <li><a class="block py-2" href="img/NEURON-ISSUE-04-JUNE-2025.pdf">Newsletter 4 — Jun 2025</a></li>
+              <li><a class="block py-2" href="img/NEURON-OCT-2025-ISSUE-05.pdf">Newsletter 5 — Oct 2025</a></li>
+              <li><a class="block py-2" href="img/NEURON-ISSUE-06.pdf">Newsletter 6 — May 2026</a></li>
+            </ul>
+          </details>
+        </li>
+        <li><a href="careers.html" class="block py-3.5 font-bold text-navy-900">Careers</a></li>
+        <li><a href="contact.html" class="block py-3.5 font-bold text-navy-900">Contact Us</a></li>
+        <li class="grid grid-cols-2 gap-3 py-4">
+          <a href="tel:+914312221222"
+            class="rounded-xl bg-red-600 px-4 py-3 text-center font-bold text-white">Emergency</a>
+          <a href="book-appointment.html"
+            class="rounded-xl bg-navy-900 px-4 py-3 text-center font-bold text-white">Book Now</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ================= HERO (animated neuron background) ================= -->
+    <section id="top" class="hero-bg relative overflow-hidden pt-28 text-white xl:pt-44" aria-labelledby="hero-title">
+      <!-- NEURON CANVAS BACKGROUND -->
+      <div class="neural absolute inset-0 opacity-50" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true"><span class="nv-dot-bg" style="left:32%;top:48%;animation-delay:-1s;animation-duration:15s;width:4px;height:3px"></span><span class="nv-dot-bg" style="left:13%;top:18%;animation-delay:-0s;animation-duration:15s;width:5px;height:4px"></span><span class="nv-dot-bg" style="left:9%;top:38%;animation-delay:-8s;animation-duration:17s;width:4px;height:4px"></span><span class="nv-dot-bg" style="left:24%;top:23%;animation-delay:-4s;animation-duration:12s;width:3px;height:5px"></span><span class="nv-dot-bg" style="left:35%;top:44%;animation-delay:-3s;animation-duration:11s;width:4px;height:4px"></span><span class="nv-dot-bg" style="left:82%;top:57%;animation-delay:-1s;animation-duration:18s;width:4px;height:5px"></span><span class="nv-dot-bg" style="left:51%;top:74%;animation-delay:-3s;animation-duration:11s;width:3px;height:4px"></span><span class="nv-dot-bg" style="left:37%;top:21%;animation-delay:-8s;animation-duration:13s;width:3px;height:4px"></span><span class="nv-dot-bg" style="left:75%;top:49%;animation-delay:-12s;animation-duration:17s;width:3px;height:4px"></span><span class="nv-dot-bg" style="left:56%;top:86%;animation-delay:-4s;animation-duration:15s;width:4px;height:3px"></span><span class="nv-dot-bg" style="left:31%;top:49%;animation-delay:-4s;animation-duration:9s;width:3px;height:3px"></span><span class="nv-dot-bg" style="left:61%;top:90%;animation-delay:-4s;animation-duration:17s;width:5px;height:5px"></span><span class="nv-dot-bg" style="left:62%;top:53%;animation-delay:-2s;animation-duration:12s;width:3px;height:4px"></span><span class="nv-dot-bg" style="left:27%;top:91%;animation-delay:-10s;animation-duration:16s;width:4px;height:3px"></span><span class="nv-dot-bg" style="left:47%;top:65%;animation-delay:-11s;animation-duration:18s;width:4px;height:5px"></span><span class="nv-dot-bg" style="left:73%;top:35%;animation-delay:-5s;animation-duration:10s;width:3px;height:5px"></span><span class="nv-dot-bg" style="left:31%;top:45%;animation-delay:-12s;animation-duration:18s;width:5px;height:3px"></span><span class="nv-dot-bg" style="left:17%;top:52%;animation-delay:-2s;animation-duration:13s;width:4px;height:3px"></span><span class="nv-dot-bg" style="left:7%;top:55%;animation-delay:-11s;animation-duration:10s;width:4px;height:5px"></span><span class="nv-dot-bg" style="left:88%;top:51%;animation-delay:-0s;animation-duration:14s;width:4px;height:4px"></span><span class="nv-dot-bg" style="left:21%;top:93%;animation-delay:-6s;animation-duration:18s;width:5px;height:3px"></span><span class="nv-dot-bg" style="left:39%;top:89%;animation-delay:-3s;animation-duration:16s;width:4px;height:3px"></span></div>
+
+      <div class="relative mx-auto -mt-14 grid max-w-7xl items-center gap-12 px-6 pb-28 lg:grid-cols-12 lg:pb-32">
+        <div class="lg:col-span-7">
+          <p
+            class="mb-5 inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-normal text-brand-200 backdrop-blur sm:px-4 sm:text-xs sm:tracking-widest">
+            <svg class="hidden h-4 w-4 sm:block">
+              <use href="#i-shield" />
+            </svg> NABH Accredited Neuro Hospital · Trichy
+          </p>
+          <h1 id="hero-title" class="text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
+            Advanced <span class="text-brand-300">Neurology</span> &amp; Neurosurgery Care
+          </h1>
+          <p class="mt-6 max-w-2xl text-lg leading-relaxed text-navy-100 sm:text-xl">World-Class Brain, Spine &amp;
+            Nerve Care Delivered by Leading Specialists</p>
+          <div class="mt-10 flex flex-col gap-4 sm:flex-row">
             <a href="book-appointment.html"
-              class="hidden rounded-xl bg-navy-900 px-5 py-2.5 text-sm font-bold text-white shadow-card transition hover:-translate-y-0.5 hover:bg-navy-800 sm:inline-block">Book
-              Appointment</a>
-            <button id="menu-btn"
-              class="grid h-11 w-11 place-items-center rounded-xl border border-slate-200 bg-white text-navy-900 xl:hidden"
-              aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-              <svg class="h-6 w-6" id="menu-open-icon">
-                <use href="#i-menu" />
+              class="group inline-flex items-center justify-center gap-2 rounded-xl bg-brand-500 px-8 py-4 text-base font-bold text-white shadow-lg shadow-brand-500/30 transition hover:-translate-y-0.5 hover:bg-brand-400">
+              Book Appointment <svg class="h-5 w-5 transition group-hover:translate-x-1">
+                <use href="#i-arrow" />
               </svg>
-              <svg class="hidden h-6 w-6" id="menu-close-icon">
-                <use href="#i-close" />
-              </svg>
-            </button>
+            </a>
+            <a href="tel:+914312221222"
+              class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-8 py-4 text-base font-bold text-white backdrop-blur transition hover:bg-white/20">
+              <svg class="h-5 w-5 text-red-300">
+                <use href="#i-phone" />
+              </svg> Emergency Care
+            </a>
+          </div>
+        </div>
+
+        <!-- Animated neuro illustration carousel -->
+        <div class="relative lg:col-span-5" role="region" aria-label="Brain, spine and nerve care illustrations" id="nv">
+          <div class="relative mx-auto aspect-square w-full max-w-md">
+            <div class="nv-ring nv-ring-1" aria-hidden="true"></div>
+            <div class="nv-ring nv-ring-2" aria-hidden="true"></div>
+            <div class="nv-glow" aria-hidden="true"></div>
+            <div class="absolute inset-5 overflow-hidden rounded-[2rem] border border-white/15 bg-white/5 shadow-2xl backdrop-blur-sm">
+              <div class="neural absolute inset-0 opacity-40" aria-hidden="true"></div>
+              <div class="nslide active" aria-hidden="true"><svg viewBox="0 0 400 400" class="h-full w-full" fill="none"><defs><radialGradient id="bg1" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#52bff3" stop-opacity=".28"/><stop offset="1" stop-color="#52bff3" stop-opacity="0"/></radialGradient></defs><ellipse cx="200" cy="195" rx="170" ry="130" fill="url(#bg1)"/><g style="filter:drop-shadow(0 0 6px rgba(82,191,243,.7))"><path d="M70 215 C45 175 65 120 120 108 C150 80 215 75 245 100 C300 92 345 130 338 180 C352 215 330 255 290 258 C275 285 225 290 205 268 C185 290 130 288 118 258 C85 262 58 245 70 215 Z" pathLength="1" class="nv-draw" style="--d:0s" fill="none" stroke="rgba(190,230,250,1)" stroke-width="2.6" stroke-linecap="round" /><path d="M205 268 C208 295 212 320 214 345" pathLength="1" class="nv-draw" style="--d:0.6s" fill="none" stroke="rgba(190,230,250,0.7)" stroke-width="5" stroke-linecap="round" /><path d="M235 262 C262 262 288 272 282 288 C265 302 235 296 225 280" pathLength="1" class="nv-draw" style="--d:0.7s" fill="none" stroke="rgba(190,230,250,0.8)" stroke-width="2" stroke-linecap="round" /><path d="M120 108 C135 140 120 165 140 185" pathLength="1" class="nv-draw" style="--d:0.5s" fill="none" stroke="rgba(190,230,250,0.75)" stroke-width="1.4" stroke-linecap="round" /><path d="M170 90 C165 130 185 150 175 185 C170 205 190 220 185 250" pathLength="1" class="nv-draw" style="--d:0.6799999999999999s" fill="none" stroke="rgba(190,230,250,0.75)" stroke-width="1.4" stroke-linecap="round" /><path d="M245 100 C235 135 255 155 245 185" pathLength="1" class="nv-draw" style="--d:0.86s" fill="none" stroke="rgba(190,230,250,0.75)" stroke-width="1.4" stroke-linecap="round" /><path d="M300 100 C285 135 305 160 290 190 C285 215 300 235 290 258" pathLength="1" class="nv-draw" style="--d:1.04s" fill="none" stroke="rgba(190,230,250,0.75)" stroke-width="1.4" stroke-linecap="round" /><path d="M95 175 C130 170 150 195 185 190" pathLength="1" class="nv-draw" style="--d:1.22s" fill="none" stroke="rgba(190,230,250,0.75)" stroke-width="1.4" stroke-linecap="round" /><path d="M185 190 C220 195 240 175 290 190" pathLength="1" class="nv-draw" style="--d:1.4s" fill="none" stroke="rgba(190,230,250,0.75)" stroke-width="1.4" stroke-linecap="round" /><path d="M120 258 C130 235 160 235 175 250" pathLength="1" class="nv-draw" style="--d:1.58s" fill="none" stroke="rgba(190,230,250,0.75)" stroke-width="1.4" stroke-linecap="round" /><path d="M210 150 C225 165 215 185 232 205" pathLength="1" class="nv-draw" style="--d:1.76s" fill="none" stroke="rgba(190,230,250,0.75)" stroke-width="1.4" stroke-linecap="round" /><path d="M320 140 C305 165 320 185 310 205" pathLength="1" class="nv-draw" style="--d:1.94s" fill="none" stroke="rgba(190,230,250,0.75)" stroke-width="1.4" stroke-linecap="round" /></g><line x1="120" y1="150" x2="175" y2="130" stroke="rgba(143,214,248,.45)" stroke-width=".9" stroke-dasharray="3 4"/><line x1="175" y1="130" x2="245" y2="140" stroke="rgba(143,214,248,.45)" stroke-width=".9" stroke-dasharray="3 4"/><line x1="245" y1="140" x2="300" y2="160" stroke="rgba(143,214,248,.45)" stroke-width=".9" stroke-dasharray="3 4"/><line x1="175" y1="130" x2="150" y2="215" stroke="rgba(143,214,248,.45)" stroke-width=".9" stroke-dasharray="3 4"/><line x1="245" y1="140" x2="220" y2="215" stroke="rgba(143,214,248,.45)" stroke-width=".9" stroke-dasharray="3 4"/><line x1="300" y1="160" x2="285" y2="225" stroke="rgba(143,214,248,.45)" stroke-width=".9" stroke-dasharray="3 4"/><line x1="150" y1="215" x2="220" y2="215" stroke="rgba(143,214,248,.45)" stroke-width=".9" stroke-dasharray="3 4"/><line x1="220" y1="215" x2="285" y2="225" stroke="rgba(143,214,248,.45)" stroke-width=".9" stroke-dasharray="3 4"/><line x1="150" y1="215" x2="190" y2="260" stroke="rgba(143,214,248,.45)" stroke-width=".9" stroke-dasharray="3 4"/><line x1="220" y1="215" x2="190" y2="260" stroke="rgba(143,214,248,.45)" stroke-width=".9" stroke-dasharray="3 4"/><line x1="120" y1="150" x2="100" y2="190" stroke="rgba(143,214,248,.45)" stroke-width=".9" stroke-dasharray="3 4"/><line x1="100" y1="190" x2="150" y2="215" stroke="rgba(143,214,248,.45)" stroke-width=".9" stroke-dasharray="3 4"/><line x1="175" y1="130" x2="215" y2="115" stroke="rgba(143,214,248,.45)" stroke-width=".9" stroke-dasharray="3 4"/><line x1="215" y1="115" x2="245" y2="140" stroke="rgba(143,214,248,.45)" stroke-width=".9" stroke-dasharray="3 4"/><circle cx="120" cy="150" r="4" fill="#fff" class="nv-pulse-node" style="--d:0.0s"/><circle cx="120" cy="150" r="9" stroke="rgba(143,214,248,.5)" stroke-width="1"/><circle cx="175" cy="130" r="4" fill="#fff" class="nv-pulse-node" style="--d:0.3s"/><circle cx="175" cy="130" r="9" stroke="rgba(143,214,248,.5)" stroke-width="1"/><circle cx="245" cy="140" r="4" fill="#fff" class="nv-pulse-node" style="--d:0.6s"/><circle cx="245" cy="140" r="9" stroke="rgba(143,214,248,.5)" stroke-width="1"/><circle cx="300" cy="160" r="4" fill="#fff" class="nv-pulse-node" style="--d:0.8999999999999999s"/><circle cx="300" cy="160" r="9" stroke="rgba(143,214,248,.5)" stroke-width="1"/><circle cx="150" cy="215" r="4" fill="#fff" class="nv-pulse-node" style="--d:1.2s"/><circle cx="150" cy="215" r="9" stroke="rgba(143,214,248,.5)" stroke-width="1"/><circle cx="220" cy="215" r="4" fill="#fff" class="nv-pulse-node" style="--d:1.5s"/><circle cx="220" cy="215" r="9" stroke="rgba(143,214,248,.5)" stroke-width="1"/><circle cx="285" cy="225" r="4" fill="#fff" class="nv-pulse-node" style="--d:1.7999999999999998s"/><circle cx="285" cy="225" r="9" stroke="rgba(143,214,248,.5)" stroke-width="1"/><circle cx="190" cy="260" r="4" fill="#fff" class="nv-pulse-node" style="--d:2.1s"/><circle cx="190" cy="260" r="9" stroke="rgba(143,214,248,.5)" stroke-width="1"/><circle cx="100" cy="190" r="4" fill="#fff" class="nv-pulse-node" style="--d:2.4s"/><circle cx="100" cy="190" r="9" stroke="rgba(143,214,248,.5)" stroke-width="1"/><circle cx="215" cy="115" r="4" fill="#fff" class="nv-pulse-node" style="--d:2.6999999999999997s"/><circle cx="215" cy="115" r="9" stroke="rgba(143,214,248,.5)" stroke-width="1"/><circle r="3.2" fill="#fff" style="filter:drop-shadow(0 0 6px #52bff3)"><animateMotion dur="2.6s" begin="0.0s" repeatCount="indefinite" path="M120 150 L300 160"/></circle><circle r="3.2" fill="#fff" style="filter:drop-shadow(0 0 6px #52bff3)"><animateMotion dur="3.1s" begin="0.7s" repeatCount="indefinite" path="M100 190 L285 225"/></circle><circle r="3.2" fill="#fff" style="filter:drop-shadow(0 0 6px #52bff3)"><animateMotion dur="3.6s" begin="1.4s" repeatCount="indefinite" path="M215 115 L190 260"/></circle><circle r="3.2" fill="#fff" style="filter:drop-shadow(0 0 6px #52bff3)"><animateMotion dur="4.1s" begin="2.0999999999999996s" repeatCount="indefinite" path="M150 215 L245 140"/></circle><rect x="40" y="0" width="320" height="2" fill="rgba(143,214,248,.8)" class="nv-scan" style="filter:drop-shadow(0 0 8px #52bff3)"/></svg></div>
+              <div class="nslide" aria-hidden="true"><svg viewBox="0 0 400 400" class="h-full w-full" fill="none"><defs><radialGradient id="bg2" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#52bff3" stop-opacity=".25"/><stop offset="1" stop-color="#52bff3" stop-opacity="0"/></radialGradient></defs><ellipse cx="200" cy="200" rx="150" ry="170" fill="url(#bg2)"/><ellipse cx="200.0" cy="85" rx="17.3" ry="4" fill="rgba(143,214,248,.25)"/><path d="M173.0 69 Q149.0 69 127.0 63" pathLength="1" class="nv-draw" style="--d:0.4s" fill="none" stroke="rgba(190,230,250,0.7)" stroke-width="1.2" stroke-linecap="round" /><circle cx="127.0" cy="63" r="3" fill="#fff" class="nv-pulse-node" style="--d:0.0s"/><path d="M227.0 69 Q251.0 69 273.0 75" pathLength="1" class="nv-draw" style="--d:0.4s" fill="none" stroke="rgba(190,230,250,0.7)" stroke-width="1.2" stroke-linecap="round" /><circle cx="273.0" cy="75" r="3" fill="#fff" class="nv-pulse-node" style="--d:0.0s"/><rect x="173.0" y="58" width="54" height="22" rx="9" class="nv-vert" style="--i:0" stroke-width="1.6"/><ellipse cx="210.9" cy="117" rx="18.9" ry="4" fill="rgba(143,214,248,.25)"/><path d="M181.4 101 Q157.4 101 125.4 95" pathLength="1" class="nv-draw" style="--d:0.55s" fill="none" stroke="rgba(190,230,250,0.7)" stroke-width="1.2" stroke-linecap="round" /><circle cx="125.4" cy="95" r="3" fill="#fff" class="nv-pulse-node" style="--d:0.25s"/><path d="M240.4 101 Q264.4 101 296.4 107" pathLength="1" class="nv-draw" style="--d:0.55s" fill="none" stroke="rgba(190,230,250,0.7)" stroke-width="1.2" stroke-linecap="round" /><circle cx="296.4" cy="107" r="3" fill="#fff" class="nv-pulse-node" style="--d:0.25s"/><rect x="181.4" y="90" width="59" height="22" rx="9" class="nv-vert" style="--i:1" stroke-width="1.6"/><ellipse cx="216.0" cy="149" rx="20.5" ry="4" fill="rgba(143,214,248,.25)"/><path d="M184.0 133 Q160.0 133 118.0 127" pathLength="1" class="nv-draw" style="--d:0.7s" fill="none" stroke="rgba(190,230,250,0.7)" stroke-width="1.2" stroke-linecap="round" /><circle cx="118.0" cy="127" r="3" fill="#fff" class="nv-pulse-node" style="--d:0.5s"/><path d="M248.0 133 Q272.0 133 314.0 139" pathLength="1" class="nv-draw" style="--d:0.7s" fill="none" stroke="rgba(190,230,250,0.7)" stroke-width="1.2" stroke-linecap="round" /><circle cx="314.0" cy="139" r="3" fill="#fff" class="nv-pulse-node" style="--d:0.5s"/><rect x="184.0" y="122" width="64" height="22" rx="9" class="nv-vert" style="--i:2" stroke-width="1.6"/><ellipse cx="212.4" cy="181" rx="22.1" ry="4" fill="rgba(143,214,248,.25)"/><path d="M177.9 165 Q153.9 165 131.9 159" pathLength="1" class="nv-draw" style="--d:0.85s" fill="none" stroke="rgba(190,230,250,0.7)" stroke-width="1.2" stroke-linecap="round" /><circle cx="131.9" cy="159" r="3" fill="#fff" class="nv-pulse-node" style="--d:0.75s"/><path d="M246.9 165 Q270.9 165 292.9 171" pathLength="1" class="nv-draw" style="--d:0.85s" fill="none" stroke="rgba(190,230,250,0.7)" stroke-width="1.2" stroke-linecap="round" /><circle cx="292.9" cy="171" r="3" fill="#fff" class="nv-pulse-node" style="--d:0.75s"/><rect x="177.9" y="154" width="69" height="22" rx="9" class="nv-vert" style="--i:3" stroke-width="1.6"/><ellipse cx="202.3" cy="213" rx="23.7" ry="4" fill="rgba(143,214,248,.25)"/><path d="M165.3 197 Q141.3 197 109.3 191" pathLength="1" class="nv-draw" style="--d:1.0s" fill="none" stroke="rgba(190,230,250,0.7)" stroke-width="1.2" stroke-linecap="round" /><circle cx="109.3" cy="191" r="3" fill="#fff" class="nv-pulse-node" style="--d:1.0s"/><path d="M239.3 197 Q263.3 197 295.3 203" pathLength="1" class="nv-draw" style="--d:1.0s" fill="none" stroke="rgba(190,230,250,0.7)" stroke-width="1.2" stroke-linecap="round" /><circle cx="295.3" cy="203" r="3" fill="#fff" class="nv-pulse-node" style="--d:1.0s"/><rect x="165.3" y="186" width="74" height="22" rx="9" class="nv-vert" style="--i:4" stroke-width="1.6"/><ellipse cx="190.9" cy="245" rx="25.3" ry="4" fill="rgba(143,214,248,.25)"/><path d="M151.4 229 Q127.4 229 85.4 223" pathLength="1" class="nv-draw" style="--d:1.15s" fill="none" stroke="rgba(190,230,250,0.7)" stroke-width="1.2" stroke-linecap="round" /><circle cx="85.4" cy="223" r="3" fill="#fff" class="nv-pulse-node" style="--d:1.25s"/><path d="M230.4 229 Q254.4 229 296.4 235" pathLength="1" class="nv-draw" style="--d:1.15s" fill="none" stroke="rgba(190,230,250,0.7)" stroke-width="1.2" stroke-linecap="round" /><circle cx="296.4" cy="235" r="3" fill="#fff" class="nv-pulse-node" style="--d:1.25s"/><rect x="151.4" y="218" width="79" height="22" rx="9" class="nv-vert" style="--i:5" stroke-width="1.6"/><ellipse cx="184.4" cy="277" rx="26.9" ry="4" fill="rgba(143,214,248,.25)"/><path d="M142.4 261 Q118.4 261 96.4 255" pathLength="1" class="nv-draw" style="--d:1.2999999999999998s" fill="none" stroke="rgba(190,230,250,0.7)" stroke-width="1.2" stroke-linecap="round" /><circle cx="96.4" cy="255" r="3" fill="#fff" class="nv-pulse-node" style="--d:1.5s"/><path d="M226.4 261 Q250.4 261 272.4 267" pathLength="1" class="nv-draw" style="--d:1.2999999999999998s" fill="none" stroke="rgba(190,230,250,0.7)" stroke-width="1.2" stroke-linecap="round" /><circle cx="272.4" cy="267" r="3" fill="#fff" class="nv-pulse-node" style="--d:1.5s"/><rect x="142.4" y="250" width="84" height="22" rx="9" class="nv-vert" style="--i:6" stroke-width="1.6"/><ellipse cx="186.3" cy="309" rx="28.5" ry="4" fill="rgba(143,214,248,.25)"/><path d="M141.8 293 Q117.8 293 85.8 287" pathLength="1" class="nv-draw" style="--d:1.4500000000000002s" fill="none" stroke="rgba(190,230,250,0.7)" stroke-width="1.2" stroke-linecap="round" /><circle cx="85.8" cy="287" r="3" fill="#fff" class="nv-pulse-node" style="--d:1.75s"/><path d="M230.8 293 Q254.8 293 286.8 299" pathLength="1" class="nv-draw" style="--d:1.4500000000000002s" fill="none" stroke="rgba(190,230,250,0.7)" stroke-width="1.2" stroke-linecap="round" /><circle cx="286.8" cy="299" r="3" fill="#fff" class="nv-pulse-node" style="--d:1.75s"/><rect x="141.8" y="282" width="89" height="22" rx="9" class="nv-vert" style="--i:7" stroke-width="1.6"/><path d="M148.5 325 Q124.5 325 82.5 319" pathLength="1" class="nv-draw" style="--d:1.6s" fill="none" stroke="rgba(190,230,250,0.7)" stroke-width="1.2" stroke-linecap="round" /><circle cx="82.5" cy="319" r="3" fill="#fff" class="nv-pulse-node" style="--d:2.0s"/><path d="M242.5 325 Q266.5 325 308.5 331" pathLength="1" class="nv-draw" style="--d:1.6s" fill="none" stroke="rgba(190,230,250,0.7)" stroke-width="1.2" stroke-linecap="round" /><circle cx="308.5" cy="331" r="3" fill="#fff" class="nv-pulse-node" style="--d:2.0s"/><rect x="148.5" y="314" width="94" height="22" rx="9" class="nv-vert" style="--i:8" stroke-width="1.6"/><path d="M200.0 69 L210.9 101 L216.0 133 L212.4 165 L202.3 197 L190.9 229 L184.4 261 L186.3 293 L195.5 325" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-dasharray="2 5"/><circle r="4" fill="#fff" style="filter:drop-shadow(0 0 8px #52bff3)"><animateMotion dur="3s" begin="0s" repeatCount="indefinite" path="M200.0 69 L210.9 101 L216.0 133 L212.4 165 L202.3 197 L190.9 229 L184.4 261 L186.3 293 L195.5 325"/></circle><circle r="4" fill="#fff" style="filter:drop-shadow(0 0 8px #52bff3)"><animateMotion dur="3s" begin="1s" repeatCount="indefinite" path="M200.0 69 L210.9 101 L216.0 133 L212.4 165 L202.3 197 L190.9 229 L184.4 261 L186.3 293 L195.5 325"/></circle><circle r="4" fill="#fff" style="filter:drop-shadow(0 0 8px #52bff3)"><animateMotion dur="3s" begin="2s" repeatCount="indefinite" path="M200.0 69 L210.9 101 L216.0 133 L212.4 165 L202.3 197 L190.9 229 L184.4 261 L186.3 293 L195.5 325"/></circle></svg></div>
+              <div class="nslide" aria-hidden="true"><svg viewBox="0 0 400 400" class="h-full w-full" fill="none"><defs><radialGradient id="bg3" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#52bff3" stop-opacity=".3"/><stop offset="1" stop-color="#52bff3" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="170" fill="url(#bg3)"/><g style="filter:drop-shadow(0 0 5px rgba(82,191,243,.7))"><path d="M190 200 C165 175 140 160 110 150" pathLength="1" class="nv-draw" style="--d:0.2s" fill="none" stroke="rgba(190,230,250,1.0)" stroke-width="2.4" stroke-linecap="round" /><path d="M140 160 C130 140 125 120 110 100" pathLength="1" class="nv-draw" style="--d:0.38s" fill="none" stroke="rgba(190,230,250,0.8)" stroke-width="1.5" stroke-linecap="round" /><path d="M125 155 C110 165 95 185 80 190" pathLength="1" class="nv-draw" style="--d:0.56s" fill="none" stroke="rgba(190,230,250,0.8)" stroke-width="1.5" stroke-linecap="round" /><path d="M190 200 C170 215 145 235 120 250" pathLength="1" class="nv-draw" style="--d:0.74s" fill="none" stroke="rgba(190,230,250,1.0)" stroke-width="2.4" stroke-linecap="round" /><path d="M145 235 C140 260 130 275 115 290" pathLength="1" class="nv-draw" style="--d:0.9199999999999999s" fill="none" stroke="rgba(190,230,250,0.8)" stroke-width="1.5" stroke-linecap="round" /><path d="M150 232 C125 228 105 220 85 225" pathLength="1" class="nv-draw" style="--d:1.0999999999999999s" fill="none" stroke="rgba(190,230,250,0.8)" stroke-width="1.5" stroke-linecap="round" /><path d="M190 200 C185 170 190 145 175 115" pathLength="1" class="nv-draw" style="--d:1.28s" fill="none" stroke="rgba(190,230,250,1.0)" stroke-width="2.4" stroke-linecap="round" /><path d="M188 160 C205 140 225 125 240 100" pathLength="1" class="nv-draw" style="--d:1.46s" fill="none" stroke="rgba(190,230,250,0.8)" stroke-width="1.5" stroke-linecap="round" /><path d="M182 135 C165 125 150 110 140 90" pathLength="1" class="nv-draw" style="--d:1.64s" fill="none" stroke="rgba(190,230,250,0.8)" stroke-width="1.5" stroke-linecap="round" /><path d="M190 200 C195 235 185 255 195 290" pathLength="1" class="nv-draw" style="--d:1.8199999999999998s" fill="none" stroke="rgba(190,230,250,1.0)" stroke-width="2.4" stroke-linecap="round" /><path d="M193 250 C215 265 230 285 245 300" pathLength="1" class="nv-draw" style="--d:1.9999999999999998s" fill="none" stroke="rgba(190,230,250,0.8)" stroke-width="1.5" stroke-linecap="round" /><path d="M205 200 C250 200 280 190 330 200 C350 205 360 215 368 228" pathLength="1" class="nv-draw" style="--d:1.2s" fill="none" stroke="rgba(190,230,250,1)" stroke-width="3.2" stroke-linecap="round" /><path d="M205 200 C250 200 280 190 330 200 C350 205 360 215 368 228" stroke="rgba(143,214,248,.4)" stroke-width="10" stroke-dasharray="22 8" stroke-linecap="round"/></g><circle cx="190" cy="200" r="30" fill="url(#bg3)"/><circle cx="190" cy="200" r="16" fill="#0d3d58" stroke="#fff" stroke-width="2.5" class="nv-soma"/><circle cx="190" cy="200" r="6" fill="#fff"/><circle cx="110" cy="150" r="3.5" fill="#fff" class="nv-pulse-node" style="--d:0.3s"/><circle cx="110" cy="150" r="8" stroke="rgba(143,214,248,.45)"/><circle cx="110" cy="100" r="3.5" fill="#fff" class="nv-pulse-node" style="--d:0.0s"/><circle cx="110" cy="100" r="8" stroke="rgba(143,214,248,.45)"/><circle cx="80" cy="190" r="3.5" fill="#fff" class="nv-pulse-node" style="--d:1.2s"/><circle cx="80" cy="190" r="8" stroke="rgba(143,214,248,.45)"/><circle cx="115" cy="290" r="3.5" fill="#fff" class="nv-pulse-node" style="--d:1.7999999999999998s"/><circle cx="115" cy="290" r="8" stroke="rgba(143,214,248,.45)"/><circle cx="85" cy="225" r="3.5" fill="#fff" class="nv-pulse-node" style="--d:0.6s"/><circle cx="85" cy="225" r="8" stroke="rgba(143,214,248,.45)"/><circle cx="240" cy="100" r="3.5" fill="#fff" class="nv-pulse-node" style="--d:1.2s"/><circle cx="240" cy="100" r="8" stroke="rgba(143,214,248,.45)"/><circle cx="140" cy="90" r="3.5" fill="#fff" class="nv-pulse-node" style="--d:1.7999999999999998s"/><circle cx="140" cy="90" r="8" stroke="rgba(143,214,248,.45)"/><circle cx="245" cy="300" r="3.5" fill="#fff" class="nv-pulse-node" style="--d:1.7999999999999998s"/><circle cx="245" cy="300" r="8" stroke="rgba(143,214,248,.45)"/><circle cx="368" cy="228" r="3.5" fill="#fff" class="nv-pulse-node" style="--d:0.3s"/><circle cx="368" cy="228" r="8" stroke="rgba(143,214,248,.45)"/><circle cx="175" cy="115" r="3.5" fill="#fff" class="nv-pulse-node" style="--d:0.8999999999999999s"/><circle cx="175" cy="115" r="8" stroke="rgba(143,214,248,.45)"/><circle cx="120" cy="250" r="3.5" fill="#fff" class="nv-pulse-node" style="--d:1.7999999999999998s"/><circle cx="120" cy="250" r="8" stroke="rgba(143,214,248,.45)"/><circle cx="195" cy="290" r="3.5" fill="#fff" class="nv-pulse-node" style="--d:0.6s"/><circle cx="195" cy="290" r="8" stroke="rgba(143,214,248,.45)"/><circle r="4" fill="#fff" style="filter:drop-shadow(0 0 8px #52bff3)"><animateMotion dur="2.4s" begin="0.0s" repeatCount="indefinite" path="M205 200 C250 200 280 190 330 200 C350 205 360 215 368 228"/></circle><circle r="4" fill="#fff" style="filter:drop-shadow(0 0 8px #52bff3)"><animateMotion dur="2.4s" begin="0.8s" repeatCount="indefinite" path="M205 200 C250 200 280 190 330 200 C350 205 360 215 368 228"/></circle><circle r="4" fill="#fff" style="filter:drop-shadow(0 0 8px #52bff3)"><animateMotion dur="2.4s" begin="1.6s" repeatCount="indefinite" path="M205 200 C250 200 280 190 330 200 C350 205 360 215 368 228"/></circle></svg></div>
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-950/80 to-transparent px-6 pb-5 pt-12">
+                <p id="nv-title" class="text-lg font-extrabold">Brain Care</p>
+                <p id="nv-sub" class="text-sm text-navy-100">Advanced diagnosis &amp; keyhole surgery</p>
+              </div>
+            </div>
+            <div class="nv-float absolute -left-2 top-10 rounded-2xl bg-white p-3 text-navy-900 shadow-soft sm:-left-8" aria-hidden="true">
+              <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Accreditation</p>
+              <p class="flex items-center gap-2 text-lg font-extrabold"><svg class="h-6 w-6 text-brand-600"><use href="#i-award" /></svg> NABH</p>
+            </div>
+            <div class="nv-float absolute bottom-[3.1rem] -right-3 rounded-2xl bg-white p-3 text-navy-900 shadow-soft sm:-right-9" style="animation-delay:-3s" aria-hidden="true">
+              <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Open</p>
+              <p class="flex items-center gap-2 text-lg font-extrabold"><span class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span> 24/7</p>
+            </div>
+            <div class="absolute -bottom-7 left-1/2 flex -translate-x-1/2 gap-2" id="nv-dots">
+              <button class="nv-dot on" aria-label="Show brain care"></button>
+              <button class="nv-dot" aria-label="Show spine care"></button>
+              <button class="nv-dot" aria-label="Show nerve care"></button>
+            </div>
           </div>
         </div>
       </div>
+      <svg class="absolute -bottom-px left-0 block h-12 w-full text-white sm:h-16 lg:h-20" viewBox="0 0 1440 80"
+        preserveAspectRatio="none" aria-hidden="true">
+        <path fill="currentColor" d="M0 80V40c240 40 480 40 720 10S1200 0 1440 30v50z" />
+      </svg>
+    </section>
 
-      <!-- Desktop navigation bar -->
-      <nav class="hidden bg-navy-900 shadow-lg xl:block" aria-label="Primary">
-        <ul class="mx-auto flex max-w-7xl items-center justify-center px-4">
-          <li><a href="index.html" aria-current="page"
-              class="block px-3 py-3.5 text-[14px] font-bold text-brand-300">Home</a></li>
-
-          <li class="group relative">
-            <a href="about.html"
-              class="flex items-center gap-1 px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">About
-                <svg class="h-3.5 w-3.5 transition group-hover:rotate-180">
-                <use href="#i-chev" />
-              </svg></a>
-            <ul
-              class="invisible absolute left-0 top-full z-50 min-w-[250px] translate-y-2 rounded-b-xl bg-white py-2 opacity-0 shadow-soft transition duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="about.html">About the Hospital</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="md-message.html">Managing Director</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="meet-the-team.html">Meet the Team</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="philosophy-of-care.html">Philosophy of Care</a></li>
-            </ul>
-          </li>
-
-          <li class="group relative">
-            <a href="services.html"
-              class="flex items-center gap-1 px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Services
-              <svg class="h-3.5 w-3.5 transition group-hover:rotate-180">
-                <use href="#i-chev" />
-              </svg></a>
-            <ul
-              class="invisible absolute left-0 top-full z-50 min-w-[300px] translate-y-2 rounded-b-xl bg-white py-2 opacity-0 shadow-soft transition duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="services.html">Our Services</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="neurology.html">Neurology</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="neurosurgery.html">Neurosurgery</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="neuro-critical-care.html">Neuro Anaesthesia &amp; Neuro Critical Care</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="neuro-radiology.html">Neuro Radiology</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="neuro-rehabilitation.html">Neuro Rehabilitation</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="pain-management.html">Pain Management</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="neuropsychiatry.html">Neuropsychiatry</a></li>
-            </ul>
-          </li>
-
-          <li class="group relative">
-            <a href="facilities.html"
-              class="flex items-center gap-1 px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Facilities
-              <svg class="h-3.5 w-3.5 transition group-hover:rotate-180">
-                <use href="#i-chev" />
-              </svg></a>
-            <ul
-              class="invisible absolute left-0 top-full z-50 min-w-[250px] translate-y-2 rounded-b-xl bg-white py-2 opacity-0 shadow-soft transition duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="facilities.html">Our Facilities</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="why-neuroone.html">Why Neuro One</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="advanced-technologies.html">Advanced Technologies</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="quality-safety.html">Quality and Safety</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="emergency.html">Emergency Service</a></li>
-            </ul>
-          </li>
-
-          <li class="group relative" style="display: none;">
-            <a href="patient-resources.html"
-              class="flex items-center gap-1 px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Patient
-              Resource <svg class="h-3.5 w-3.5 transition group-hover:rotate-180">
-                <use href="#i-chev" />
-              </svg></a>
-            <ul
-              class="invisible absolute left-0 top-full z-50 min-w-[250px] translate-y-2 rounded-b-xl bg-white py-2 opacity-0 shadow-soft transition duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="patient-resources.html">Patient Resource</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="patient-education.html">Patient Education Resource</a></li>
-            </ul>
-          </li>
-
-          <li><a href="insurance.html"
-              class="block px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Insurance</a>
-          </li>
-          <li><a href="awards.html"
-              class="block px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Awards &amp;
-              Recognitions</a></li>
-
-          <li class="group relative">
-            <a href="news-events.html"
-              class="flex items-center gap-1 px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">News
-              &amp; Events <svg class="h-3.5 w-3.5 transition group-hover:rotate-180">
-                <use href="#i-chev" />
-              </svg></a>
-            <ul
-              class="invisible absolute left-0 top-full z-50 min-w-[230px] translate-y-2 rounded-b-xl bg-white py-2 opacity-0 shadow-soft transition duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="success-stories.html">Success Story</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="event-photos.html">Event Photos</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="testimonials.html">Testimonial</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="articles-in-press.html">Articles in Press</a></li>
-            </ul>
-          </li>
-
-          <li class="group relative">
-            <a href="newsletters.html"
-              class="flex items-center gap-1 px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Newsletter
-              <svg class="h-3.5 w-3.5 transition group-hover:rotate-180">
-                <use href="#i-chev" />
-              </svg></a>
-            <ul
-              class="invisible absolute right-0 top-full z-50 min-w-[280px] translate-y-2 rounded-b-xl bg-white py-2 opacity-0 shadow-soft transition duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="img/NEURON_NEWSLETTER_ISSUE_1_OCT_2023.pdf">Newsletter 1 — Oct 2023</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="img/NEURON-ISU-02-2024.pdf">Newsletter 2 — Jan 2024</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="img/NEURON-MAR-2025-ISSUE-03-PDF.pdf">Newsletter 3 — Mar 2025</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="img/NEURON-ISSUE-04-JUNE-2025.pdf">Newsletter 4 — Jun 2025</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="img/NEURON-OCT-2025-ISSUE-05.pdf">Newsletter 5 — Oct 2025</a></li>
-              <li><a
-                  class="block px-5 py-2.5 text-[14px] font-semibold text-navy-900 hover:bg-brand-50 hover:text-brand-700"
-                  href="img/NEURON-ISSUE-06.pdf">Newsletter 6 — May 2026</a></li>
-            </ul>
-          </li>
-
-          <li><a href="careers.html"
-              class="block px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Careers</a>
-          </li>
-          <li><a href="contact.html"
-              class="block px-3 py-3.5 text-[14px] font-bold text-white/90 transition hover:text-brand-300">Contact
-               </a></li>
-        </ul>
-      </nav>
-
-      <!-- Mobile navigation (native <details> accordions: no JS needed) -->
-      <nav id="mobile-menu"
-        class="hidden max-h-[calc(100vh-70px)] overflow-y-auto border-t border-slate-100 bg-white shadow-soft xl:hidden"
-        aria-label="Mobile">
-        <ul class="mx-auto max-w-7xl divide-y divide-slate-100 px-4 py-2 sm:px-6">
-          <li><a href="index.html" class="block py-3.5 font-bold text-brand-700">Home</a></li>
-          <li>
-            <details>
-              <summary class="flex cursor-pointer items-center justify-between py-3.5 font-bold text-navy-900">About Us
-                <svg class="chev h-5 w-5 transition">
-                  <use href="#i-chev" />
-                </svg></summary>
-              <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-[14px] font-semibold">
-                <li><a class="block py-2" href="about.html">About the Hospital</a></li>
-                <li><a class="block py-2" href="md-message.html">Managing Director</a></li>
-                <li><a class="block py-2" href="meet-the-team.html">Meet the Team</a></li>
-                <li><a class="block py-2" href="philosophy-of-care.html">Philosophy of Care</a></li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <details>
-              <summary class="flex cursor-pointer items-center justify-between py-3.5 font-bold text-navy-900">Services
-                <svg class="chev h-5 w-5 transition">
-                  <use href="#i-chev" />
-                </svg></summary>
-              <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-[14px] font-semibold">
-                <li><a class="block py-2" href="services.html">Our Services</a></li>
-                <li><a class="block py-2" href="neurology.html">Neurology</a></li>
-                <li><a class="block py-2" href="neurosurgery.html">Neurosurgery</a></li>
-                <li><a class="block py-2" href="neuro-critical-care.html">Neuro Anaesthesia &amp; Neuro Critical
-                    Care</a></li>
-                <li><a class="block py-2" href="neuro-radiology.html">Neuro Radiology</a></li>
-                <li><a class="block py-2" href="neuro-rehabilitation.html">Neuro Rehabilitation</a></li>
-                <li><a class="block py-2" href="pain-management.html">Pain Management</a></li>
-                <li><a class="block py-2" href="neuropsychiatry.html">Neuropsychiatry</a></li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <details>
-              <summary class="flex cursor-pointer items-center justify-between py-3.5 font-bold text-navy-900">
-                Facilities <svg class="chev h-5 w-5 transition">
-                  <use href="#i-chev" />
-                </svg></summary>
-              <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-[14px] font-semibold">
-                <li><a class="block py-2" href="facilities.html">Our Facilities</a></li>
-                <li><a class="block py-2" href="why-neuroone.html">Why Neuro One</a></li>
-                <li><a class="block py-2" href="advanced-technologies.html">Advanced Technologies</a></li>
-                <li><a class="block py-2" href="quality-safety.html">Quality and Safety</a></li>
-                <li><a class="block py-2" href="emergency.html">Emergency Service</a></li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <details>
-              <summary class="flex cursor-pointer items-center justify-between py-3.5 font-bold text-navy-900">Patient
-                Resource <svg class="chev h-5 w-5 transition">
-                  <use href="#i-chev" />
-                </svg></summary>
-              <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-[14px] font-semibold">
-                <li><a class="block py-2" href="patient-resources.html">Patient Resource</a></li>
-                <li><a class="block py-2" href="patient-education.html">Patient Education Resource</a></li>
-              </ul>
-            </details>
-          </li>
-          <li><a href="insurance.html" class="block py-3.5 font-bold text-navy-900">Insurance</a></li>
-          <li><a href="awards.html" class="block py-3.5 font-bold text-navy-900">Awards &amp; Recognitions</a></li>
-          <li>
-            <details>
-              <summary class="flex cursor-pointer items-center justify-between py-3.5 font-bold text-navy-900">News
-                &amp; Events <svg class="chev h-5 w-5 transition">
-                  <use href="#i-chev" />
-                </svg></summary>
-              <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-[14px] font-semibold">
-                <li><a class="block py-2" href="success-stories.html">Success Story</a></li>
-                <li><a class="block py-2" href="event-photos.html">Event Photos</a></li>
-                <li><a class="block py-2" href="testimonials.html">Testimonial</a></li>
-                <li><a class="block py-2" href="articles-in-press.html">Articles in Press</a></li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <details>
-              <summary class="flex cursor-pointer items-center justify-between py-3.5 font-bold text-navy-900">
-                Newsletter <svg class="chev h-5 w-5 transition">
-                  <use href="#i-chev" />
-                </svg></summary>
-              <ul class="mb-3 space-y-1 border-l-2 border-brand-200 pl-4 text-[14px] font-semibold">
-                <li><a class="block py-2" href="img/NEURON_NEWSLETTER_ISSUE_1_OCT_2023.pdf">Newsletter 1 — Oct 2023</a>
-                </li>
-                <li><a class="block py-2" href="img/NEURON-ISU-02-2024.pdf">Newsletter 2 — Jan 2024</a></li>
-                <li><a class="block py-2" href="img/NEURON-MAR-2025-ISSUE-03-PDF.pdf">Newsletter 3 — Mar 2025</a></li>
-                <li><a class="block py-2" href="img/NEURON-ISSUE-04-JUNE-2025.pdf">Newsletter 4 — Jun 2025</a></li>
-                <li><a class="block py-2" href="img/NEURON-OCT-2025-ISSUE-05.pdf">Newsletter 5 — Oct 2025</a></li>
-                <li><a class="block py-2" href="img/NEURON-ISSUE-06.pdf">Newsletter 6 — May 2026</a></li>
-              </ul>
-            </details>
-          </li>
-          <li><a href="careers.html" class="block py-3.5 font-bold text-navy-900">Careers</a></li>
-          <li><a href="contact.html" class="block py-3.5 font-bold text-navy-900">Contact Us</a></li>
-          <li class="grid grid-cols-2 gap-3 py-4">
-            <a href="tel:+914312221222"
-              class="rounded-xl bg-red-600 px-4 py-3 text-center font-bold text-white">Emergency</a>
-            <a href="book-appointment.html"
-              class="rounded-xl bg-navy-900 px-4 py-3 text-center font-bold text-white">Book Now</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-
-    <main id="main">
-
-      <!-- ================= HERO ================= -->
-      <section id="top" class="hero-bg relative overflow-hidden pt-28 text-white xl:pt-44" aria-labelledby="hero-title">
-        <div class="neural absolute inset-0 opacity-60" aria-hidden="true"></div>
-        <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-6 pb-28 lg:grid-cols-12 lg:pb-32">
-          <div class="lg:col-span-7">
-            <p
-              class="mb-5 inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-normal text-brand-200 backdrop-blur sm:px-4 sm:text-xs sm:tracking-widest">
-              <svg class="hidden h-4 w-4 sm:block">
+    <!-- ================= TRUST INDICATORS ================= -->
+    <section class="relative z-10 pb-12 pt-10 sm:pt-14" aria-label="Hospital highlights">
+      <div class="mx-auto max-w-7xl px-6">
+        <ul
+          class="grid gap-4 rounded-3xl border border-slate-100 bg-white p-4 shadow-soft sm:grid-cols-2 lg:grid-cols-4 lg:p-6">
+          <li class="reveal flex items-center gap-4 rounded-2xl p-4 transition hover:bg-brand-50/60"><span
+              class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-600"><svg
+                class="h-7 w-7">
                 <use href="#i-shield" />
-              </svg> NABH Accredited Neuro Hospital · Trichy
-            </p>
-            <h1 id="hero-title" class="text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
-              Advanced <span class="text-brand-300">Neurology</span> &amp; Neurosurgery Care
-            </h1>
-            <p class="mt-6 max-w-2xl text-lg leading-relaxed text-navy-100 sm:text-xl">World-Class Brain, Spine &amp;
-              Nerve Care Delivered by Leading Specialists</p>
-            <div class="mt-10 flex flex-col gap-4 sm:flex-row">
-              <a href="book-appointment.html"
-                class="group inline-flex items-center justify-center gap-2 rounded-xl bg-brand-500 px-8 py-4 text-base font-bold text-white shadow-lg shadow-brand-500/30 transition hover:-translate-y-0.5 hover:bg-brand-400">
-                Book Appointment <svg class="h-5 w-5 transition group-hover:translate-x-1">
+              </svg></span>
+            <div>
+              <p class="text-2xl font-extrabold text-navy-900">NABH</p>
+              <p class="text-[14px] text-slate-500">Accredited Hospital</p>
+            </div>
+          </li>
+          <li class="reveal flex items-center gap-4 rounded-2xl p-4 transition hover:bg-brand-50/60"><span
+              class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-600"><svg
+                class="h-7 w-7">
+                <use href="#i-award" />
+              </svg></span>
+            <div>
+              <p class="text-2xl font-extrabold text-navy-900"><span data-counter="25" data-suffix="+">0</span></p>
+              <p class="text-sm text-slate-500">Years Experience</p>
+            </div>
+          </li>
+          <li class="reveal flex items-center gap-4 rounded-2xl p-4 transition hover:bg-brand-50/60"><span
+              class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-600"><svg
+                class="h-7 w-7">
+                <use href="#i-heart" />
+              </svg></span>
+            <div>
+              <p class="text-2xl font-extrabold text-navy-900"><span data-counter="50000" data-suffix="+">0</span></p>
+              <p class="text-sm text-slate-500">Patients Treated</p>
+            </div>
+          </li>
+          <li class="reveal flex items-center gap-4 rounded-2xl p-4 transition hover:bg-brand-50/60"><span
+              class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-600"><svg
+                class="h-7 w-7">
+                <use href="#i-users" />
+              </svg></span>
+            <div>
+              <p class="text-2xl font-extrabold text-navy-900"><span data-counter="100" data-suffix="+">0</span></p>
+              <p class="text-sm text-slate-500">Specialists &amp; Clinicians</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= QUICK ACTIONS ================= -->
+    <section class="pb-16" aria-label="Quick actions">
+      <div class="mx-auto max-w-7xl px-6">
+        <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <li class="reveal"><a href="book-appointment.html"
+              class="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-card transition hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-soft"><span
+                class="grid h-12 w-12 place-items-center rounded-xl bg-[#eb6424] text-white"><svg class="h-6 w-6">
+                  <use href="#i-calendar" />
+                </svg></span>
+              <h2 class="mt-4 font-bold text-navy-900">Take an Appointment</h2><span
+                class="mt-auto flex items-center gap-1 pt-4 text-sm font-bold text-brand-700">View more <svg
+                  class="h-4 w-4 transition group-hover:translate-x-1">
                   <use href="#i-arrow" />
-                </svg>
-              </a>
-              <a href="tel:+914312221222"
-                class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-8 py-4 text-base font-bold text-white backdrop-blur transition hover:bg-white/20">
-                <svg class="h-5 w-5 text-red-300">
-                  <use href="#i-phone" />
-                </svg> Emergency Care
-              </a>
-            </div>
-          </div>
-
-          <div class="relative lg:col-span-5" aria-hidden="true">
-            <div
-              class="relative mx-auto aspect-square max-w-sm rounded-[2rem] border border-white/15 bg-white/5 p-6 shadow-2xl backdrop-blur-sm">
-              <svg viewBox="0 0 400 400" class="h-full w-full">
-                <defs>
-                  <radialGradient id="g1" cx="50%" cy="50%" r="50%">
-                    <stop offset="0" stop-color="#52bff3" stop-opacity=".55" />
-                    <stop offset="1" stop-color="#52bff3" stop-opacity="0" />
-                  </radialGradient>
-                </defs>
-                <circle cx="200" cy="200" r="190" fill="url(#g1)" />
-                <g fill="none" stroke="#8fd6f8" stroke-width="1.6" opacity=".8">
-                  <circle cx="200" cy="200" r="150" />
-                  <circle cx="200" cy="200" r="105" stroke-dasharray="4 8" />
-                  <circle cx="200" cy="200" r="60" />
-                  <path d="M200 50v300M50 200h300" opacity=".4" />
-                </g>
-                <g fill="#fff">
-                  <circle cx="200" cy="50" r="7" />
-                  <circle cx="350" cy="200" r="7" />
-                  <circle cx="200" cy="350" r="7" />
-                  <circle cx="50" cy="200" r="7" />
-                  <circle cx="306" cy="94" r="5" fill="#52bff3" />
-                  <circle cx="94" cy="306" r="5" fill="#52bff3" />
-                  <circle cx="306" cy="306" r="5" fill="#52bff3" />
-                  <circle cx="94" cy="94" r="5" fill="#52bff3" />
-                </g>
-                <path
-                  d="M200 160c-20 0-34 14-34 32 0 8 3 14 8 19-5 5-8 11-8 18 0 17 14 31 34 31s34-14 34-31c0-7-3-13-8-18 5-5 8-11 8-19 0-18-14-32-34-32z"
-                  fill="#082d44" stroke="#52bff3" stroke-width="3" />
-                <path
-                  d="M200 160v80M184 190c8 0 12 4 16 10M216 190c-8 0-12 4-16 10M184 222c8 0 12-4 16-10M216 222c-8 0-12-4-16-10"
-                  stroke="#52bff3" stroke-width="2.5" fill="none" stroke-linecap="round" />
-              </svg>
-              <div class="absolute -bottom-6 -left-4 rounded-2xl bg-white p-4 text-navy-900 shadow-soft sm:-left-10">
-                <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Accreditation</p>
-                <p class="flex items-center gap-2 text-lg font-extrabold"><svg class="h-6 w-6 text-brand-600">
-                    <use href="#i-award" />
-                  </svg> NABH</p>
-              </div>
-              <div class="absolute -right-3 top-8 rounded-2xl bg-white p-4 text-navy-900 shadow-soft sm:-right-8">
-                <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Open</p>
-                <p class="flex items-center gap-2 text-lg font-extrabold"><span
-                    class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span> 24/7</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <svg class="absolute -bottom-px left-0 block h-12 w-full text-white sm:h-16 lg:h-20" viewBox="0 0 1440 80"
-          preserveAspectRatio="none" aria-hidden="true">
-          <path fill="currentColor" d="M0 80V40c240 40 480 40 720 10S1200 0 1440 30v50z" />
-        </svg>
-      </section>
-
-      <!-- ================= TRUST INDICATORS ================= -->
-      <section class="relative z-10 pb-12 pt-10 sm:pt-14" aria-label="Hospital highlights">
-        <div class="mx-auto max-w-7xl px-6">
-          <ul
-            class="grid gap-4 rounded-3xl border border-slate-100 bg-white p-4 shadow-soft sm:grid-cols-2 lg:grid-cols-4 lg:p-6">
-            <li class="reveal flex items-center gap-4 rounded-2xl p-4 transition hover:bg-brand-50/60"><span
-                class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-600"><svg
-                  class="h-7 w-7">
-                  <use href="#i-shield" />
                 </svg></span>
-              <div>
-                <p class="text-2xl font-extrabold text-navy-900">NABH</p>
-                <p class="text-[14px] text-slate-500">Accredited Hospital</p>
-              </div>
-            </li>
-            <li class="reveal flex items-center gap-4 rounded-2xl p-4 transition hover:bg-brand-50/60"><span
-                class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-600"><svg
-                  class="h-7 w-7">
-                  <use href="#i-award" />
+            </a></li>
+          <li class="reveal"><a href="payments.html"
+              class="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-card transition hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-soft"><span
+                class="grid h-12 w-12 place-items-center rounded-xl bg-[#eb6424] text-white"><svg class="h-6 w-6">
+                  <use href="#i-card" />
                 </svg></span>
-              <div>
-                <p class="text-2xl font-extrabold text-navy-900"><span data-counter="25" data-suffix="+">0</span></p>
-                <p class="text-[sm] text-slate-500">Years Experience</p>
-              </div>
-            </li>
-            <li class="reveal flex items-center gap-4 rounded-2xl p-4 transition hover:bg-brand-50/60"><span
-                class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-600"><svg
-                  class="h-7 w-7">
-                  <use href="#i-heart" />
+              <h2 class="mt-4 font-bold text-navy-900">Make a Payment</h2><span
+                class="mt-auto flex items-center gap-1 pt-4 text-sm font-bold text-brand-700">View more <svg
+                  class="h-4 w-4 transition group-hover:translate-x-1">
+                  <use href="#i-arrow" />
                 </svg></span>
-              <div>
-                <p class="text-2xl font-extrabold text-navy-900"><span data-counter="50000" data-suffix="+">0</span></p>
-                <p class="text-sm text-slate-500">Patients Treated</p>
-              </div>
-            </li>
-            <li class="reveal flex items-center gap-4 rounded-2xl p-4 transition hover:bg-brand-50/60"><span
-                class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-600"><svg
-                  class="h-7 w-7">
+            </a></li>
+          <li class="reveal"><a href="refer-a-patient.html"
+              class="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-card transition hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-soft"><span
+                class="grid h-12 w-12 place-items-center rounded-xl bg-[#eb6424] text-white"><svg class="h-6 w-6">
                   <use href="#i-users" />
                 </svg></span>
-              <div>
-                <p class="text-2xl font-extrabold text-navy-900"><span data-counter="100" data-suffix="+">0</span></p>
-                <p class="text-sm text-slate-500">Specialists &amp; Clinicians</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- ================= QUICK ACTIONS (from old site) ================= -->
-      <section class="pb-16" aria-label="Quick actions">
-        <div class="mx-auto max-w-7xl px-6">
-          <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            <li class="reveal"><a href="book-appointment.html"
-                class="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-card transition hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-soft"><span
-                  class="grid h-12 w-12 place-items-center rounded-xl bg-[#eb6424] text-white"><svg class="h-6 w-6">
-                    <use href="#i-calendar" />
-                  </svg></span>
-                <h2 class="mt-4 font-bold text-navy-900">Take an Appointment</h2><span
-                  class="mt-auto flex items-center gap-1 pt-4 text-sm font-bold text-brand-700">View more <svg
-                    class="h-4 w-4 transition group-hover:translate-x-1">
-                    <use href="#i-arrow" />
-                  </svg></span>
-              </a></li>
-            <li class="reveal"><a href="payments.html"
-                class="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-card transition hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-soft"><span
-                  class="grid h-12 w-12 place-items-center rounded-xl bg-[#eb6424] text-white"><svg class="h-6 w-6">
-                    <use href="#i-card" />
-                  </svg></span>
-                <h2 class="mt-4 font-bold text-navy-900">Make a Payment</h2><span
-                  class="mt-auto flex items-center gap-1 pt-4 text-sm font-bold text-brand-700">View more <svg
-                    class="h-4 w-4 transition group-hover:translate-x-1">
-                    <use href="#i-arrow" />
-                  </svg></span>
-              </a></li>
-            <li class="reveal"><a href="refer-a-patient.html"
-                class="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-card transition hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-soft"><span
-                  class="grid h-12 w-12 place-items-center rounded-xl bg-[#eb6424] text-white"><svg class="h-6 w-6">
-                    <use href="#i-users" />
-                  </svg></span>
-                <h2 class="mt-4 font-bold text-navy-900">Refer a Patient</h2><span
-                  class="mt-auto flex items-center gap-1 pt-4 text-sm font-bold text-brand-700">View more <svg
-                    class="h-4 w-4 transition group-hover:translate-x-1">
-                    <use href="#i-arrow" />
-                  </svg></span>
-              </a></li>
-            <li class="reveal"><a href="second-opinion.html"
-                class="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-card transition hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-soft"><span
-                  class="grid h-12 w-12 place-items-center rounded-xl bg-[#eb6424] text-white"><svg class="h-6 w-6">
-                    <use href="#i-chat" />
-                  </svg></span>
-                <h2 class="mt-4 font-bold text-navy-900">Get a Second Opinion</h2><span
-                  class="mt-auto flex items-center gap-1 pt-4 text-sm font-bold text-brand-700">View more <svg
-                    class="h-4 w-4 transition group-hover:translate-x-1">
-                    <use href="#i-arrow" />
-                  </svg></span>
-              </a></li>
-            <li class="reveal"><a href="advanced-technologies.html"
-                class="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-card transition hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-soft"><span
-                  class="grid h-12 w-12 place-items-center rounded-xl bg-[#eb6424] text-white"><svg class="h-6 w-6">
-                    <use href="#i-scan" />
-                  </svg></span>
-                <h2 class="mt-4 font-bold text-navy-900">Advanced Technologies</h2><span
-                  class="mt-auto flex items-center gap-1 pt-4 text-sm font-bold text-brand-700">View more <svg
-                    class="h-4 w-4 transition group-hover:translate-x-1">
-                    <use href="#i-arrow" />
-                  </svg></span>
-              </a></li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- ================= SERVICES ================= -->
-      <section id="services" class="bg-slate-50 py-20" aria-labelledby="services-title">
-        <div class="mx-auto max-w-7xl px-6">
-          <div class="reveal mx-auto max-w-2xl text-center">
-            <p class="text-sm font-bold uppercase tracking-widest text-brand-600">Our Services</p>
-            <h2 id="services-title" class="mt-3 text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">
-              Comprehensive care for the brain, spine &amp; nerves</h2>
-          </div>
-          <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            <a href="neurology.html"
-              class="reveal group rounded-3xl border border-slate-100 bg-white p-7 shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft"><span
-                class="grid h-14 w-14 place-items-center rounded-2xl bg-navy-50 text-navy-700 transition group-hover:bg-navy-900 group-hover:text-brand-300"><svg
-                  class="h-7 w-7">
-                  <use href="#i-pulse" />
+              <h2 class="mt-4 font-bold text-navy-900">Refer a Patient</h2><span
+                class="mt-auto flex items-center gap-1 pt-4 text-sm font-bold text-brand-700">View more <svg
+                  class="h-4 w-4 transition group-hover:translate-x-1">
+                  <use href="#i-arrow" />
                 </svg></span>
-              <h3 class="mt-5 text-lg font-bold text-navy-900">Neurology</h3>
-              <p class="mt-2 text-sm leading-relaxed">Stroke, epilepsy, Parkinson's and other disorders of the nervous
-                system.</p>
-            </a>
-            <a href="neurosurgery.html"
-              class="reveal group rounded-3xl border border-slate-100 bg-white p-7 shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft"><span
-                class="grid h-14 w-14 place-items-center rounded-2xl bg-navy-50 text-navy-700 transition group-hover:bg-navy-900 group-hover:text-brand-300"><svg
-                  class="h-7 w-7">
-                  <use href="#i-cube" />
+            </a></li>
+          <li class="reveal"><a href="second-opinion.html"
+              class="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-card transition hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-soft"><span
+                class="grid h-12 w-12 place-items-center rounded-xl bg-[#eb6424] text-white"><svg class="h-6 w-6">
+                  <use href="#i-chat" />
                 </svg></span>
-              <h3 class="mt-5 text-lg font-bold text-navy-900">Neurosurgery</h3>
-              <p class="mt-2 text-sm leading-relaxed">Brain tumour, spine and skull-base surgery using minimally
-                invasive techniques.</p>
-            </a>
-            <a href="neuro-critical-care.html"
-              class="reveal group rounded-3xl border border-slate-100 bg-white p-7 shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft"><span
-                class="grid h-14 w-14 place-items-center rounded-2xl bg-navy-50 text-navy-700 transition group-hover:bg-navy-900 group-hover:text-brand-300"><svg
-                  class="h-7 w-7">
-                  <use href="#i-bed" />
+              <h2 class="mt-4 font-bold text-navy-900">Get a Second Opinion</h2><span
+                class="mt-auto flex items-center gap-1 pt-4 text-sm font-bold text-brand-700">View more <svg
+                  class="h-4 w-4 transition group-hover:translate-x-1">
+                  <use href="#i-arrow" />
                 </svg></span>
-              <h3 class="mt-5 text-lg font-bold text-navy-900">Neuro Anaesthesia &amp; Critical Care</h3>
-              <p class="mt-2 text-sm leading-relaxed">Specialised anaesthesia and round-the-clock neuro ICU monitoring.
-              </p>
-            </a>
-            <a href="neuro-radiology.html"
-              class="reveal group rounded-3xl border border-slate-100 bg-white p-7 shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft"><span
-                class="grid h-14 w-14 place-items-center rounded-2xl bg-navy-50 text-navy-700 transition group-hover:bg-navy-900 group-hover:text-brand-300"><svg
-                  class="h-7 w-7">
+            </a></li>
+          <li class="reveal"><a href="advanced-technologies.html"
+              class="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-card transition hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-soft"><span
+                class="grid h-12 w-12 place-items-center rounded-xl bg-[#eb6424] text-white"><svg class="h-6 w-6">
                   <use href="#i-scan" />
                 </svg></span>
-              <h3 class="mt-5 text-lg font-bold text-navy-900">Neuro Radiology</h3>
-              <p class="mt-2 text-sm leading-relaxed">Advanced MRI and CT imaging for precise diagnosis and surgical
-                planning.</p>
-            </a>
-            <a href="neuro-rehabilitation.html"
-              class="reveal group rounded-3xl border border-slate-100 bg-white p-7 shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft"><span
-                class="grid h-14 w-14 place-items-center rounded-2xl bg-navy-50 text-navy-700 transition group-hover:bg-navy-900 group-hover:text-brand-300"><svg
-                  class="h-7 w-7">
-                  <use href="#i-refresh" />
-                </svg></span>
-              <h3 class="mt-5 text-lg font-bold text-navy-900">Neuro Rehabilitation</h3>
-              <p class="mt-2 text-sm leading-relaxed">Physiotherapy and therapy programmes to restore independence.</p>
-            </a>
-            <a href="pain-management.html"
-              class="reveal group rounded-3xl border border-slate-100 bg-white p-7 shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft"><span
-                class="grid h-14 w-14 place-items-center rounded-2xl bg-navy-50 text-navy-700 transition group-hover:bg-navy-900 group-hover:text-brand-300"><svg
-                  class="h-7 w-7">
-                  <use href="#i-bolt" />
-                </svg></span>
-              <h3 class="mt-5 text-lg font-bold text-navy-900">Pain Management</h3>
-              <p class="mt-2 text-sm leading-relaxed">Interventional and medical approaches for chronic back, neck and
-                nerve pain.</p>
-            </a>
-            <a href="neuropsychiatry.html"
-              class="reveal group rounded-3xl border border-slate-100 bg-white p-7 shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft"><span
-                class="grid h-14 w-14 place-items-center rounded-2xl bg-navy-50 text-navy-700 transition group-hover:bg-navy-900 group-hover:text-brand-300"><svg
-                  class="h-7 w-7">
-                  <use href="#i-smile" />
-                </svg></span>
-              <h3 class="mt-5 text-lg font-bold text-navy-900">Neuropsychiatry</h3>
-              <p class="mt-2 text-sm leading-relaxed">Care for the cognitive, behavioural and emotional effects of brain
-                disorders.</p>
-            </a>
-            <a href="services.html"
-              class="reveal group flex flex-col justify-between rounded-3xl bg-navy-900 p-7 text-white shadow-card transition duration-300 hover:-translate-y-2 hover:bg-navy-800 hover:shadow-soft"><span
-                class="grid h-14 w-14 place-items-center rounded-2xl bg-white/10 text-brand-300"><svg class="h-7 w-7">
-                  <use href="#i-layers" />
-                </svg></span>
-              <div>
-                <h3 class="mt-5 text-lg font-bold">View All Services</h3>
-                <p class="mt-2 inline-flex items-center gap-2 text-sm font-bold text-brand-300">Explore <svg
-                    class="h-4 w-4 transition group-hover:translate-x-1">
-                    <use href="#i-arrow" />
-                  </svg></p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- ================= WELCOME / ABOUT (short) ================= -->
-      <section id="about" class="py-20" aria-labelledby="about-title">
-        <div class="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2">
-          <div class="reveal">
-            <p class="text-sm font-bold uppercase tracking-widest text-brand-600">Welcome to Neuro One</p>
-            <h2 id="about-title" class="mt-3 text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">An
-              independent centre of excellence for brain, spine &amp; nerve care</h2>
-            <p class="mt-5 leading-relaxed">At Neuro One we offer recent and advanced techniques to treat disorders of
-              the brain, spinal cord, spine and peripheral nerves — across neurology, neurosurgery, neuro-oncology,
-              endoscopic and skull-base surgery, neuroradiology and rehabilitation, for patients of all ages.</p>
-            <p class="mt-4 leading-relaxed">Our multidisciplinary team, supported by speciality-trained nurses,
-              technicians and therapists, delivers evidence-based treatment with a human touch.</p>
-            <div class="mt-8 flex flex-wrap gap-4">
-              <a href="about.html"
-                class="inline-flex items-center gap-2 rounded-xl bg-navy-900 px-6 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-brand-600">About
-                the Hospital <svg class="h-4 w-4">
+              <h2 class="mt-4 font-bold text-navy-900">Advanced Technologies</h2><span
+                class="mt-auto flex items-center gap-1 pt-4 text-sm font-bold text-brand-700">View more <svg
+                  class="h-4 w-4 transition group-hover:translate-x-1">
                   <use href="#i-arrow" />
-                </svg></a>
-              <a href="meet-the-team.html"
-                class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-6 py-3 text-sm font-bold text-navy-900 transition hover:border-brand-500 hover:text-brand-700">Meet
-                the Team</a>
-            </div>
-          </div>
-          <ul class="reveal grid gap-4 sm:grid-cols-2">
-            <li class="rounded-2xl border border-slate-100 bg-slate-50 p-6"><span
-                class="grid h-11 w-11 place-items-center rounded-xl bg-brand-50 text-brand-700"><svg class="h-6 w-6">
-                  <use href="#i-target" />
                 </svg></span>
-              <h3 class="mt-4 font-bold text-navy-900">Our Mission</h3>
-              <p class="mt-1 text-sm">Highest standards of surgical and medical care, grounded in science and delivered
-                with compassion.</p>
-            </li>
-            <li class="rounded-2xl border border-slate-100 bg-slate-50 p-6"><span
-                class="grid h-11 w-11 place-items-center rounded-xl bg-brand-50 text-brand-700"><svg class="h-6 w-6">
-                  <use href="#i-globe" />
-                </svg></span>
-              <h3 class="mt-4 font-bold text-navy-900">Our Vision</h3>
-              <p class="mt-1 text-sm">To be the model for excellence in neurological care through dedication to our
-                patients.</p>
-            </li>
-            <li class="rounded-2xl border border-slate-100 bg-slate-50 p-6"><span
-                class="grid h-11 w-11 place-items-center rounded-xl bg-brand-50 text-brand-700"><svg class="h-6 w-6">
-                  <use href="#i-clock" />
-                </svg></span>
-              <h3 class="mt-4 font-bold text-navy-900">24/7 Emergency</h3>
-              <p class="mt-1 text-sm">Stroke, head-injury and spinal emergency response, day and night.</p>
-            </li>
-            <li class="rounded-2xl border border-slate-100 bg-slate-50 p-6"><span
-                class="grid h-11 w-11 place-items-center rounded-xl bg-brand-50 text-brand-700"><svg class="h-6 w-6">
-                  <use href="#i-award" />
-                </svg></span>
-              <h3 class="mt-4 font-bold text-navy-900">100+ Plasmapheresis</h3>
-              <p class="mt-1 text-sm">Successful procedures performed by our neurology team.</p>
-            </li>
-          </ul>
-        </div>
-      </section>
+            </a></li>
+        </ul>
+      </div>
+    </section>
 
-      <!-- ================= TESTIMONIALS ================= -->
-      <section id="testimonials" class="bg-slate-50 py-20" aria-labelledby="test-title">
-        <div class="mx-auto max-w-7xl px-6">
-          <div class="reveal flex flex-wrap items-end justify-between gap-4">
+    <!-- ================= SERVICES ================= -->
+    <section id="services" class="bg-slate-50 py-20" aria-labelledby="services-title">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="reveal mx-auto max-w-2xl text-center">
+          <p class="text-sm font-bold uppercase tracking-widest text-brand-600">Our Services</p>
+          <h2 id="services-title" class="mt-3 text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">
+            Comprehensive care for the brain, spine &amp; nerves</h2>
+        </div>
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <a href="neurology.html"
+            class="reveal group rounded-3xl border border-slate-100 bg-white p-7 shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft"><span
+              class="grid h-14 w-14 place-items-center rounded-2xl bg-navy-50 text-navy-700 transition group-hover:bg-navy-900 group-hover:text-brand-300"><svg
+                class="h-7 w-7">
+                <use href="#i-pulse" />
+              </svg></span>
+            <h3 class="mt-5 text-lg font-bold text-navy-900">Neurology</h3>
+            <p class="mt-2 text-sm leading-relaxed">Stroke, epilepsy, Parkinson's and other disorders of the nervous
+              system.</p>
+          </a>
+          <a href="neurosurgery.html"
+            class="reveal group rounded-3xl border border-slate-100 bg-white p-7 shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft"><span
+              class="grid h-14 w-14 place-items-center rounded-2xl bg-navy-50 text-navy-700 transition group-hover:bg-navy-900 group-hover:text-brand-300"><svg
+                class="h-7 w-7">
+                <use href="#i-cube" />
+              </svg></span>
+            <h3 class="mt-5 text-lg font-bold text-navy-900">Neurosurgery</h3>
+            <p class="mt-2 text-sm leading-relaxed">Brain tumour, spine and skull-base surgery using minimally
+              invasive techniques.</p>
+          </a>
+          <a href="neuro-critical-care.html"
+            class="reveal group rounded-3xl border border-slate-100 bg-white p-7 shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft"><span
+              class="grid h-14 w-14 place-items-center rounded-2xl bg-navy-50 text-navy-700 transition group-hover:bg-navy-900 group-hover:text-brand-300"><svg
+                class="h-7 w-7">
+                <use href="#i-bed" />
+              </svg></span>
+            <h3 class="mt-5 text-lg font-bold text-navy-900">Neuro Anaesthesia &amp; Critical Care</h3>
+            <p class="mt-2 text-sm leading-relaxed">Specialised anaesthesia and round-the-clock neuro ICU monitoring.
+            </p>
+          </a>
+          <a href="neuro-radiology.html"
+            class="reveal group rounded-3xl border border-slate-100 bg-white p-7 shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft"><span
+              class="grid h-14 w-14 place-items-center rounded-2xl bg-navy-50 text-navy-700 transition group-hover:bg-navy-900 group-hover:text-brand-300"><svg
+                class="h-7 w-7">
+                <use href="#i-scan" />
+              </svg></span>
+            <h3 class="mt-5 text-lg font-bold text-navy-900">Neuro Radiology</h3>
+            <p class="mt-2 text-sm leading-relaxed">Advanced MRI and CT imaging for precise diagnosis and surgical
+              planning.</p>
+          </a>
+          <a href="neuro-rehabilitation.html"
+            class="reveal group rounded-3xl border border-slate-100 bg-white p-7 shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft"><span
+              class="grid h-14 w-14 place-items-center rounded-2xl bg-navy-50 text-navy-700 transition group-hover:bg-navy-900 group-hover:text-brand-300"><svg
+                class="h-7 w-7">
+                <use href="#i-refresh" />
+              </svg></span>
+            <h3 class="mt-5 text-lg font-bold text-navy-900">Neuro Rehabilitation</h3>
+            <p class="mt-2 text-sm leading-relaxed">Physiotherapy and therapy programmes to restore independence.</p>
+          </a>
+          <a href="pain-management.html"
+            class="reveal group rounded-3xl border border-slate-100 bg-white p-7 shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft"><span
+              class="grid h-14 w-14 place-items-center rounded-2xl bg-navy-50 text-navy-700 transition group-hover:bg-navy-900 group-hover:text-brand-300"><svg
+                class="h-7 w-7">
+                <use href="#i-bolt" />
+              </svg></span>
+            <h3 class="mt-5 text-lg font-bold text-navy-900">Pain Management</h3>
+            <p class="mt-2 text-sm leading-relaxed">Interventional and medical approaches for chronic back, neck and
+              nerve pain.</p>
+          </a>
+          <a href="neuropsychiatry.html"
+            class="reveal group rounded-3xl border border-slate-100 bg-white p-7 shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft"><span
+              class="grid h-14 w-14 place-items-center rounded-2xl bg-navy-50 text-navy-700 transition group-hover:bg-navy-900 group-hover:text-brand-300"><svg
+                class="h-7 w-7">
+                <use href="#i-smile" />
+              </svg></span>
+            <h3 class="mt-5 text-lg font-bold text-navy-900">Neuropsychiatry</h3>
+            <p class="mt-2 text-sm leading-relaxed">Care for the cognitive, behavioural and emotional effects of brain
+              disorders.</p>
+          </a>
+          <a href="services.html"
+            class="reveal group flex flex-col justify-between rounded-3xl bg-navy-900 p-7 text-white shadow-card transition duration-300 hover:-translate-y-2 hover:bg-navy-800 hover:shadow-soft"><span
+              class="grid h-14 w-14 place-items-center rounded-2xl bg-white/10 text-brand-300"><svg class="h-7 w-7">
+                <use href="#i-layers" />
+              </svg></span>
             <div>
-              <p class="text-sm font-bold uppercase tracking-widest text-brand-600">Patient Testimonials</p>
-              <h2 id="test-title" class="mt-3 text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">Stories
-                of trust and recovery</h2>
+              <h3 class="mt-5 text-lg font-bold">View All Services</h3>
+              <p class="mt-2 inline-flex items-center gap-2 text-sm font-bold text-brand-300">Explore <svg
+                  class="h-4 w-4 transition group-hover:translate-x-1">
+                  <use href="#i-arrow" />
+                </svg></p>
             </div>
-            <a href="testimonials.html" class="inline-flex items-center gap-2 font-bold text-brand-700">All testimonials
-              <svg class="h-5 w-5">
-                <use href="#i-arrow" />
-              </svg></a>
-          </div>
-          <div class="mt-10 grid gap-6 md:grid-cols-3">
-            <figure class="reveal rounded-3xl border border-slate-100 bg-white p-8 shadow-card">
-              <div class="flex text-amber-400" aria-label="5 out of 5 stars"><svg class="h-5 w-5">
-                  <use href="#i-star" />
-                </svg><svg class="h-5 w-5">
-                  <use href="#i-star" />
-                </svg><svg class="h-5 w-5">
-                  <use href="#i-star" />
-                </svg><svg class="h-5 w-5">
-                  <use href="#i-star" />
-                </svg><svg class="h-5 w-5">
-                  <use href="#i-star" />
-                </svg></div>
-              <blockquote class="mt-4 leading-relaxed">“Dr. Ramakrishna Easwaran and the staff made our dad feel
-                confident before his head surgery — and gave him his life back.”</blockquote>
-              <figcaption class="mt-6 flex items-center gap-3"><span
-                  class="grid h-11 w-11 place-items-center rounded-full bg-navy-900 font-bold text-white">NA</span><span><span
-                    class="block font-bold text-navy-900">Narasingam Alagarsamy</span><span
-                    class="text-xs text-slate-500">Neurosurgery patient family</span></span></figcaption>
-            </figure>
-            <figure class="reveal rounded-3xl border border-slate-100 bg-white p-8 shadow-card">
-              <div class="flex text-amber-400" aria-label="5 out of 5 stars"><svg class="h-5 w-5">
-                  <use href="#i-star" />
-                </svg><svg class="h-5 w-5">
-                  <use href="#i-star" />
-                </svg><svg class="h-5 w-5">
-                  <use href="#i-star" />
-                </svg><svg class="h-5 w-5">
-                  <use href="#i-star" />
-                </svg><svg class="h-5 w-5">
-                  <use href="#i-star" />
-                </svg></div>
-              <blockquote class="mt-4 leading-relaxed">“Timings are well maintained, no unnecessary expenses, and I
-                recovered fast after microscopic surgery in the spinal area.”</blockquote>
-              <figcaption class="mt-6 flex items-center gap-3"><span
-                  class="grid h-11 w-11 place-items-center rounded-full bg-brand-600 font-bold text-white">KU</span><span><span
-                    class="block font-bold text-navy-900">Karthikeyan Udayar</span><span
-                    class="text-xs text-slate-500">Spine surgery patient</span></span></figcaption>
-            </figure>
-            <figure class="reveal rounded-3xl border border-slate-100 bg-white p-8 shadow-card">
-              <div class="flex text-amber-400" aria-label="5 out of 5 stars"><svg class="h-5 w-5">
-                  <use href="#i-star" />
-                </svg><svg class="h-5 w-5">
-                  <use href="#i-star" />
-                </svg><svg class="h-5 w-5">
-                  <use href="#i-star" />
-                </svg><svg class="h-5 w-5">
-                  <use href="#i-star" />
-                </svg><svg class="h-5 w-5">
-                  <use href="#i-star" />
-                </svg></div>
-              <blockquote class="mt-4 leading-relaxed">“The doctors and paramedical staff are excellent — sincere,
-                quick, simple and easy to approach, working through day and night.”</blockquote>
-              <figcaption class="mt-6 flex items-center gap-3"><span
-                  class="grid h-11 w-11 place-items-center rounded-full bg-navy-700 font-bold text-white">NP</span><span><span
-                    class="block font-bold text-navy-900">N. Parvathy</span><span
-                    class="text-xs text-slate-500">Inpatient family</span></span></figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <!-- ================= OUR DOCTORS ================= -->
-      <section id="doctors" class="py-20" aria-labelledby="doctors-title">
-        <div class="mx-auto max-w-7xl px-6">
-
-          <!-- Intro banner -->
-          <div class="reveal hero-bg relative overflow-hidden rounded-3xl text-white shadow-soft">
-            <div class="neural absolute inset-0 opacity-40" aria-hidden="true"></div>
-            <div class="relative grid items-center gap-8 p-8 sm:p-12 lg:grid-cols-12">
-              <div class="lg:col-span-12">
-                <p class="text-sm font-bold uppercase tracking-widest text-brand-300">Our Doctors</p>
-                <h2 id="doctors-title" class="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">Meet the
-                  specialists behind your care</h2>
-                <p class="mt-5 max-w-5xl text-lg leading-relaxed text-navy-100">Our physicians are experienced and
-                  capable of treating a wide range of conditions — even the most complex ones. What makes our practice
-                  unique is the depth of knowledge and expertise we put to work for you, the patient.</p>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- Doctor cards -->
-          <ul class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-
-            <li class="reveal">
-              <article
-                class="group h-full overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft">
-                <div class="relative aspect-[4/4.4] overflow-hidden bg-gradient-to-br from-navy-800 to-brand-700">
-                  <span class="absolute inset-0 grid place-items-center text-6xl font-extrabold text-white/25"
-                    aria-hidden="true">VK</span>
-                  <img loading="lazy" decoding="async" width="480" height="528" src="img/doctors/vijay-kumar.jpg"
-                    alt="Dr. Vijay Kumar S, Keyhole Brain and Spine Surgeon" onerror="this.remove()"
-                    class="relative h-full w-full object-cover object-top grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0">
-                  <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/60 to-transparent"
-                    aria-hidden="true"></div>
-                </div>
-                <div class="p-6">
-                  <h3 class="text-lg font-extrabold text-navy-900">Dr. Vijay Kumar S</h3>
-                  <p class="mt-1 text-sm font-semibold text-brand-700">Keyhole Brain &amp; Spine Surgeon</p>
-                  <a href="meet-the-team.html#vijay-kumar"
-                    class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-navy-900 transition hover:text-brand-700"
-                    aria-label="Read more about Dr. Vijay Kumar S">Read More <svg
-                      class="h-4 w-4 transition group-hover:translate-x-1">
-                      <use href="#i-arrow" />
-                    </svg></a>
-                </div>
-              </article>
-            </li>
-
-            <li class="reveal">
-              <article
-                class="group h-full overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft">
-                <div class="relative aspect-[4/4.4] overflow-hidden bg-gradient-to-br from-navy-800 to-brand-700">
-                  <span class="absolute inset-0 grid place-items-center text-6xl font-extrabold text-white/25"
-                    aria-hidden="true">AR</span>
-                  <img loading="lazy" decoding="async" width="480" height="528" src="img/doctors/aruna-ramani.jpg"
-                    alt="Dr. Aruna Ramani, Consultant Neurologist" onerror="this.remove()"
-                    class="relative h-full w-full object-cover object-top grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0">
-                  <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/60 to-transparent"
-                    aria-hidden="true"></div>
-                </div>
-                <div class="p-6">
-                  <h3 class="text-lg font-extrabold text-navy-900">Dr. Aruna Ramani</h3>
-                  <p class="mt-1 text-sm font-semibold text-brand-700">Consultant – Neurology</p>
-                  <a href="meet-the-team.html#aruna-ramani"
-                    class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-navy-900 transition hover:text-brand-700"
-                    aria-label="Read more about Dr. Aruna Ramani">Read More <svg
-                      class="h-4 w-4 transition group-hover:translate-x-1">
-                      <use href="#i-arrow" />
-                    </svg></a>
-                </div>
-              </article>
-            </li>
-
-            <li class="reveal">
-              <article
-                class="group h-full overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft">
-                <div class="relative aspect-[4/4.4] overflow-hidden bg-gradient-to-br from-navy-800 to-brand-700">
-                  <span class="absolute inset-0 grid place-items-center text-6xl font-extrabold text-white/25"
-                    aria-hidden="true">RP</span>
-                  <img loading="lazy" decoding="async" width="480" height="528" src="img/doctors/rakul-prasath.jpg"
-                    alt="Dr. S. Rakul Prasath, Consultant Neuroanaesthesia" onerror="this.remove()"
-                    class="relative h-full w-full object-cover object-top grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0">
-                  <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/60 to-transparent"
-                    aria-hidden="true"></div>
-                </div>
-                <div class="p-6">
-                  <h3 class="text-lg font-extrabold text-navy-900">Dr. S. Rakul Prasath</h3>
-                  <p class="mt-1 text-sm font-semibold text-brand-700">Consultant – Neuroanaesthesia</p>
-                  <a href="meet-the-team.html#rakul-prasath"
-                    class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-navy-900 transition hover:text-brand-700"
-                    aria-label="Read more about Dr. S. Rakul Prasath">Read More <svg
-                      class="h-4 w-4 transition group-hover:translate-x-1">
-                      <use href="#i-arrow" />
-                    </svg></a>
-                </div>
-              </article>
-            </li>
-
-            <li class="reveal">
-              <article
-                class="group h-full overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft">
-                <div class="relative aspect-[4/4.4] overflow-hidden bg-gradient-to-br from-navy-800 to-brand-700">
-                  <span class="absolute inset-0 grid place-items-center text-6xl font-extrabold text-white/25"
-                    aria-hidden="true">MS</span>
-                  <img loading="lazy" decoding="async" width="480" height="528" src="img/doctors/sadyojata.jpg"
-                    alt="Dr. M. Sadyojata, Neurosurgeon" onerror="this.remove()"
-                    class="relative h-full w-full object-cover object-top grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0">
-                  <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/60 to-transparent"
-                    aria-hidden="true"></div>
-                </div>
-                <div class="p-6">
-                  <h3 class="text-lg font-extrabold text-navy-900">Dr. M. Sadyojata</h3>
-                  <p class="mt-1 text-sm font-semibold text-brand-700">Neurosurgery</p>
-                  <a href="meet-the-team.html#sadyojata"
-                    class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-navy-900 transition hover:text-brand-700"
-                    aria-label="Read more about Dr. M. Sadyojata">Read More <svg
-                      class="h-4 w-4 transition group-hover:translate-x-1">
-                      <use href="#i-arrow" />
-                    </svg></a>
-                </div>
-              </article>
-            </li>
-          </ul>
-
-          <div class="reveal mt-10 text-center">
-            <a href="meet-the-team.html"
-              class="inline-flex items-center gap-2 rounded-xl bg-navy-900 px-7 py-3.5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-brand-600">View
-              Full Team <svg class="h-4 w-4">
-                <use href="#i-arrow" />
-              </svg></a>
-          </div>
-        </div>
-      </section>
-
-      <!-- ================= EMERGENCY CTA ================= -->
-      <section class="pb-20" aria-label="Emergency contact">
-        <div class="mx-auto max-w-7xl px-6">
-          <div class="hero-bg relative overflow-hidden rounded-3xl px-8 py-12 text-white shadow-soft sm:px-14">
-            <div class="neural absolute inset-0 opacity-40" aria-hidden="true"></div>
-            <div class="relative flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
-              <div>
-                <h2 class="text-2xl font-extrabold sm:text-3xl">Stroke, head injury or spinal emergency?</h2>
-                <p class="mt-2 max-w-xl text-navy-100">Every minute matters. Our emergency and neuro ICU teams are
-                  available 24 hours a day, 7 days a week.</p>
-              </div>
-              <div class="flex flex-col gap-3 sm:flex-row">
-                <a href="tel:+914312221222"
-                  class="inline-flex items-center justify-center gap-2 rounded-xl bg-red-500 px-7 py-4 font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-red-400"><svg
-                    class="h-5 w-5">
-                    <use href="#i-phone" />
-                  </svg> 0431 222 1222</a>
-                <a href="book-appointment.html"
-                  class="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-7 py-4 font-bold text-navy-900 transition hover:-translate-y-0.5 hover:bg-brand-50">Book
-                  Appointment</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- =====================================================================
-       FOOTER (shared across all pages)
-       ===================================================================== -->
-    <footer id="site-footer" class="bg-navy-950 text-navy-100">
-      <div class="mx-auto max-w-7xl px-6 py-16">
-        <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-12">
-          <nav class="lg:col-span-3" aria-label="Our services">
-            <h2 class="font-bold text-white">Our Services</h2>
-            <ul class="mt-4 space-y-2 text-sm">
-              <li><a class="hover:text-brand-300" href="neurology.html">Neurology</a></li>
-              <li><a class="hover:text-brand-300" href="neurosurgery.html">Neurosurgery</a></li>
-              <li><a class="hover:text-brand-300" href="neuro-critical-care.html">Neuro Anaesthesia &amp; Critical
-                  Care</a></li>
-              <li><a class="hover:text-brand-300" href="neuro-radiology.html">Neuro Radiology</a></li>
-              <li><a class="hover:text-brand-300" href="neuro-rehabilitation.html">Neuro Rehabilitation</a></li>
-              <li><a class="hover:text-brand-300" href="pain-management.html">Pain Management</a></li>
-              <li><a class="hover:text-brand-300" href="neuropsychiatry.html">Neuropsychiatry</a></li>
-            </ul>
-          </nav>
-
-          <nav class="lg:col-span-3" aria-label="Our facilities">
-            <h2 class="font-bold text-white">Our Facilities</h2>
-            <ul class="mt-4 space-y-2 text-sm">
-              <li><a class="hover:text-brand-300" href="why-neuroone.html">Why Neuro One</a></li>
-              <li><a class="hover:text-brand-300" href="advanced-technologies.html">Advanced Technologies</a></li>
-              <li><a class="hover:text-brand-300" href="quality-safety.html">Quality and Safety</a></li>
-              <li><a class="hover:text-brand-300" href="emergency.html">Emergency Service</a></li>
-              <li><a class="hover:text-brand-300" href="insurance.html">Insurance</a></li>
-              <li><a class="hover:text-brand-300" href="careers.html">Careers</a></li>
-              <li><a class="hover:text-brand-300" href="second-opinion.html">Get a Second Opinion</a></li>
-            </ul>
-          </nav>
-
-          <nav class="lg:col-span-3" aria-label="Quick links">
-            <h2 class="font-bold text-white">Quick Links</h2>
-            <ul class="mt-4 space-y-2 text-sm">
-              <li><a class="hover:text-brand-300" href="about.html">About the Hospital</a></li>
-              <li><a class="hover:text-brand-300" href="md-message.html">Managing Director</a></li>
-              <li><a class="hover:text-brand-300" href="meet-the-team.html">Meet the Team</a></li>
-              <li><a class="hover:text-brand-300" href="philosophy-of-care.html">Philosophy of Care</a></li>
-              <li><a class="hover:text-brand-300" href="patient-resources.html">Patient Resource</a></li>
-              <li><a class="hover:text-brand-300" href="biomedical-waste-report.html">Bio Medical Waste Report</a></li>
-              <li><a class="hover:text-brand-300" href="service-standards.html">Our Service Standards</a></li>
-            </ul>
-          </nav>
-
-          <div class="lg:col-span-3">
-            <h2 class="font-bold text-white">Quick Contact</h2>
-            <address class="mt-4 space-y-3 text-sm not-italic">
-              <p class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-brand-400">
-                  <use href="#i-pin" />
-                </svg><span>Trivikrama Medical Services Pvt Ltd, Neuro One Hospital, SF No. 55/1, Karur Bypass Road,
-                  Trichy – 2, Tamil Nadu, India</span></p>
-              <p class="flex gap-3"><svg class="h-5 w-5 shrink-0 text-brand-400">
-                  <use href="#i-phone" />
-                </svg><a class="hover:text-brand-300" href="tel:+914312221222">+91 431 222 1222</a></p>
-              <p class="flex gap-3"><svg class="h-5 w-5 shrink-0 text-brand-400">
-                  <use href="#i-mail" />
-                </svg><span><a class="hover:text-brand-300" href="mailto:admin@neuroone.in">admin@neuroone.in</a><br><a
-                    class="hover:text-brand-300" href="mailto:feedback@neuroone.in">feedback@neuroone.in</a></span></p>
-            </address>
-            <div class="mt-5 flex gap-3">
-              <a href="https://www.facebook.com/NeuroOneHospital/" target="_blank" rel="noopener noreferrer"
-                class="grid h-10 w-10 place-items-center rounded-full bg-white/10 transition hover:bg-brand-500"
-                aria-label="Neuro One on Facebook"><svg class="h-5 w-5">
-                  <use href="#i-fb" />
-                </svg></a>
-              <a href="https://www.instagram.com/neuroone_hospital/" target="_blank" rel="noopener noreferrer"
-                class="grid h-10 w-10 place-items-center rounded-full bg-white/10 transition hover:bg-brand-500"
-                aria-label="Neuro One on Instagram"><svg class="h-5 w-5">
-                  <use href="#i-ig" />
-                </svg></a>
-              <a href="https://www.youtube.com/channel/UC4yqwx9D_jOyUB9pcVpqBhw" target="_blank"
-                rel="noopener noreferrer"
-                class="grid h-10 w-10 place-items-center rounded-full bg-white/10 transition hover:bg-brand-500"
-                aria-label="Neuro One on YouTube"><svg class="h-5 w-5">
-                  <use href="#i-yt" />
-                </svg></a>
-            </div>
-
-          </div>
-        </div>
-
-        <div
-          class="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pb-20 pt-6 text-xs sm:flex-row sm:pb-16">
-          <p>© <span id="year"></span> Neuro One Hospital (Trivikrama Medical Services Pvt Ltd). All rights reserved.
-          </p>
-          <ul class="flex gap-5">
-            <li><a class="hover:text-brand-300" href="privacy-policy.html">Privacy Policy</a></li>
-            <li><a class="hover:text-brand-300" href="terms-conditions.html">Terms &amp; Conditions</a></li>
-            <li><a class="hover:text-brand-300" href="disclaimer.html">Disclaimer</a></li>
-          </ul>
+          </a>
         </div>
       </div>
-    </footer>
+    </section>
 
-    <!-- ================= FLOATING UI ================= -->
-    <a href="https://wa.me/919843561116?text=Hello%20Neuro%20One%2C%20I%20would%20like%20to%20know%20more."
-      target="_blank" rel="noopener noreferrer"
-      class="fixed bottom-5 right-4 z-40 grid h-10 w-10 place-items-center rounded-full bg-[#25D366] text-white shadow-lg transition hover:scale-110"
-      aria-label="Chat with Neuro One on WhatsApp"><svg class="h-5 w-5">
-        <use href="#i-whatsapp" />
-      </svg></a>
-    <button id="to-top"
-      class="pointer-events-none fixed bottom-[4.5rem] right-4 z-40 grid h-10 w-10 translate-y-4 place-items-center rounded-full bg-navy-900 text-white opacity-0 shadow-lg transition hover:bg-brand-600"
-      aria-label="Back to top"><svg class="h-5 w-5">
-        <use href="#i-up" />
-      </svg></button>
+    <!-- ================= WELCOME / ABOUT ================= -->
+    <section id="about" class="py-20" aria-labelledby="about-title">
+      <div class="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2">
+        <div class="reveal">
+          <p class="text-sm font-bold uppercase tracking-widest text-brand-600">Welcome to Neuro One</p>
+          <h2 id="about-title" class="mt-3 text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">An
+            independent centre of excellence for brain, spine &amp; nerve care</h2>
+          <p class="mt-5 leading-relaxed">At Neuro One we offer recent and advanced techniques to treat disorders of
+            the brain, spinal cord, spine and peripheral nerves — across neurology, neurosurgery, neuro-oncology,
+            endoscopic and skull-base surgery, neuroradiology and rehabilitation, for patients of all ages.</p>
+          <p class="mt-4 leading-relaxed">Our multidisciplinary team, supported by speciality-trained nurses,
+            technicians and therapists, delivers evidence-based treatment with a human touch.</p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="about.html"
+              class="inline-flex items-center gap-2 rounded-xl bg-navy-900 px-6 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-brand-600">About
+              the Hospital <svg class="h-4 w-4">
+                <use href="#i-arrow" />
+              </svg></a>
+            <a href="meet-the-team.html"
+              class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-6 py-3 text-sm font-bold text-navy-900 transition hover:border-brand-500 hover:text-brand-700">Meet
+              the Team</a>
+          </div>
+        </div>
+        <ul class="reveal grid gap-4 sm:grid-cols-2">
+          <li class="rounded-2xl border border-slate-100 bg-slate-50 p-6"><span
+              class="grid h-11 w-11 place-items-center rounded-xl bg-brand-50 text-brand-700"><svg class="h-6 w-6">
+                <use href="#i-target" />
+              </svg></span>
+            <h3 class="mt-4 font-bold text-navy-900">Our Mission</h3>
+            <p class="mt-1 text-sm">Highest standards of surgical and medical care, grounded in science and delivered
+              with compassion.</p>
+          </li>
+          <li class="rounded-2xl border border-slate-100 bg-slate-50 p-6"><span
+              class="grid h-11 w-11 place-items-center rounded-xl bg-brand-50 text-brand-700"><svg class="h-6 w-6">
+                <use href="#i-globe" />
+              </svg></span>
+            <h3 class="mt-4 font-bold text-navy-900">Our Vision</h3>
+            <p class="mt-1 text-sm">To be the model for excellence in neurological care through dedication to our
+              patients.</p>
+          </li>
+          <li class="rounded-2xl border border-slate-100 bg-slate-50 p-6"><span
+              class="grid h-11 w-11 place-items-center rounded-xl bg-brand-50 text-brand-700"><svg class="h-6 w-6">
+                <use href="#i-clock" />
+              </svg></span>
+            <h3 class="mt-4 font-bold text-navy-900">24/7 Emergency</h3>
+            <p class="mt-1 text-sm">Stroke, head-injury and spinal emergency response, day and night.</p>
+          </li>
+          <li class="rounded-2xl border border-slate-100 bg-slate-50 p-6"><span
+              class="grid h-11 w-11 place-items-center rounded-xl bg-brand-50 text-brand-700"><svg class="h-6 w-6">
+                <use href="#i-award" />
+              </svg></span>
+            <h3 class="mt-4 font-bold text-navy-900">100+ Plasmapheresis</h3>
+            <p class="mt-1 text-sm">Successful procedures performed by our neurology team.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-    <!-- ================= JAVASCRIPT (move to assets/js/main.js when more pages exist) ================= -->
-    <script>
-        (() => {
-          'use strict';
-          const $ = (s, c = document) => c.querySelector(s);
-          const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+    <!-- ================= TESTIMONIALS ================= -->
+    <section id="testimonials" class="bg-slate-50 py-20" aria-labelledby="test-title">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="reveal flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="text-sm font-bold uppercase tracking-widest text-brand-600">Patient Testimonials</p>
+            <h2 id="test-title" class="mt-3 text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">Stories
+              of trust and recovery</h2>
+          </div>
+          <a href="testimonials.html" class="inline-flex items-center gap-2 font-bold text-brand-700">All testimonials
+            <svg class="h-5 w-5">
+              <use href="#i-arrow" />
+            </svg></a>
+        </div>
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
+          <figure class="reveal rounded-3xl border border-slate-100 bg-white p-8 shadow-card">
+            <div class="flex text-amber-400" aria-label="5 out of 5 stars"><svg class="h-5 w-5">
+                <use href="#i-star" />
+              </svg><svg class="h-5 w-5">
+                <use href="#i-star" />
+              </svg><svg class="h-5 w-5">
+                <use href="#i-star" />
+              </svg><svg class="h-5 w-5">
+                <use href="#i-star" />
+              </svg><svg class="h-5 w-5">
+                <use href="#i-star" />
+              </svg></div>
+            <blockquote class="mt-4 leading-relaxed">“Dr. Ramakrishna Easwaran and the staff made our dad feel
+              confident before his head surgery — and gave him his life back.”</blockquote>
+            <figcaption class="mt-6 flex items-center gap-3"><span
+                class="grid h-11 w-11 place-items-center rounded-full bg-navy-900 font-bold text-white">NA</span><span><span
+                  class="block font-bold text-navy-900">Narasingam Alagarsamy</span><span
+                  class="text-xs text-slate-500">Neurosurgery patient family</span></span></figcaption>
+          </figure>
+          <figure class="reveal rounded-3xl border border-slate-100 bg-white p-8 shadow-card">
+            <div class="flex text-amber-400" aria-label="5 out of 5 stars"><svg class="h-5 w-5">
+                <use href="#i-star" />
+              </svg><svg class="h-5 w-5">
+                <use href="#i-star" />
+              </svg><svg class="h-5 w-5">
+                <use href="#i-star" />
+              </svg><svg class="h-5 w-5">
+                <use href="#i-star" />
+              </svg><svg class="h-5 w-5">
+                <use href="#i-star" />
+              </svg></div>
+            <blockquote class="mt-4 leading-relaxed">“Timings are well maintained, no unnecessary expenses, and I
+              recovered fast after microscopic surgery in the spinal area.”</blockquote>
+            <figcaption class="mt-6 flex items-center gap-3"><span
+                class="grid h-11 w-11 place-items-center rounded-full bg-brand-600 font-bold text-white">KU</span><span><span
+                  class="block font-bold text-navy-900">Karthikeyan Udayar</span><span
+                  class="text-xs text-slate-500">Spine surgery patient</span></span></figcaption>
+          </figure>
+          <figure class="reveal rounded-3xl border border-slate-100 bg-white p-8 shadow-card">
+            <div class="flex text-amber-400" aria-label="5 out of 5 stars"><svg class="h-5 w-5">
+                <use href="#i-star" />
+              </svg><svg class="h-5 w-5">
+                <use href="#i-star" />
+              </svg><svg class="h-5 w-5">
+                <use href="#i-star" />
+              </svg><svg class="h-5 w-5">
+                <use href="#i-star" />
+              </svg><svg class="h-5 w-5">
+                <use href="#i-star" />
+              </svg></div>
+            <blockquote class="mt-4 leading-relaxed">“The doctors and paramedical staff are excellent — sincere,
+              quick, simple and easy to approach, working through day and night.”</blockquote>
+            <figcaption class="mt-6 flex items-center gap-3"><span
+                class="grid h-11 w-11 place-items-center rounded-full bg-navy-700 font-bold text-white">NP</span><span><span
+                  class="block font-bold text-navy-900">N. Parvathy</span><span
+                  class="text-xs text-slate-500">Inpatient family</span></span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
 
-          /* Header shadow + back-to-top */
-          const headerMain = $('#header-main'), toTop = $('#to-top');
-          const onScroll = () => {
-            const y = window.scrollY;
-            headerMain.classList.toggle('shadow-soft', y > 20);
-            const show = y > 600;
-            toTop.classList.toggle('opacity-0', !show);
-            toTop.classList.toggle('pointer-events-none', !show);
-            toTop.classList.toggle('translate-y-4', !show);
+    <!-- ================= OUR DOCTORS ================= -->
+    <section id="doctors" class="py-20" aria-labelledby="doctors-title">
+      <div class="mx-auto max-w-7xl px-6">
+
+        <div class="reveal hero-bg relative overflow-hidden rounded-3xl text-white shadow-soft">
+          <div class="neural absolute inset-0 opacity-40" aria-hidden="true"></div>
+          <div class="relative grid items-center gap-8 p-8 sm:p-12 lg:grid-cols-12">
+            <div class="lg:col-span-12">
+              <p class="text-sm font-bold uppercase tracking-widest text-brand-300">Our Doctors</p>
+              <h2 id="doctors-title" class="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">Meet the
+                specialists behind your care</h2>
+              <p class="mt-5 max-w-5xl text-lg leading-relaxed text-navy-100">Our physicians are experienced and
+                capable of treating a wide range of conditions — even the most complex ones. What makes our practice
+                unique is the depth of knowledge and expertise we put to work for you, the patient.</p>
+            </div>
+          </div>
+        </div>
+
+        <ul class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+
+          <li class="reveal">
+            <article
+              class="group h-full overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft">
+              <div class="relative aspect-[4/4.4] overflow-hidden bg-gradient-to-br from-navy-800 to-brand-700">
+                <span class="absolute inset-0 grid place-items-center text-6xl font-extrabold text-white/25"
+                  aria-hidden="true">VK</span>
+                <img loading="lazy" decoding="async" width="480" height="528" src="img/doctors/vijay-kumar.jpg"
+                  alt="Dr. Vijay Kumar S, Keyhole Brain and Spine Surgeon" onerror="this.remove()"
+                  class="relative h-full w-full object-cover object-top grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0">
+                <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/60 to-transparent"
+                  aria-hidden="true"></div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-extrabold text-navy-900">Dr. Vijay Kumar S</h3>
+                <p class="mt-1 text-sm font-semibold text-brand-700">Keyhole Brain &amp; Spine Surgeon</p>
+                <a href="meet-the-team.html#vijay-kumar"
+                  class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-navy-900 transition hover:text-brand-700"
+                  aria-label="Read more about Dr. Vijay Kumar S">Read More <svg
+                    class="h-4 w-4 transition group-hover:translate-x-1">
+                    <use href="#i-arrow" />
+                  </svg></a>
+              </div>
+            </article>
+          </li>
+
+          <li class="reveal">
+            <article
+              class="group h-full overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft">
+              <div class="relative aspect-[4/4.4] overflow-hidden bg-gradient-to-br from-navy-800 to-brand-700">
+                <span class="absolute inset-0 grid place-items-center text-6xl font-extrabold text-white/25"
+                  aria-hidden="true">AR</span>
+                <img loading="lazy" decoding="async" width="480" height="528" src="img/doctors/aruna-ramani.jpg"
+                  alt="Dr. Aruna Ramani, Consultant Neurologist" onerror="this.remove()"
+                  class="relative h-full w-full object-cover object-top grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0">
+                <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/60 to-transparent"
+                  aria-hidden="true"></div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-extrabold text-navy-900">Dr. Aruna Ramani</h3>
+                <p class="mt-1 text-sm font-semibold text-brand-700">Consultant – Neurology</p>
+                <a href="meet-the-team.html#aruna-ramani"
+                  class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-navy-900 transition hover:text-brand-700"
+                  aria-label="Read more about Dr. Aruna Ramani">Read More <svg
+                    class="h-4 w-4 transition group-hover:translate-x-1">
+                    <use href="#i-arrow" />
+                  </svg></a>
+              </div>
+            </article>
+          </li>
+
+          <li class="reveal">
+            <article
+              class="group h-full overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft">
+              <div class="relative aspect-[4/4.4] overflow-hidden bg-gradient-to-br from-navy-800 to-brand-700">
+                <span class="absolute inset-0 grid place-items-center text-6xl font-extrabold text-white/25"
+                  aria-hidden="true">RP</span>
+                <img loading="lazy" decoding="async" width="480" height="528" src="img/doctors/rakul-prasath.jpg"
+                  alt="Dr. S. Rakul Prasath, Consultant Neuroanaesthesia" onerror="this.remove()"
+                  class="relative h-full w-full object-cover object-top grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0">
+                <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/60 to-transparent"
+                  aria-hidden="true"></div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-extrabold text-navy-900">Dr. S. Rakul Prasath</h3>
+                <p class="mt-1 text-sm font-semibold text-brand-700">Consultant – Neuroanaesthesia</p>
+                <a href="meet-the-team.html#rakul-prasath"
+                  class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-navy-900 transition hover:text-brand-700"
+                  aria-label="Read more about Dr. S. Rakul Prasath">Read More <svg
+                    class="h-4 w-4 transition group-hover:translate-x-1">
+                    <use href="#i-arrow" />
+                  </svg></a>
+              </div>
+            </article>
+          </li>
+
+          <li class="reveal">
+            <article
+              class="group h-full overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft">
+              <div class="relative aspect-[4/4.4] overflow-hidden bg-gradient-to-br from-navy-800 to-brand-700">
+                <span class="absolute inset-0 grid place-items-center text-6xl font-extrabold text-white/25"
+                  aria-hidden="true">MS</span>
+                <img loading="lazy" decoding="async" width="480" height="528" src="img/doctors/sadyojata.jpg"
+                  alt="Dr. M. Sadyojata, Neurosurgeon" onerror="this.remove()"
+                  class="relative h-full w-full object-cover object-top grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0">
+                <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/60 to-transparent"
+                  aria-hidden="true"></div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-extrabold text-navy-900">Dr. M. Sadyojata</h3>
+                <p class="mt-1 text-sm font-semibold text-brand-700">Neurosurgery</p>
+                <a href="meet-the-team.html#sadyojata"
+                  class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-navy-900 transition hover:text-brand-700"
+                  aria-label="Read more about Dr. M. Sadyojata">Read More <svg
+                    class="h-4 w-4 transition group-hover:translate-x-1">
+                    <use href="#i-arrow" />
+                  </svg></a>
+              </div>
+            </article>
+          </li>
+        </ul>
+
+        <div class="reveal mt-10 text-center">
+          <a href="meet-the-team.html"
+            class="inline-flex items-center gap-2 rounded-xl bg-navy-900 px-7 py-3.5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-brand-600">View
+            Full Team <svg class="h-4 w-4">
+              <use href="#i-arrow" />
+            </svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= EMERGENCY CTA ================= -->
+    <section class="pb-20" aria-label="Emergency contact">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="hero-bg relative overflow-hidden rounded-3xl px-8 py-12 text-white shadow-soft sm:px-14">
+          <div class="neural absolute inset-0 opacity-40" aria-hidden="true"></div>
+          <div class="relative flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
+            <div>
+              <h2 class="text-2xl font-extrabold sm:text-3xl">Stroke, head injury or spinal emergency?</h2>
+              <p class="mt-2 max-w-xl text-navy-100">Every minute matters. Our emergency and neuro ICU teams are
+                available 24 hours a day, 7 days a week.</p>
+            </div>
+            <div class="flex flex-col gap-3 sm:flex-row">
+              <a href="tel:+914312221222"
+                class="inline-flex items-center justify-center gap-2 rounded-xl bg-red-500 px-7 py-4 font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-red-400"><svg
+                  class="h-5 w-5">
+                  <use href="#i-phone" />
+                </svg> 0431 222 1222</a>
+              <a href="book-appointment.html"
+                class="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-7 py-4 font-bold text-navy-900 transition hover:-translate-y-0.5 hover:bg-brand-50">Book
+                Appointment</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       FOOTER
+       ===================================================================== -->
+  <footer id="site-footer" class="bg-navy-950 text-navy-100">
+    <div class="mx-auto max-w-7xl px-6 py-16">
+      <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-12">
+        <nav class="lg:col-span-3" aria-label="Our services">
+          <h2 class="font-bold text-white">Our Services</h2>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li><a class="hover:text-brand-300" href="neurology.html">Neurology</a></li>
+            <li><a class="hover:text-brand-300" href="neurosurgery.html">Neurosurgery</a></li>
+            <li><a class="hover:text-brand-300" href="neuro-critical-care.html">Neuro Anaesthesia &amp; Critical
+                Care</a></li>
+            <li><a class="hover:text-brand-300" href="neuro-radiology.html">Neuro Radiology</a></li>
+            <li><a class="hover:text-brand-300" href="neuro-rehabilitation.html">Neuro Rehabilitation</a></li>
+            <li><a class="hover:text-brand-300" href="pain-management.html">Pain Management</a></li>
+            <li><a class="hover:text-brand-300" href="neuropsychiatry.html">Neuropsychiatry</a></li>
+          </ul>
+        </nav>
+
+        <nav class="lg:col-span-3" aria-label="Our facilities">
+          <h2 class="font-bold text-white">Our Facilities</h2>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li><a class="hover:text-brand-300" href="why-neuroone.html">Why Neuro One</a></li>
+            <li><a class="hover:text-brand-300" href="advanced-technologies.html">Advanced Technologies</a></li>
+            <li><a class="hover:text-brand-300" href="quality-safety.html">Quality and Safety</a></li>
+            <li><a class="hover:text-brand-300" href="emergency.html">Emergency Service</a></li>
+            <li><a class="hover:text-brand-300" href="insurance.html">Insurance</a></li>
+            <li><a class="hover:text-brand-300" href="careers.html">Careers</a></li>
+            <li><a class="hover:text-brand-300" href="second-opinion.html">Get a Second Opinion</a></li>
+          </ul>
+        </nav>
+
+        <nav class="lg:col-span-3" aria-label="Quick links">
+          <h2 class="font-bold text-white">Quick Links</h2>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li><a class="hover:text-brand-300" href="about.html">About the Hospital</a></li>
+            <li><a class="hover:text-brand-300" href="md-message.html">Managing Director</a></li>
+            <li><a class="hover:text-brand-300" href="meet-the-team.html">Meet the Team</a></li>
+            <li><a class="hover:text-brand-300" href="philosophy-of-care.html">Philosophy of Care</a></li>
+            <li><a class="hover:text-brand-300" href="patient-resources.html">Patient Resource</a></li>
+            <li><a class="hover:text-brand-300" href="biomedical-waste-report.html">Bio Medical Waste Report</a></li>
+            <li><a class="hover:text-brand-300" href="service-standards.html">Our Service Standards</a></li>
+          </ul>
+        </nav>
+
+        <div class="lg:col-span-3">
+          <h2 class="font-bold text-white">Quick Contact</h2>
+          <address class="mt-4 space-y-3 text-sm not-italic">
+            <p class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-brand-400">
+                <use href="#i-pin" />
+              </svg><span>Trivikrama Medical Services Pvt Ltd, Neuro One Hospital, SF No. 55/1, Karur Bypass Road,
+                Trichy – 2, Tamil Nadu, India</span></p>
+            <p class="flex gap-3"><svg class="h-5 w-5 shrink-0 text-brand-400">
+                <use href="#i-phone" />
+              </svg><a class="hover:text-brand-300" href="tel:+914312221222">+91 431 222 1222</a></p>
+            <p class="flex gap-3"><svg class="h-5 w-5 shrink-0 text-brand-400">
+                <use href="#i-mail" />
+              </svg><span><a class="hover:text-brand-300" href="mailto:admin@neuroone.in">admin@neuroone.in</a><br><a
+                  class="hover:text-brand-300" href="mailto:feedback@neuroone.in">feedback@neuroone.in</a></span></p>
+          </address>
+          <div class="mt-5 flex gap-3">
+            <a href="https://www.facebook.com/NeuroOneHospital/" target="_blank" rel="noopener noreferrer"
+              class="grid h-10 w-10 place-items-center rounded-full bg-white/10 transition hover:bg-brand-500"
+              aria-label="Neuro One on Facebook"><svg class="h-5 w-5">
+                <use href="#i-fb" />
+              </svg></a>
+            <a href="https://www.instagram.com/neuroone_hospital/" target="_blank" rel="noopener noreferrer"
+              class="grid h-10 w-10 place-items-center rounded-full bg-white/10 transition hover:bg-brand-500"
+              aria-label="Neuro One on Instagram"><svg class="h-5 w-5">
+                <use href="#i-ig" />
+              </svg></a>
+            <a href="https://www.youtube.com/channel/UC4yqwx9D_jOyUB9pcVpqBhw" target="_blank"
+              rel="noopener noreferrer"
+              class="grid h-10 w-10 place-items-center rounded-full bg-white/10 transition hover:bg-brand-500"
+              aria-label="Neuro One on YouTube"><svg class="h-5 w-5">
+                <use href="#i-yt" />
+              </svg></a>
+          </div>
+
+        </div>
+      </div>
+
+      <div
+        class="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pb-20 pt-6 text-xs sm:flex-row sm:pb-16">
+        <p>© <span id="year"></span> Neuro One Hospital (Trivikrama Medical Services Pvt Ltd). All rights reserved.
+        </p>
+        <ul class="flex gap-5">
+          <li><a class="hover:text-brand-300" href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a class="hover:text-brand-300" href="terms-conditions.html">Terms &amp; Conditions</a></li>
+          <li><a class="hover:text-brand-300" href="disclaimer.html">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= FLOATING UI ================= -->
+  <a href="https://wa.me/919843561116?text=Hello%20Neuro%20One%2C%20I%20would%20like%20to%20know%20more."
+    target="_blank" rel="noopener noreferrer"
+    class="fixed bottom-5 right-4 z-40 grid h-10 w-10 place-items-center rounded-full bg-[#25D366] text-white shadow-lg transition hover:scale-110"
+    aria-label="Chat with Neuro One on WhatsApp"><svg class="h-5 w-5">
+      <use href="#i-whatsapp" />
+    </svg></a>
+  <button id="to-top"
+    class="pointer-events-none fixed bottom-[4.5rem] right-4 z-40 grid h-10 w-10 translate-y-4 place-items-center rounded-full bg-navy-900 text-white opacity-0 shadow-lg transition hover:bg-brand-600"
+    aria-label="Back to top"><svg class="h-5 w-5">
+      <use href="#i-up" />
+    </svg></button>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    (() => {
+      'use strict';
+      const $ = (s, c = document) => c.querySelector(s);
+      const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+
+      /* Header shadow + back-to-top */
+      const headerMain = $('#header-main'), toTop = $('#to-top');
+      const onScroll = () => {
+        const y = window.scrollY;
+        headerMain.classList.toggle('shadow-soft', y > 20);
+        const show = y > 600;
+        toTop.classList.toggle('opacity-0', !show);
+        toTop.classList.toggle('pointer-events-none', !show);
+        toTop.classList.toggle('translate-y-4', !show);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+      toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      /* Mobile menu */
+      const btn = $('#menu-btn'), menu = $('#mobile-menu');
+      const setMenu = open => {
+        menu.classList.toggle('hidden', !open);
+        btn.setAttribute('aria-expanded', open);
+        btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        $('#menu-open-icon').classList.toggle('hidden', open);
+        $('#menu-close-icon').classList.toggle('hidden', !open);
+      };
+      btn.addEventListener('click', () => setMenu(menu.classList.contains('hidden')));
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+      matchMedia('(min-width:1280px)').addEventListener('change', e => { if (e.matches) setMenu(false); });
+
+      /* Scroll reveal */
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(en => {
+          if (en.isIntersecting) {
+            en.target.style.transitionDelay = (en.target.dataset.delay || 0) + 'ms';
+            en.target.classList.add('is-visible');
+            obs.unobserve(en.target);
+          }
+        });
+      }, { threshold: .12 });
+      $$('.reveal').forEach((el, i) => { el.dataset.delay = (i % 4) * 80; io.observe(el); });
+
+      /* Counters */
+      const fmt = new Intl.NumberFormat('en-IN');
+      const counterIO = new IntersectionObserver((entries, obs) => {
+        entries.forEach(en => {
+          if (!en.isIntersecting) return;
+          const el = en.target, end = +el.dataset.counter, suffix = el.dataset.suffix || '';
+          if (matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = fmt.format(end) + suffix; obs.unobserve(el); return; }
+          const dur = 1800, t0 = performance.now();
+          const tick = t => {
+            const p = Math.min((t - t0) / dur, 1), eased = 1 - Math.pow(1 - p, 3);
+            el.textContent = fmt.format(Math.round(end * eased)) + (p === 1 ? suffix : '');
+            if (p < 1) requestAnimationFrame(tick);
           };
-          window.addEventListener('scroll', onScroll, { passive: true });
-          onScroll();
-          toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+          requestAnimationFrame(tick);
+          obs.unobserve(el);
+        });
+      }, { threshold: .6 });
+      $$('[data-counter]').forEach(el => counterIO.observe(el));
 
-          /* Mobile menu */
-          const btn = $('#menu-btn'), menu = $('#mobile-menu');
-          const setMenu = open => {
-            menu.classList.toggle('hidden', !open);
-            btn.setAttribute('aria-expanded', open);
-            btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-            $('#menu-open-icon').classList.toggle('hidden', open);
-            $('#menu-close-icon').classList.toggle('hidden', !open);
-          };
-          btn.addEventListener('click', () => setMenu(menu.classList.contains('hidden')));
-          document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
-          matchMedia('(min-width:1280px)').addEventListener('change', e => { if (e.matches) setMenu(false); });
-
-          /* Scroll reveal */
-          const io = new IntersectionObserver((entries, obs) => {
-            entries.forEach(en => {
-              if (en.isIntersecting) {
-                en.target.style.transitionDelay = (en.target.dataset.delay || 0) + 'ms';
-                en.target.classList.add('is-visible');
-                obs.unobserve(en.target);
-              }
-            });
-          }, { threshold: .12 });
-          $$('.reveal').forEach((el, i) => { el.dataset.delay = (i % 4) * 80; io.observe(el); });
-
-          /* Counters */
-          const fmt = new Intl.NumberFormat('en-IN');
-          const counterIO = new IntersectionObserver((entries, obs) => {
-            entries.forEach(en => {
-              if (!en.isIntersecting) return;
-              const el = en.target, end = +el.dataset.counter, suffix = el.dataset.suffix || '';
-              if (matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = fmt.format(end) + suffix; obs.unobserve(el); return; }
-              const dur = 1800, t0 = performance.now();
-              const tick = t => {
-                const p = Math.min((t - t0) / dur, 1), eased = 1 - Math.pow(1 - p, 3);
-                el.textContent = fmt.format(Math.round(end * eased)) + (p === 1 ? suffix : '');
-                if (p < 1) requestAnimationFrame(tick);
-              };
-              requestAnimationFrame(tick);
-              obs.unobserve(el);
-            });
-          }, { threshold: .6 });
-          $$('[data-counter]').forEach(el => counterIO.observe(el));
-
-          /* Newsletter (only if the form exists on this page) */
-          const nlForm = $('#newsletter-form');
-          if (nlForm) nlForm.addEventListener('submit', e => {
-            e.preventDefault();
-            const input = $('#nl-email'), msg = $('#nl-status');
-            const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
-            msg.classList.remove('hidden');
-            msg.className = 'mt-2 text-xs ' + (ok ? 'text-brand-300' : 'text-red-300');
-            msg.textContent = ok ? 'Thanks for subscribing!' : 'Please enter a valid email address.';
-            if (ok) input.value = '';
-          });
-
-          $('#year').textContent = new Date().getFullYear();
-        })();
-    </script>
-    <script>
-      window.addEventListener("load", function () {
-        var pre = document.getElementById("preloader");
-        // small delay so the animation is visible even on fast connections
-        setTimeout(function () {
-          pre.classList.add("hidden");
-          setTimeout(function () { pre.remove(); }, 700);
-        }, 800);
+      /* Newsletter (only if the form exists on this page) */
+      const nlForm = $('#newsletter-form');
+      if (nlForm) nlForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const input = $('#nl-email'), msg = $('#nl-status');
+        const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
+        msg.classList.remove('hidden');
+        msg.className = 'mt-2 text-xs ' + (ok ? 'text-brand-300' : 'text-red-300');
+        msg.textContent = ok ? 'Thanks for subscribing!' : 'Please enter a valid email address.';
+        if (ok) input.value = '';
       });
-    </script>
+
+      $('#year').textContent = new Date().getFullYear();
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const slides=[...document.querySelectorAll('#nv .nslide')],dots=[...document.querySelectorAll('#nv-dots .nv-dot')];
+      if(!slides.length) return;
+      const info=[['Brain Care','Advanced diagnosis & keyhole surgery'],['Spine Care','Minimally invasive spine surgery & rehab'],['Nerve Care','Neurology, epilepsy & neuro-rehabilitation']];
+      const t=document.getElementById('nv-title'),sub=document.getElementById('nv-sub');
+      let i=0,timer;
+      const show=n=>{i=n;slides.forEach((s,k)=>s.classList.toggle('active',k===n));dots.forEach((d,k)=>d.classList.toggle('on',k===n));t.textContent=info[n][0];sub.textContent=info[n][1];};
+      const play=()=>{clearInterval(timer);if(!matchMedia('(prefers-reduced-motion: reduce)').matches)timer=setInterval(()=>show((i+1)%slides.length),5000);};
+      dots.forEach((d,k)=>d.addEventListener('click',()=>{show(k);play();}));
+      play();
+    })();
+  </script>
+
+  <!-- Preloader hide -->
+  <script>
+    window.addEventListener("load", function () {
+      var pre = document.getElementById("preloader");
+      setTimeout(function () {
+        pre.classList.add("hidden");
+        setTimeout(function () { pre.remove(); }, 700);
+      }, 800);
+    });
+  </script>
 </body>
 
 </html>
