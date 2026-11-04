@@ -830,9 +830,15 @@
               <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Accreditation</p>
               <p class="flex items-center gap-2 text-lg font-extrabold"><svg class="h-6 w-6 text-brand-600"><use href="#i-award" /></svg> NABH</p>
             </div>
-            <div class="nv-float absolute bottom-[3.1rem] -right-3 rounded-2xl bg-white p-3 text-navy-900 shadow-soft sm:-right-9" style="animation-delay:-3s" aria-hidden="true">
+            <div class="nv-float absolute bottom-[3.1rem] -right-3 rounded-2xl bg-white p-3 text-navy-900 shadow-soft sm:-right-9"
+              style="animation-delay:-3s" aria-hidden="true">
               <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Open</p>
-              <p class="flex items-center gap-2 text-lg font-extrabold"><span class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span> 24/7</p>
+              <p class="flex items-center gap-2 text-lg font-extrabold">
+                <span class="relative flex h-2.5 w-2.5">
+                  <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75"></span>
+                  <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500"></span>
+                </span> 24/7
+              </p>
             </div>
             <div class="absolute -bottom-7 left-1/2 flex -translate-x-1/2 gap-2" id="nv-dots">
               <button class="nv-dot on" aria-label="Show brain care"></button>
