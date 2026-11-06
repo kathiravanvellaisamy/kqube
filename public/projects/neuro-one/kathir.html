@@ -791,39 +791,39 @@
   <main id="main">
 
     <!-- ================= HERO (animated neuron background) ================= -->
-    <section id="top" class="hero-image-bg relative overflow-hidden pt-14 text-white sm:pt-20 xl:pt-24" aria-labelledby="hero-title">
+    <section id="top" class="hero-image-bg relative overflow-hidden pt-8 text-white sm:pt-20 xl:pt-24" aria-labelledby="hero-title">
 
-      <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-4 pb-24 sm:px-6 lg:grid-cols-12 lg:pb-32">
-        <div class="lg:col-span-7">
+      <div class="relative mx-auto grid max-w-7xl items-center gap-0 px-4 pb-14 sm:px-6 sm:pb-24 md:gap-12 lg:grid-cols-12 lg:pb-32">
+        <div class="text-center sm:text-left lg:col-span-7">
           <p
-            class="mb-5 inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-normal text-brand-200 backdrop-blur sm:px-4 sm:text-xs sm:tracking-widest">
+            class="mb-4 inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-normal text-brand-200 backdrop-blur sm:mb-5 sm:px-4 sm:text-xs sm:tracking-widest">
             <svg class="hidden h-4 w-4 sm:block">
               <use href="#i-shield" />
             </svg> NABH Accredited Neuro Hospital · Trichy
           </p>
-          <h1 id="hero-title" class="text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 id="hero-title" class="text-3xl font-extrabold leading-[1.15] tracking-tight sm:text-5xl sm:leading-[1.1] lg:text-6xl">
             Advanced <span class="text-brand-300">Neurology</span> &amp; Neurosurgery Care
           </h1>
-          <p class="mt-6 max-w-2xl text-lg leading-relaxed text-navy-100 sm:text-xl">World-Class Brain, Spine &amp;
+          <p class="mx-auto mt-3 max-w-md text-base leading-relaxed text-navy-100 sm:mx-0 sm:mt-6 sm:max-w-2xl sm:text-xl">World-Class Brain, Spine &amp;
             Nerve Care Delivered by Leading Specialists</p>
-          <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+          <div class="mt-6 flex flex-row gap-3 sm:mt-10 sm:gap-4">
             <a href="book-appointment.html"
-              class="group inline-flex items-center justify-center gap-2 rounded-xl bg-brand-500 px-8 py-4 text-base font-bold text-white shadow-lg shadow-brand-500/30 transition hover:-translate-y-0.5 hover:bg-brand-400">
-              Book Appointment <svg class="h-5 w-5 transition group-hover:translate-x-1">
+              class="group inline-flex flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-xl bg-brand-500 px-3 py-3 text-sm font-bold text-white shadow-lg shadow-brand-500/30 transition hover:-translate-y-0.5 hover:bg-brand-400 sm:flex-none sm:gap-2 sm:px-8 sm:py-4 sm:text-base">
+              Book Appointment <svg class="hidden h-5 w-5 transition group-hover:translate-x-1 sm:block">
                 <use href="#i-arrow" />
               </svg>
             </a>
             <a href="tel:+914312221222"
-              class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-8 py-4 text-base font-bold text-white backdrop-blur transition hover:bg-white/20">
-              <svg class="h-5 w-5 text-red-300">
+              class="inline-flex flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-xl border border-white/30 bg-white/10 px-3 py-3 text-sm font-bold text-white backdrop-blur transition hover:bg-white/20 sm:flex-none sm:gap-2 sm:px-8 sm:py-4 sm:text-base">
+              <svg class="h-4 w-4 text-red-300 sm:h-5 sm:w-5">
                 <use href="#i-phone" />
               </svg> Emergency Care
             </a>
           </div>
         </div>
 
-        <!-- Animated neuro illustration carousel -->
-        <div class="relative lg:col-span-5" role="region" aria-label="Brain, spine and nerve care illustrations" id="nv">
+        <!-- Animated neuro illustration carousel (hidden on mobile) -->
+        <div class="relative hidden md:block lg:col-span-5" role="region" aria-label="Brain, spine and nerve care illustrations" id="nv">
           <div class="relative mx-auto aspect-square w-full max-w-md">
             <div class="nv-ring nv-ring-1" aria-hidden="true"></div>
             <div class="nv-ring nv-ring-2" aria-hidden="true"></div>
@@ -860,7 +860,7 @@
           </div>
         </div>
       </div>
-      <svg class="absolute -bottom-px left-0 block h-12 w-full text-white sm:h-16 lg:h-20" viewBox="0 0 1440 80"
+      <svg class="absolute -bottom-px left-0 block h-6 w-full text-white sm:h-16 lg:h-20" viewBox="0 0 1440 80"
         preserveAspectRatio="none" aria-hidden="true">
         <path fill="currentColor" d="M0 80V40c240 40 480 40 720 10S1200 0 1440 30v50z" />
       </svg>
