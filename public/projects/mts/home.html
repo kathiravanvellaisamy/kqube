@@ -23,7 +23,11 @@
       padding-bottom: env(safe-area-inset-bottom, 0px)
     }
 
-    @media (prefers-color-scheme:dark) {
+    .mnav {
+        display: none
+      }
+
+    /* @media (prefers-color-scheme:dark) {
       :root:not([data-theme="light"]) {
         --bg: #171412;
         --ink: #f3ede3;
@@ -31,15 +35,15 @@
         --line: #383029;
         --card: #1f1b18
       }
-    }
+    } */
 
-    :root[data-theme="dark"] {
+    /* :root[data-theme="dark"] {
       --bg: #171412;
       --ink: #f3ede3;
       --mut: #b3aa9d;
       --line: #383029;
       --card: #1f1b18
-    }
+    } */
 
     *,
     *::before,
